@@ -3,6 +3,7 @@ import { Open_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import AuthContext from "../context/AuthContext";
 import { YoutubeApiProvider } from "@/context/YoutubeApiContext";
+import ConsertApiProvider from "@/context/ConsertApiContext";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
@@ -21,8 +22,10 @@ export default function RootLayout({
       <body className="w-full  max-w-screen-xl mx-auto overflow-auto p-4">
         <AuthContext>
           <YoutubeApiProvider>
-            <Header />
-            <main>{children}</main>
+            <ConsertApiProvider>
+              <Header />
+              <main>{children}</main>
+            </ConsertApiProvider>
           </YoutubeApiProvider>
         </AuthContext>
       </body>

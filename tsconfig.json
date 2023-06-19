@@ -29,6 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "sanity-studio/schemas/user.js"
-, "src/api/youtube/Youtube.js", "src/api/youtube/YoutubeClient.js", "src/context/YoutubeApiContext.jsx"  ],
+, "src/api/youtube/Youtube.js", "src/api/youtube/YoutubeClient.js", "src/context/YoutubeApiContext.jsx", "src/context/ConsertApiContext.jsx"  ],
   "exclude": ["node_modules"]
 }

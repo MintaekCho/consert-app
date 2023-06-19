@@ -29,7 +29,7 @@ export type YoutubeData = {
   };
 };
 
-export default function YoutubeView() {
+export default function YoutubeView({artistName}: {artistName: string}) {
   const { youtube } = useYoutubeApi();
 
   const {
@@ -38,7 +38,7 @@ export default function YoutubeView() {
     isLoading,
   }: { data: YoutubeData[]; error: any; isLoading: any } = useSWR(
     "https://www.googleapis.com/youtube/v3/search",
-    () => youtube.search("볼빨간")
+    () => youtube.search(artistName)
   );
   console.log(videos);
 

@@ -11,7 +11,7 @@ export default function Header() {
         <h1 className="text-4xl font-bold">Consert</h1>
       </Link>
       <div className="flex gap-4 items-center text-sm  font-bold">
-        <Link href={'/consert'}>consert</Link>
+        <Link href={'/artist'}>artist</Link>
         {session ? (
           <button
             className="p-2 bg-purple-700 rounded-lg"
