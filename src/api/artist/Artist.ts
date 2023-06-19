@@ -12,6 +12,7 @@ export default class Artist {
        return this.httpClient.get('')
     }
 
+    // 아티스트 한명 가져오기
     async getArtistInfo(search: string) {
        return this.httpClient.get(`${search}`)
     }

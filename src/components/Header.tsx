@@ -5,6 +5,7 @@ import React from "react";
 
 export default function Header() {
   const { data: session } = useSession();
+  console.log(session)
   return (
     <header className="w-full sticky top-0 flex items-center justify-between p-4">
       <Link href={"/"}>

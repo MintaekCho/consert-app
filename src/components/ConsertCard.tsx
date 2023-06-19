@@ -8,8 +8,9 @@ export default function ConsertCard({rank}:{rank: Rank}) {
         <Image
           src={rank.image}
           alt={rank.title}
-          width={240}
-          height={160}
+          width={350}
+          height={550}
+          priority
         />
         <p className="text-lg font-bold">{rank.title}</p>
       </article>

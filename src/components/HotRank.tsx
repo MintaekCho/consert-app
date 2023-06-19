@@ -23,15 +23,13 @@ export default function HotRank() {
   return (
     <section className="mt-8">
       <h2 className="text-2xl font-bold">TOP 10</h2>
-      <div className="">
-        {ranks && (
-          <CarouselView>
-            {ranks.map((rank) => (
-              <ConsertCard rank={rank} />
-            ))}
-          </CarouselView>
-        )}
-      </div>
+      {ranks && (
+        <CarouselView>
+          {ranks.map((rank) => (
+            <ConsertCard key={rank._id} rank={rank} />
+          ))}
+        </CarouselView>
+      )}
     </section>
   );
 }
