@@ -5,8 +5,12 @@ import { ArtistData } from "./ArtistWrap";
 
 export default function ArtistCard({ artist }: { artist: ArtistData }) {
   return (
-    <Link href={`/artist/${artist.korName}`} className="group rounded-xl flex flex-col items-center overflow-hidden bg-[#f2f2f2] p-2 hover:scale-105 duration-300 ease-in-out">
+    <Link
+      href={`/artist/${artist.korName}`}
+      className="group rounded-xl flex flex-col items-center overflow-hidden bg-[#f2f2f2] p-2 hover:scale-105 duration-300 ease-in-out"
+    >
       <Image
+        className="max-h-[300px]"
         src={artist.profile}
         alt={artist.korName}
         width={300}
