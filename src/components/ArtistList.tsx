@@ -17,7 +17,10 @@ export type ArtistData = {
   enName: string;
 };
 
-export default function ArtistList() {
+export interface ArtistListProps {
+  keyword: string | null;
+}
+export default function ArtistList({ keyword }: ArtistListProps) {
   const [page, setPage] = useState(1);
 
   const artistApi = new Artist();
@@ -25,17 +28,22 @@ export default function ArtistList() {
   const { data, error, isLoading } = useSWR("artists", () =>
     artistApi.getArtist(100, 10)
   );
-  console.log(data);
 
   const artists: ArtistData[] = data && data.data;
+
+  const filteredArtists = artists?.filter((artist) => {
+    const korKeyword = artist.korName.includes(keyword || "");
+    const enKeyword = artist.enName.includes(keyword || "");
+    return korKeyword || enKeyword;
+  });
 
   return (
     <section className=" mt-8">
       {isLoading && <p>loading...</p>}
       {error && <p>error!!!</p>}
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {artists &&
-          artists.map((artist) => (
+        {filteredArtists &&
+          filteredArtists.map((artist) => (
             <li key={artist._id}>
               <ArtistCard artist={artist} />
             </li>
