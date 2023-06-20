@@ -8,8 +8,13 @@ export default class Artist {
           });
     }
 
-    async getArtist() {
-       return this.httpClient.get('')
+    async getArtist(page: number, size: number) {
+       return this.httpClient.get('', {
+        params: {
+            page: page,
+            size: size
+        }
+       })
     }
 
     // 아티스트 한명 가져오기
