@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     const artists = Artist;
 
     const startIndex = page === 1 ? 0 : page > 1 ? (page - 1) * size : -1;
-    const endIndex = startIndex + size;
+    const endIndex = size;
     const findArtists = await artists.find().skip(startIndex).limit(endIndex);
 
     return NextResponse.json(findArtists);
