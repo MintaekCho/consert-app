@@ -1,3 +1,4 @@
+import ArtistInfo from "@/components/ArtistInfo";
 import YoutubeView from "@/components/YoutubeView";
 import React from "react";
 
@@ -6,10 +7,10 @@ type Props = {
 };
 
 export default function ArtistDetailsPage({ params }: { params: Props }) {
-  const artistName = params.slug;
+  const artistId = params.slug;
   return (
     <div>
-        <p>{artistName}</p>
+      <ArtistInfo artistId={artistId} />
       {/* <YoutubeView artistName={artistName}/> */}
     </div>
   );
