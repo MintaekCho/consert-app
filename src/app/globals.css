@@ -16,6 +16,14 @@
   }
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 240, 240, 240;
+    --background-end-rgb: 240, 240, 240;
+  }
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -24,4 +32,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+* {
+  box-sizing: border-box;
 }
