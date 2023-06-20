@@ -17,7 +17,7 @@ export type ArtistData = {
   enName: string;
 };
 
-export default function ArtistWrap() {
+export default function ArtistList() {
   const [page, setPage] = useState(1);
 
   const artistApi = new Artist();
