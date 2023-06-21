@@ -1,14 +1,34 @@
 import mongoose, { Schema, models } from "mongoose";
 
 export const consertSchema = new Schema({
-  name: {
+  title: {
     type: String,
     required: true,
   },
-  age: {
-    type: Number,
+  date: {
+    type: String,
     required: true,
   },
+  place: {
+    type: String,
+    required: true,
+  },
+  cast: {
+    type: Array<{ type: String }>,
+    required: false,
+  },
+  image: {
+    type: String,
+    required: false,
+  },
+  grade: {
+    type: String,
+    required: false,
+  },
+  link: {
+    type: String,
+    required: false,
+  }
 });
 
 const Consert = models?.consert || mongoose.model("consert", consertSchema);

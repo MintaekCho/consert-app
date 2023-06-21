@@ -1,6 +1,6 @@
 'use client'
-import Youtube from "@/api/youtube/Youtube";
-import YoutubeClient from "@/api/youtube/YoutubeClient";
+import Youtube from "@/service/youtube/Youtube";
+import YoutubeClient from "@/service/youtube/YoutubeClient";
 import { createContext, useContext } from "react";
 
 const YoutubeApiContext = createContext();
