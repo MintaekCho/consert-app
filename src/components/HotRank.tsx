@@ -24,7 +24,7 @@ export default function HotRank() {
     <section className="mt-8">
       <h2 className="text-2xl font-bold">TOP 10</h2>
       {ranks && (
-        <CarouselView>
+        <CarouselView type={'auto'}>
           {ranks.map((rank) => (
             <ConsertCard key={rank._id} rank={rank} />
           ))}

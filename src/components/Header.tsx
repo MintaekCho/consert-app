@@ -2,31 +2,22 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
+import HeaderButton from "./common/HeaderButton";
 
 export default function Header() {
   const { data: session } = useSession();
-  console.log(session)
+  console.log(session);
   return (
-    <header className="w-full sticky top-0 flex items-center justify-between p-4">
+    <header className="w-full sticky top-0 flex items-center justify-between p-4 z-10">
       <Link href={"/"}>
         <h1 className="text-4xl font-bold">Consert</h1>
       </Link>
       <div className="flex gap-4 items-center text-sm  font-bold">
-        <Link href={'/artist'}>artist</Link>
+        <Link href={"/artist"}>artist</Link>
         {session ? (
-          <button
-            className="p-2 bg-purple-700 rounded-lg"
-            onClick={signOut}
-          >
-            Logout
-          </button>
+          <HeaderButton name={"Logout"} onclick={signOut} />
         ) : (
-          <button
-            className="p-2 bg-purple-700 rounded-lg"
-            onClick={signIn}
-          >
-            Login
-          </button>
+          <HeaderButton name={"Login"} onclick={signIn} />
         )}
       </div>
     </header>
