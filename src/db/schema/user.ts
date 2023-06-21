@@ -1,4 +1,3 @@
-import { ArtistData } from "@/components/ArtistWrap";
 import mongoose, { Schema, models } from "mongoose";
 import Artist from "./artist";
 
