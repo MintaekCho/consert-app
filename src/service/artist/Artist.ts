@@ -21,5 +21,16 @@ export default class Artist {
     async getArtistInfo(id: string | null) {
        return this.httpClient.get(`${id}`)
     }
+
+    async getSearchArtists({name, page, size}: {name: string | null, page: number, size: number}) {
+       return this.httpClient.get(`search`, {
+        params: {
+            name,
+            page,
+            size,
+        }
+       })
+
+    }
     
 }
