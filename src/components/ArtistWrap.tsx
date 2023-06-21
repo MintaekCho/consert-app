@@ -1,5 +1,5 @@
 "use client";
-import Artist from "@/api/artist/Artist";
+import Artist from "@/service/artist/Artist";
 import React, { useState } from "react";
 import useSWR from "swr";
 import ArtistCard from "./ArtistCard";
@@ -23,9 +23,8 @@ export default function ArtistWrap() {
   const artistApi = new Artist();
 
   const { data, error, isLoading } = useSWR("artists", () =>
-    artistApi.getArtist(100, 10)
+    artistApi.getArtist(1, 10)
   );
-  console.log(data);
 
   const artists: ArtistData[] = data && data.data;
 
