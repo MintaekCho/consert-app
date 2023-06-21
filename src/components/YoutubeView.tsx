@@ -1,8 +1,10 @@
 "use client";
 import { useYoutubeApi } from "@/context/YoutubeApiContext";
+import Artist from "@/service/artist/Artist";
 import React from "react";
 import useSWR from "swr";
 import { BlockingData } from "swr/_internal";
+import { ArtistData } from "./ArtistList";
 import CarouselView from "./ui/CarouselView";
 import YoutubeCard from "./YoutubeCard";
 
@@ -29,16 +31,15 @@ export type YoutubeData = {
   };
 };
 
-export default function YoutubeView({artistName}: {artistName: string}) {
+export default function YoutubeView({ artistName }: { artistName: string }) {
   const { youtube } = useYoutubeApi();
-
   const {
     data: videos,
     error,
     isLoading,
-  }: { data: YoutubeData[]; error: any; isLoading: any } = useSWR(
-    "https://www.googleapis.com/youtube/v3/search",
-    () => youtube.search(artistName)
+  }: {data: YoutubeData[], error: any, isLoading: any} = useSWR(
+    `https://www.googleapis.com/youtube/v3/search/${artistName}`,
+    () => youtube.search(artistName),
   );
   console.log(videos);
 
@@ -46,11 +47,13 @@ export default function YoutubeView({artistName}: {artistName: string}) {
     <section>
       {isLoading && <p>Loading...</p>}
       {error && <p>error</p>}
-      {videos &&
-      <CarouselView>
-         {videos.map((video) => <YoutubeCard key={video.id} video={video} />)}
-      </CarouselView>
-      }
+      {videos && (
+        <CarouselView type={'menual'}>
+          {videos.map((video) => (
+            <YoutubeCard key={video.id} video={video} />
+          ))}
+        </CarouselView>
+      )}
     </section>
   );
 }

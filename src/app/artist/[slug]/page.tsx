@@ -11,7 +11,6 @@ export default function ArtistDetailsPage({ params }: { params: Props }) {
   return (
     <div>
       <ArtistInfo artistId={artistId} />
-      {/* <YoutubeView artistName={artistName}/> */}
     </div>
   );
 }
