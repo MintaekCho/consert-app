@@ -18,8 +18,8 @@ export default class Artist {
     }
 
     // 아티스트 한명 가져오기
-    async getArtistInfo(search: string) {
-       return this.httpClient.get(`${search}`)
+    async getArtistInfo(id: string | null) {
+       return this.httpClient.get(`${id}`)
     }
     
 }

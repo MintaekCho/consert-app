@@ -1,5 +1,5 @@
 "use client";
-import Artist from "@/api/artist/Artist";
+import Artist from "@/service/artist/Artist";
 import Image from "next/image";
 import React from "react";
 import useSWR from "swr";

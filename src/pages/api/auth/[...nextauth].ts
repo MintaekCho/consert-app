@@ -1,7 +1,6 @@
-import NextAuth, { Session } from "next-auth";
+import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import UserService from "@/service/user/User";
-import { UserData } from "@/db/schema/user";
 export const authOptions = {
   providers: [
     GoogleProvider({
