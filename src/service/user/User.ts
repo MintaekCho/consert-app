@@ -1,19 +1,23 @@
-import { UserData } from "@/db/schema/user";
-import axios from "axios";
+import dbConnect from "@/db/dbConnect";
+import User, { UserData } from "@/db/schema/user";
 
-export default class User {
-    httpClient;
-    constructor() {
-        this.httpClient = axios.create({
-            baseURL: "http://localhost:3000/api/user",
-          });
-    }
-
-    async postUser(user: UserData) {
-       return this.httpClient.post('', {
-            body: {
-                user: user
-            }
-       })
-    } 
+export default class UserService {
+  async postUser(user: UserData) {
+    dbConnect();
+    const { email, name, image } = user;
+    const addUser = {
+      email,
+      name,
+      profile: image,
+      bookmarks: [],
+    };
+    const query = User.where({ email });
+    const findUser = await query.findOne();
+    if (findUser) return;
+    else {
+        User.create(addUser)
+        console.log(`회원가입이 완료되었습니다 : ${email}`)
+        return true
+    };
+  }
 }
