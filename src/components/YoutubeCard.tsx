@@ -7,13 +7,20 @@ export default function YoutubeCard({ video }: { video: YoutubeData }) {
 
   return (
     <article className="rounded-md overflow-hidden shadow-md hover:shadow-lg">
-      <Image
+      {/* <Image
         className="w-full"
         src={thumbnails.default.url}
         alt={title}
-        width={80}
-        height={40}
-      />
+        width={300}
+        height={200}
+      /> */}
+      <iframe
+          width="90%"
+          height="200px"
+          src={`https://www.youtube.com/embed/${video.id}`}
+          title={title}
+          frameBorder="0"
+        ></iframe>
       <div className="flex flex-col gap-1 items-center p-4">
         <h3 className="text-lg font-bold truncate">{title}</h3>
         <p className="w-full truncate text-center">{channelTitle}</p>
