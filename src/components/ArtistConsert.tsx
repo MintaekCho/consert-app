@@ -1,8 +1,12 @@
 "use client";
-import { RecentConsertData } from "@/types/_type";
+import { ProceedingConsertData, RecentConsertData } from "@/types/_type";
 import React, { useState } from "react";
 import { ArtistData } from "./ArtistList";
 import ConsertCard from "./ConsertCard";
+import useSWR from "swr";
+import Consert from "@/service/consert/Consert";
+import { AxiosResponse } from "axios";
+import CarouselView from "./ui/CarouselView";
 
 type ConsertStateType = "current" | "recent";
 type Props = {
@@ -11,13 +15,23 @@ type Props = {
 
 export default function ArtistConsert({ artist }: Props) {
   const [consertType, setConsertType] = useState<ConsertStateType>("current");
-  const category: {name: string, state: ConsertStateType}[] = [
+  const category: { name: string; state: ConsertStateType }[] = [
     { name: "공연 중", state: "current" },
     { name: "최근 공연", state: "recent" },
   ];
 
+  const consertApi = new Consert();
+
+  const { data, isLoading, error } = useSWR(
+    `/api/consert/proceeding/${artist.korName}`,
+    () => consertApi.procConsert(artist.korName)
+  );
+
+  const proceedingConserts: ProceedingConsertData[] = data && data.data;
+  console.log(proceedingConserts);
+
   return (
-    <section className="w-full h-[400px] overflow-auto flex gap-10 px-4 py-8 rounded-xl bg-gray-950">
+    <section className="w-full h-[500px] overflow-auto flex gap-10 px-4 py-8 rounded-xl bg-gray-950">
       <ul className="flex flex-col items-center justify-center gap-4">
         {category.map((item, index) => (
           <li
@@ -33,15 +47,26 @@ export default function ArtistConsert({ artist }: Props) {
           </li>
         ))}
       </ul>
-      <div className="flex items-center">
+      <div className="w-[90%] flex items-center">
         {consertType === "current" ? (
-          <p className="w-full text-2xl font-bold text-center ml-10">
-            🥹현재 진행중인 공연이 없습니다.
-          </p>
+          proceedingConserts &&
+          (proceedingConserts.length === 0 ? (
+            <p className="w-full text-2xl font-bold text-center ml-10">
+              🥹현재 진행중인 공연이 없습니다.
+            </p>
+          ) : (
+            <ul className="flex gap-10">
+              {proceedingConserts.map((item: ProceedingConsertData, index) => (
+                <li key={item.title}>
+                  <ConsertCard consert={item} />
+                </li>
+              ))}
+            </ul>
+          ))
         ) : (
           <ul className="flex gap-10">
             {artist.recentConserts.map((item: RecentConsertData, index) => (
-              <li key={item.title}>
+              <li key={item.consertLink}>
                 <ConsertCard consert={item} />
               </li>
             ))}

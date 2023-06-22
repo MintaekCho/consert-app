@@ -53,18 +53,13 @@ export default function ArtistInfo({ artistId }: { artistId: string }) {
             category={navCategory}
             handleClick={handleClick}
           />
-          {
-            navState === '콘서트' ?
+          {navState === "콘서트" ? (
             <ArtistConsert artist={artist} />
-            :
-            navState === '앨범' ?
-            <ArtistAlbums />
-            :
+          ) : navState === "앨범" ? (
+            <ArtistAlbums artist={artist} />
+          ) : (
             <ArtistComments />
-
-
-
-          }
+          )}
           <YoutubeView artistName={artist.korName} />
         </>
       )}
