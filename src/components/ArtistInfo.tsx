@@ -3,6 +3,8 @@ import Artist from "@/service/artist/Artist";
 import Image from "next/image";
 import React, { MouseEvent, useState } from "react";
 import useSWR from "swr";
+import ArtistAlbums from "./ArtistAlbums";
+import ArtistComments from "./ArtistComments";
 import ArtistConsert from "./ArtistConsert";
 import { ArtistData } from "./ArtistList";
 import Navbar from "./common/Navbar";
@@ -51,7 +53,18 @@ export default function ArtistInfo({ artistId }: { artistId: string }) {
             category={navCategory}
             handleClick={handleClick}
           />
-          <ArtistConsert artist={artist} />
+          {
+            navState === '콘서트' ?
+            <ArtistConsert artist={artist} />
+            :
+            navState === '앨범' ?
+            <ArtistAlbums />
+            :
+            <ArtistComments />
+
+
+
+          }
           <YoutubeView artistName={artist.korName} />
         </>
       )}
