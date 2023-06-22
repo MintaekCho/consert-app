@@ -10,6 +10,7 @@ export async function GET(request: NextRequest) {
     const albums = Album;
 
     const findAlbums: ArtistAlbumData | null = await albums.findOne({'artistName' : name})
+    // console.log(AllAlbums.length)
     const response: AlbumData[] | null = findAlbums && findAlbums.albums.sort((a:AlbumData, b:AlbumData) => Number(a.releaseDate.split('.').join('')) - Number(b.releaseDate.split('.').join('')));
     const res = response?.splice(response.length-5, response.length-1)
 
