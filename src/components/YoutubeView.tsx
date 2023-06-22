@@ -1,6 +1,7 @@
 import { useYoutubeApi } from "@/context/YoutubeApiContext";
 import React from "react";
 import useSWR from "swr";
+import Title from "./common/Title";
 import CarouselView from "./ui/CarouselView";
 import YoutubeCard from "./YoutubeCard";
 
@@ -45,9 +46,10 @@ export default function YoutubeView({ artistName }: { artistName: string }) {
   );
 
   return (
-    <section>
+    <section className="mt-12">
       {isLoading && <p>Loading...</p>}
       {error && <p>error</p>}
+      <Title>🔥HotTube</Title>
       {videos && (
         <CarouselView type={"menual"}>
           {videos.map((video) => (
