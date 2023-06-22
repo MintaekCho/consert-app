@@ -1,14 +1,24 @@
 import ArtistCard from "./ArtistCard";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { ArtistData } from "./ArtistList";
+import { RefObject, useRef } from "react";
+import Loading from "./common/Loading";
 
 const ArtistInfiniteScroll = () => {
-  const artists = useInfiniteScroll<ArtistData>({ apiUrl: "/api/artist" });
+  const target = useRef<HTMLLIElement | null>(null);
+  const { isLoading, scrolledData } = useInfiniteScroll<ArtistData>({
+    apiUrl: "/api/artist",
+    target: target as RefObject<HTMLLIElement>,
+  });
+  console.log(target, "넘겨줌: " + target.current?.outerText);
 
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-      {artists?.map((artist) => (
-        <li key={artist._id}>
+      {scrolledData?.map((artist, index) => (
+        <li
+          key={artist._id}
+          ref={index === scrolledData.length - 1 ? target : null}
+        >
           <ArtistCard artist={artist} />
         </li>
       ))}

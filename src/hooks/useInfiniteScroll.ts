@@ -1,12 +1,21 @@
 import useSWRInfinite from "swr/infinite";
 import axios from "axios";
-import { useEffect } from "react";
+import { RefObject, useEffect } from "react";
 
 interface InfiniteScrollParam<T> {
   apiUrl: string;
+  target: RefObject<HTMLLIElement>;
 }
 
-const useInfiniteScroll = <T>({ apiUrl }: InfiniteScrollParam<T>) => {
+interface ScrolledData<T> {
+  isLoading: boolean;
+  scrolledData: T[];
+}
+
+const useInfiniteScroll = <T>({
+  apiUrl,
+  target,
+}: InfiniteScrollParam<T>): ScrolledData<T> => {
   const getKey = (page: number, previousPageData: any) => {
     if (previousPageData && !previousPageData.length) return null;
 
@@ -19,27 +28,41 @@ const useInfiniteScroll = <T>({ apiUrl }: InfiniteScrollParam<T>) => {
     return res.data;
   };
 
-  const { data, setSize } = useSWRInfinite<T>(
+  const { data, isLoading, setSize } = useSWRInfinite<T>(
     (page, previousPageData) => getKey(page, previousPageData),
     fetcher,
     { parallel: true }
   );
-  const renderedData = data ? ([] as T[]).concat(...data) : [];
+  const scrolledData = data ? ([] as T[]).concat(...data) : [];
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        setSize((prevSize) => prevSize + 1);
+    let observer: IntersectionObserver | null = null;
+    let options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
+
+    if (target.current) {
+      //target.current가 null로 나옴.
+      observer = new IntersectionObserver((entries) => {
+        const targetEntry = entries[0];
+        if (targetEntry.isIntersecting) {
+          //타겟 요소와 루트 요소가 교차하면 다음페이지가 나온다.
+          setSize((prevSize) => prevSize + 1);
+        }
+      }, options);
+      observer.observe(target.current);
+    }
+
+    return () => {
+      if (observer) {
+        observer.disconnect();
       }
     };
+  }, [setSize, target]);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [setSize]);
-
-  return renderedData;
+  return { isLoading, scrolledData };
 };
 
 export default useInfiniteScroll;
