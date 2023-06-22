@@ -1,9 +1,14 @@
 "use client";
 import Artist from "@/service/artist/Artist";
 import Image from "next/image";
-import React from "react";
+import React, { MouseEvent, useState } from "react";
 import useSWR from "swr";
+import ArtistAlbums from "./ArtistAlbums";
+import ArtistComments from "./ArtistComments";
+import ArtistConsert from "./ArtistConsert";
 import { ArtistData } from "./ArtistList";
+import Navbar from "./common/Navbar";
+import Title from "./common/Title";
 import YoutubeView from "./YoutubeView";
 
 export default function ArtistInfo({ artistId }: { artistId: string }) {
@@ -12,21 +17,54 @@ export default function ArtistInfo({ artistId }: { artistId: string }) {
     artistApi.getArtistInfo(artistId)
   );
 
+  const navCategory = ["콘서트", "앨범", "팬명록"];
+
+  const [navState, setNavState] = useState(navCategory[0]);
+
+  const handleClick = (e: MouseEvent<HTMLLIElement>) =>
+    setNavState(e.currentTarget.innerText);
+
   const artist: ArtistData = data && data.data;
+  console.log(artist);
   return (
     <section>
       {isLoading && <p>Loading..</p>}
       {error && <p>Error!!</p>}
       {artist && (
         <>
-          <Image
-            src={
-              "http://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040001/23/04/0400012304_187914_01.251.gif"
-            }
-            alt={artist.korName}
-            width={300}
-            height={300}
+          <div className="flex justify-around">
+            <article>
+              <div className="flex items-center gap-2">
+                <Title>{artist.korName}</Title>
+                {artist.enName && <p>{artist.enName}</p>}
+              </div>
+            </article>
+            <Image
+              priority
+              className="rounded-md"
+              src={artist.profile}
+              alt={artist.korName}
+              width={400}
+              height={550}
+            />
+          </div>
+          <Navbar
+            navState={navState}
+            category={navCategory}
+            handleClick={handleClick}
           />
+          {
+            navState === '콘서트' ?
+            <ArtistConsert artist={artist} />
+            :
+            navState === '앨범' ?
+            <ArtistAlbums />
+            :
+            <ArtistComments />
+
+
+
+          }
           <YoutubeView artistName={artist.korName} />
         </>
       )}

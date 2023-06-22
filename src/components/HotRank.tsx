@@ -1,15 +1,12 @@
 "use client";
 import { useConsertApi } from "@/context/ConsertApiContext";
+import { Rank } from "@/types/_type";
 import React from "react";
 import useSWR from "swr";
 import ConsertCard from "./ConsertCard";
 import CarouselView from "./ui/CarouselView";
 
-export type Rank = {
-  _id: string;
-  title: string;
-  image: string;
-};
+
 
 export default function HotRank() {
   const consert = useConsertApi();
@@ -26,7 +23,7 @@ export default function HotRank() {
       {ranks && (
         <CarouselView type={'auto'}>
           {ranks.map((rank) => (
-            <ConsertCard key={rank._id} rank={rank} />
+            <ConsertCard key={rank._id} consert={rank} />
           ))}
         </CarouselView>
       )}
