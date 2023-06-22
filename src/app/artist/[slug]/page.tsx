@@ -9,7 +9,7 @@ type Props = {
 export default function ArtistDetailsPage({ params }: { params: Props }) {
   const artistId = params.slug;
   return (
-    <div>
+    <div className="mt-8">
       <ArtistInfo artistId={artistId} />
     </div>
   );
