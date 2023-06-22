@@ -33,10 +33,14 @@ export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
       {error && <p>error</p>}
       <ul className="flex gap-10">
         {albums &&
-          albums.map((album) => (
-            <li key={album.title}>
-              <AlbumCard album={album} />
-            </li>
+          (albums.length === 0 ? (
+            <p>🥹준비중입니다.</p>
+          ) : (
+            albums.map((album) => (
+              <li key={album.title}>
+                <AlbumCard album={album} />
+              </li>
+            ))
           ))}
       </ul>
     </div>
