@@ -11,7 +11,7 @@ const SearchBar = ({
   };
 
   return (
-    <form onSubmit={handleSearch} className="flex justify-center w-1/2">
+    <form onSubmit={handleSearch} className="flex justify-center w-1/2 min-w-[275px]">
       <label
         htmlFor="search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
