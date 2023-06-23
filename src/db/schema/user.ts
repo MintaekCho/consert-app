@@ -1,10 +1,11 @@
+import { ArtistData } from "@/types/_type";
 import mongoose, { Schema, models } from "mongoose";
-import Artist from "./artist";
 
 export interface UserData {
     email: string;
     name: string;
-    image: string;
+    profile: string;
+    bookMarks: Array<ArtistData>
 }
 
 export const userSchema = new Schema({
