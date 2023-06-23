@@ -2,9 +2,9 @@ import React from "react";
 import { ArtistData } from "./ArtistList";
 import useSWR from "swr";
 import Artist from "@/service/artist/Artist";
-import AlbumCard from "./AlbumCard";
+import AlbumCard from "../molecules/AlbumCard";
 import { AlbumData } from "@/types/_type";
-import Title from "./common/Title";
+import Title from "../atoms/Title";
 
 export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
   const artistApi = new Artist();

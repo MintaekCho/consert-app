@@ -49,3 +49,34 @@ export type AlbumData = {
     albumImage: string;
     likeCount: string;
 }
+
+export type ArtistData = {
+  _id: string;
+  profile: string;
+  recentConserts: RecentConsertData[];
+  korName: string;
+  enName: string;
+};
+
+export type Thumbnails = {
+  height: number;
+  url: string;
+  width: number;
+};
+
+export type YoutubeData = {
+  etag: string;
+  id: string;
+  kind: string;
+  snippet: {
+    channelId: string;
+    channelTitle: string;
+    description: string;
+    thumbnails: {
+      default: Thumbnails;
+      high: Thumbnails;
+      medium: Thumbnails;
+    };
+    title: string;
+  };
+};

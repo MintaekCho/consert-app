@@ -1,7 +1,6 @@
-import Image from "next/image";
+import { ArtistData } from "@/types/_type";
 import Link from "next/link";
 import React from "react";
-import { ArtistData } from "./ArtistList";
 import { AiOutlineHeart } from "react-icons/ai";
 
 export default function ArtistCard({ artist }: { artist: ArtistData }) {

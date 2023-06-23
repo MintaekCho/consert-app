@@ -2,11 +2,9 @@
 import { ProceedingConsertData, RecentConsertData } from "@/types/_type";
 import React, { useState } from "react";
 import { ArtistData } from "./ArtistList";
-import ConsertCard from "./ConsertCard";
 import useSWR from "swr";
 import Consert from "@/service/consert/Consert";
-import { AxiosResponse } from "axios";
-import CarouselView from "./ui/CarouselView";
+import ConsertCard from "../molecules/ConsertCard";
 
 type ConsertStateType = "current" | "recent";
 type Props = {
