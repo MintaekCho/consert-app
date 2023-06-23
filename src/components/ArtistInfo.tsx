@@ -40,7 +40,6 @@ export default function ArtistInfo({ artistId }: { artistId: string }) {
               </div>
             </article>
             <Image
-              priority
               className="rounded-md"
               src={artist.profile}
               alt={artist.korName}

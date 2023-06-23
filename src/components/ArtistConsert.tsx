@@ -57,16 +57,16 @@ export default function ArtistConsert({ artist }: Props) {
           ) : (
             <ul className="flex gap-10">
               {proceedingConserts.map((item: ProceedingConsertData, index) => (
-                <li key={item.title}>
+                <li className="w-full min-w-[250px] flex items-center" key={item.title}>
                   <ConsertCard consert={item} />
                 </li>
               ))}
             </ul>
           ))
         ) : (
-          <ul className="flex gap-10">
+          <ul className="w-full flex gap-10">
             {artist.recentConserts.map((item: RecentConsertData, index) => (
-              <li key={item.consertLink}>
+              <li className="w-full flex items-center" key={item.consertLink}>
                 <ConsertCard consert={item} />
               </li>
             ))}

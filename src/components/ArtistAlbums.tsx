@@ -31,7 +31,7 @@ export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
       {/* TODO: 모든앨범보기 모달 */}
       {isLoading && <p>loading...</p>}
       {error && <p>error</p>}
-      <ul className="flex gap-10">
+      <ul className="w-full flex gap-10">
         {albums &&
           (albums.length === 0 ? (
             <p>🥹준비중입니다.</p>
