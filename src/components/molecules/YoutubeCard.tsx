@@ -1,6 +1,6 @@
+import { YoutubeData } from "@/types/_type";
 import Image from "next/image";
 import React from "react";
-import { YoutubeData } from "./YoutubeView";
 
 export default function YoutubeCard({ video }: { video: YoutubeData }) {
   const { title, thumbnails, channelTitle } = video.snippet;

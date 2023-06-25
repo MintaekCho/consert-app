@@ -24,12 +24,11 @@ const responsive = {
 
 type Props = {
   children: React.ReactNode;
-  type: 'auto' | 'menual'
+  type: "auto" | "menual";
 };
 
 export default function CarouselView({ children, type }: Props) {
-  return (
-    type === 'auto' ?
+  return type === "auto" ? (
     <Carousel
       infinite
       draggable
@@ -39,13 +38,8 @@ export default function CarouselView({ children, type }: Props) {
     >
       {children}
     </Carousel>
-    :
-    <Carousel
-      infinite
-      draggable
-      responsive={responsive}
-      itemClass="m-2"
-    >
+  ) : (
+    <Carousel infinite draggable responsive={responsive} itemClass="m-2">
       {children}
     </Carousel>
   );

@@ -3,13 +3,13 @@ import Artist from "@/service/artist/Artist";
 import Image from "next/image";
 import React, { MouseEvent, useState } from "react";
 import useSWR from "swr";
-import ArtistAlbums from "./ArtistAlbums";
-import ArtistComments from "./ArtistComments";
-import ArtistConsert from "./ArtistConsert";
-import { ArtistData } from "./ArtistList";
-import Navbar from "./common/Navbar";
-import Title from "./common/Title";
-import YoutubeView from "./YoutubeView";
+import ArtistAlbums from "../organisms/ArtistAlbums";
+import { ArtistData } from "../organisms/ArtistList";
+import Navbar from "../molecules/Navbar";
+import Title from "../atoms/Title";
+import YoutubeView from "../organisms/YoutubeView";
+import ArtistConsert from "../organisms/ArtistConsert";
+import ArtistComments from "../organisms/ArtistComments";
 
 export default function ArtistInfo({ artistId }: { artistId: string }) {
   const artistApi = new Artist();
@@ -40,7 +40,6 @@ export default function ArtistInfo({ artistId }: { artistId: string }) {
               </div>
             </article>
             <Image
-              priority
               className="rounded-md"
               src={artist.profile}
               alt={artist.korName}
@@ -53,18 +52,13 @@ export default function ArtistInfo({ artistId }: { artistId: string }) {
             category={navCategory}
             handleClick={handleClick}
           />
-          {
-            navState === '콘서트' ?
+          {navState === "콘서트" ? (
             <ArtistConsert artist={artist} />
-            :
-            navState === '앨범' ?
-            <ArtistAlbums />
-            :
+          ) : navState === "앨범" ? (
+            <ArtistAlbums artist={artist} />
+          ) : (
             <ArtistComments />
-
-
-
-          }
+          )}
           <YoutubeView artistName={artist.korName} />
         </>
       )}

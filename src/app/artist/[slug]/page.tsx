@@ -1,5 +1,4 @@
-import ArtistInfo from "@/components/ArtistInfo";
-import YoutubeView from "@/components/YoutubeView";
+import ArtistInfo from "@/components/templetes/ArtistInfo";
 import React from "react";
 
 type Props = {

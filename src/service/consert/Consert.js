@@ -11,4 +11,10 @@ export default class Consert {
   async rank() {
     return this.httpClient.get("rank");
   }
+
+  async procConsert(name) {
+    return this.httpClient.get("proceeding", {
+      params: { name },
+    });
+  }
 }

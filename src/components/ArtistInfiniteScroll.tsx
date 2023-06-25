@@ -1,6 +1,6 @@
-import ArtistCard from "./ArtistCard";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { ArtistData } from "./ArtistList";
+import ArtistCard from "./molecules/ArtistCard";
+import { ArtistData } from "./organisms/ArtistList";
 import { RefObject, useRef } from "react";
 import Loading from "./common/Loading";
 

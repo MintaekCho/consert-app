@@ -3,7 +3,7 @@ import Artist from "@/service/artist/Artist";
 import { RecentConsertData } from "@/types/_type";
 import React, { useState } from "react";
 import useSWR from "swr";
-import ArtistCard from "./ArtistCard";
+import ArtistCard from "../molecules/ArtistCard";
 
 
 export type ArtistData = {
