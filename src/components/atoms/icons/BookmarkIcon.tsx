@@ -13,7 +13,7 @@ export default function BookmarkIcon({ artist }: { artist: ArtistData }) {
   };
 
   return (
-    <div className="absolute top-4 right-8 p-2 z-10 text-white">
+    <div className="absolute top-4 right-[6%] p-2 z-10 text-white">
       <AiOutlineHeart
         onClick={handleClick}
         className="text-3xl hover:text-red-400 duration-300 ease-in-out"

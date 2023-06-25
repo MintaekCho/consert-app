@@ -1,12 +1,12 @@
 import { ArtistData } from "@/types/_type";
 import Link from "next/link";
 import React from "react";
-import BookmarkIcon from "../atoms/BookmarkIcon";
+import BookmarkIcon from "../atoms/icons/BookmarkIcon";
 
 export default function ArtistCard({ artist }: { artist: ArtistData }) {
 
   return (
-    <article className="max-w-[300px] relative group rounded-xl flex flex-col items-center overflow-hidden bg-white p-2 hover:scale-105 duration-300 ease-in-out">
+    <article className="max-w-[300px] relative group rounded-xl flex flex-col items-center overflow-hidden bg-white p-2 m-2 hover:scale-105 duration-300 ease-in-out">
       <Link href={`/artist/${artist._id}`}>
         <div
           className="relative w-300 h-300 bg-cover bg-center"
