@@ -1,5 +1,5 @@
 import { SetStateAction } from "react";
-import SearchBar from "./common/SearchBar";
+import SearchBar from "../molecules/SearchBar";
 
 const SearchBox = ({
   setKeyword,

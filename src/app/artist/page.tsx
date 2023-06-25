@@ -1,9 +1,9 @@
 "use client";
 
-import ArtistList from "@/components/ArtistList";
+import ArtistList from "@/components/organisms/ArtistList";
 import ArtistInfiniteScroll from "@/components/ArtistInfiniteScroll";
-import SearchBox from "@/components/SearchBox";
-import Title from "@/components/common/Title";
+import SearchBox from "@/components/organisms/SearchBox";
+import Title from "@/components/atoms/Title";
 import React, { useState } from "react";
 
 export default function Page() {

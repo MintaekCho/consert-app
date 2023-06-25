@@ -1,32 +1,10 @@
 import { useYoutubeApi } from "@/context/YoutubeApiContext";
+import { YoutubeData } from "@/types/_type";
 import React from "react";
 import useSWR from "swr";
-import Title from "./common/Title";
-import CarouselView from "./ui/CarouselView";
-import YoutubeCard from "./YoutubeCard";
-
-export type Thumbnails = {
-  height: number;
-  url: string;
-  width: number;
-};
-
-export type YoutubeData = {
-  etag: string;
-  id: string;
-  kind: string;
-  snippet: {
-    channelId: string;
-    channelTitle: string;
-    description: string;
-    thumbnails: {
-      default: Thumbnails;
-      high: Thumbnails;
-      medium: Thumbnails;
-    };
-    title: string;
-  };
-};
+import Title from "../atoms/Title";
+import YoutubeCard from "../molecules/YoutubeCard";
+import CarouselView from "./CarouselView";
 
 export default function YoutubeView({ artistName }: { artistName: string }) {
   const { youtube } = useYoutubeApi();
