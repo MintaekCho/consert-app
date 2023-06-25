@@ -16,15 +16,19 @@ export default class UserService {
     });
   }
 
-  async postBookmark(email: string, artist: ArtistData) {
-    this.httpClient.post("bookmark", {
-      body: { email, artist },
+  async getUser(email: string) {
+    return this.httpClient.get("", {
+      params: {email},
     });
   }
 
-  async deleteBookmark(email: string, artist: ArtistData) {
+  async patchBookmark(email: string, artist: ArtistData) {
+    const requestBody = {
+      email,
+      artist,
+    };
     this.httpClient.patch("bookmark", {
-      body: { email, artist },
+      body: requestBody,
     });
   }
 }

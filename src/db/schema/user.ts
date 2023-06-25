@@ -21,10 +21,6 @@ export const userSchema = new Schema({
     type: String,
     required: false,
   },
-  bookMarks: {
-    type: Array,
-    required: false
-  }
 });
 
 const User = models?.user || mongoose.model("user", userSchema);

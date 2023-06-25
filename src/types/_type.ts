@@ -56,6 +56,7 @@ export type ArtistData = {
   recentConserts: RecentConsertData[];
   korName: string;
   enName: string;
+  bookmark: string[];
 };
 
 export type Thumbnails = {
