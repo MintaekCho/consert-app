@@ -4,12 +4,13 @@ import { RefObject, useEffect } from "react";
 
 interface InfiniteScrollParam<T> {
   apiUrl: string;
-  target: RefObject<HTMLLIElement>;
+  target: RefObject<HTMLDivElement>;
 }
 
 interface ScrolledData<T> {
   isLoading: boolean;
   scrolledData: T[];
+  isNextPage: boolean;
 }
 
 const useInfiniteScroll = <T>({
@@ -17,7 +18,9 @@ const useInfiniteScroll = <T>({
   target,
 }: InfiniteScrollParam<T>): ScrolledData<T> => {
   const getKey = (page: number, previousPageData: any) => {
-    if (previousPageData && !previousPageData.length) return null;
+    if (previousPageData && !previousPageData.length) {
+      return null;
+    }
 
     if (page === 0) return `${apiUrl}?page=1&size=10`;
     return `${apiUrl}?page=${page + 1}&size=10`;
@@ -28,41 +31,42 @@ const useInfiniteScroll = <T>({
     return res.data;
   };
 
-  const { data, isLoading, setSize } = useSWRInfinite<T>(
+  const { data, isLoading, setSize } = useSWRInfinite<T[]>(
     (page, previousPageData) => getKey(page, previousPageData),
     fetcher,
     { parallel: true }
   );
   const scrolledData = data ? ([] as T[]).concat(...data) : [];
+  const isNextPage = data ? data && data[data.length - 1].length > 0 : false;
 
   useEffect(() => {
-    let observer: IntersectionObserver | null = null;
     let options = {
       root: null,
       rootMargin: "0px",
       threshold: 0.5,
     };
+    const currentTarget = target.current;
 
-    if (target.current) {
-      //target.current가 null로 나옴.
-      observer = new IntersectionObserver((entries) => {
-        const targetEntry = entries[0];
-        if (targetEntry.isIntersecting) {
-          //타겟 요소와 루트 요소가 교차하면 다음페이지가 나온다.
-          setSize((prevSize) => prevSize + 1);
-        }
-      }, options);
-      observer.observe(target.current);
+    const observer = new IntersectionObserver((entries) => {
+      const lastEntry = entries[0];
+      if (lastEntry && lastEntry.isIntersecting) {
+        setSize((prevSize) => prevSize + 1);
+      }
+    }, options);
+    target.current && observer.observe(target.current);
+
+    if (currentTarget) {
+      observer.observe(currentTarget);
     }
 
     return () => {
-      if (observer) {
-        observer.disconnect();
+      if (currentTarget) {
+        observer.unobserve(currentTarget);
       }
     };
   }, [setSize, target]);
 
-  return { isLoading, scrolledData };
+  return { isLoading, scrolledData, isNextPage };
 };
 
 export default useInfiniteScroll;
