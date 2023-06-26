@@ -1,4 +1,3 @@
-import { UserData } from "@/db/schema/user";
 import mongoose, { Schema, models } from "mongoose";
 
 export const artistSchema = new Schema({
