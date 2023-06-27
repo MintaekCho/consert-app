@@ -14,13 +14,15 @@ export const commentSchema = new Schema({
     require: true,
   },
   createdAt: {
-    type: Date,
+    type: String,
+    require: true,
   },
   updatedAt: {
-    type: Date,
+    type: String,
   },
   isUpdated: {
     type: Boolean,
+    require: true,
   },
 });
 

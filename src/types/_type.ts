@@ -101,7 +101,7 @@ export type CommentData = {
   artistId: string;
   writer: SessionUser | undefined;
   content: string;
-  createdAt: Date;
-  updatedAt: Date;
-  isUpdate: boolean;
+  createdAt: string;
+  updatedAt: string;
+  isUpdated: boolean;
 };
