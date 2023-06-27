@@ -1,7 +1,6 @@
 "use client";
-import { ProceedingConsertData, RecentConsertData } from "@/types/_type";
+import { ArtistData, ProceedingConsertData, RecentConsertData } from "@/types/_type";
 import React, { useState } from "react";
-import { ArtistData } from "./ArtistList";
 import useSWR from "swr";
 import Consert from "@/service/consert/Consert";
 import ConsertCard from "../molecules/ConsertCard";

@@ -1,11 +1,10 @@
 "use client";
-import { ArtistData } from "@/types/_type";
+import { ArtistData, UserData } from "@/types/_type";
 import React from "react";
 import ArtistCard from "./molecules/ArtistCard";
 import useSWR from "swr";
 import UserService from "@/service/user/User";
 import { useSession } from "next-auth/react";
-import { UserData } from "@/db/schema/user";
 
 export default function ArtistWrap({ artists }: { artists: ArtistData[] }) {
   const { data: session } = useSession();

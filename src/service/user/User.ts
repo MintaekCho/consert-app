@@ -1,6 +1,5 @@
 import dbConnect from "@/db/dbConnect";
-import User, { UserData } from "@/db/schema/user";
-import { ArtistData } from "@/types/_type";
+import { ArtistData, UserData } from "@/types/_type";
 import axios from "axios";
 
 export default class UserService {

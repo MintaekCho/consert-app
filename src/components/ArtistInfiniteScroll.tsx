@@ -1,6 +1,6 @@
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { ArtistData } from "@/types/_type";
 import ArtistWrap from "./ArtistWrap";
-import { ArtistData } from "./organisms/ArtistList";
 
 const ArtistInfiniteScroll = () => {
   const artists = useInfiniteScroll<ArtistData>({ apiUrl: "/api/artist" });

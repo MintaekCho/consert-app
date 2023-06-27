@@ -1,18 +1,9 @@
 "use client";
 import Artist from "@/service/artist/Artist";
-import { RecentConsertData } from "@/types/_type";
+import { ArtistData } from "@/types/_type";
 import React, { useState } from "react";
 import useSWR from "swr";
 import ArtistWrap from "../ArtistWrap";
-
-
-export type ArtistData = {
-  _id: string;
-  profile: string;
-  recentConserts: RecentConsertData[];
-  korName: string;
-  enName: string;
-};
 
 export interface ArtistListProps {
   keyword: string | null;
