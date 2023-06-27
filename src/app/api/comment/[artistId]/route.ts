@@ -1,8 +1,7 @@
 import dbConnect from "@/db/dbConnect";
-import Artist from "@/db/schema/artist";
 import Comment from "@/db/schema/comment";
 import { CommentData } from "@/types/_type";
-import { getKorDate, getStringDate } from "@/utils/date";
+import { getStringDate } from "@/utils/date";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(
@@ -16,7 +15,8 @@ export async function POST(
 
   try {
     dbConnect();
-    const createAt = getKorDate();
+    const createAt = getStringDate();
+    console.log(createAt);
     const addPost = {
       ...body,
       createdAt: createAt,
@@ -44,12 +44,11 @@ export async function GET(
     dbConnect();
 
     const findComment: CommentData[] = await Comment.find({ artistId });
-    console.log(Number(new Date(findComment[0].createdAt)))
-    const response = findComment.sort(
-      (a, b) => a.createdAt - b.createdAt
+    console.log(new Date(findComment[0].createdAt));
+    const res = findComment.sort(
+      (a, b) => +new Date(b.createdAt) - +new Date(a.createdAt)  
     );
-    console.log(response[0].createdAt);
-    return NextResponse.json(response);
+    return NextResponse.json(res);
   } catch (error) {
     console.error(error);
     NextResponse.json({ message: "Internal server error" });
@@ -63,7 +62,7 @@ export async function PATCH(request: Request) {
   try {
     dbConnect();
     console.log("");
-    const updatedAt = getKorDate();
+    const updatedAt = getStringDate();
     await Comment.updateOne({ _id: commentId }, [
       {
         $set: { content: content, updatedAt: updatedAt, isUpdated: true },
