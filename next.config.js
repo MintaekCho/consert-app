@@ -5,6 +5,7 @@ const nextConfig = {
       "search.pstatic.net",
       "ticketimage.interpark.com",
       "cdnimg.melon.co.kr",
+      "lh3.googleusercontent.com",
     ],
   },
 };
