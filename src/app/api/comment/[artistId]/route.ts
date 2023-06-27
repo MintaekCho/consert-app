@@ -44,11 +44,13 @@ export async function GET(
     dbConnect();
 
     const findComment: CommentData[] = await Comment.find({ artistId });
-    console.log(new Date(findComment[0].createdAt));
-    const res = findComment.sort(
-      (a, b) => +new Date(b.createdAt) - +new Date(a.createdAt)  
-    );
-    return NextResponse.json(res);
+    if (findComment.length > 0) {
+      const res = findComment?.sort(
+        (a, b) => +new Date(b.createdAt) - +new Date(a.createdAt)
+      );
+      return NextResponse.json(res);
+    }
+    return NextResponse.json(findComment);
   } catch (error) {
     console.error(error);
     NextResponse.json({ message: "Internal server error" });
