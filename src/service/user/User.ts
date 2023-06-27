@@ -20,14 +20,4 @@ export default class UserService {
       params: {email},
     });
   }
-
-  async patchBookmark(email: string, artist: ArtistData) {
-    const requestBody = {
-      email,
-      artist,
-    };
-    this.httpClient.patch("bookmark", {
-      body: requestBody,
-    });
-  }
 }

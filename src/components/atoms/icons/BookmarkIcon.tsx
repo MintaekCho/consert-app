@@ -1,5 +1,5 @@
 "use client";
-import UserService from "@/service/user/User";
+import Artist from "@/service/artist/Artist";
 import { ArtistData } from "@/types/_type";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
@@ -7,14 +7,29 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 export default function BookmarkIcon({ artist }: { artist: ArtistData }) {
   const { data: session } = useSession();
-  const [modalVisible, setModalVisible] = useState(false)
-  const handleClick = () => {
-    if(!session) {
+  const [modalVisible, setModalVisible] = useState(false);
+
+
+  const handleClick = async () => {
+    const artistApi = new Artist();
+    console.log(session?.user.id, artist._id);
+    const data = await artistApi.getBookmark(
+      session?.user.id as string,
+      artist._id
+    );
+    console.log(data)
+    if (data.data) {
+      console.log("delete");
+      await artistApi.deleteBookmark(session?.user.id as string, artist._id);
+    } else {
+      console.log("post");
+      await artistApi.postBookmark(session?.user.id as string, artist);
+    }
+    if (!session) {
       // 로그인 에러 모달
       // setModalVisible(!modalVisible);
     }
-    const userApi = new UserService();
-    session && userApi.patchBookmark(session?.user.email, artist);
+    // session && artistApi.postBookmark();
   };
 
   return (
