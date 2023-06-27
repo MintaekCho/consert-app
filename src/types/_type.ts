@@ -11,13 +11,14 @@ export type ConsertData = {
 };
 
 export interface UserData {
+  _id: string;
   email: string;
   name: string;
   profile: string;
-  bookMarks: Array<ArtistData>;
 }
 
 export type SessionUser = {
+  _id?: string;
   email: string;
   name: string;
   image: string;
