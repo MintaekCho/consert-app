@@ -1,14 +1,26 @@
 import useSWRInfinite from "swr/infinite";
 import axios from "axios";
-import { useEffect } from "react";
+import { RefObject, useEffect } from "react";
 
 interface InfiniteScrollParam<T> {
   apiUrl: string;
+  target: RefObject<HTMLDivElement>;
 }
 
-const useInfiniteScroll = <T>({ apiUrl }: InfiniteScrollParam<T>) => {
+interface ScrolledData<T> {
+  isLoading: boolean;
+  scrolledData: T[];
+  isNextPage: boolean;
+}
+
+const useInfiniteScroll = <T>({
+  apiUrl,
+  target,
+}: InfiniteScrollParam<T>): ScrolledData<T> => {
   const getKey = (page: number, previousPageData: any) => {
-    if (previousPageData && !previousPageData.length) return null;
+    if (previousPageData && !previousPageData.length) {
+      return null;
+    }
 
     if (page === 0) return `${apiUrl}?page=1&size=10`;
     return `${apiUrl}?page=${page + 1}&size=10`;
@@ -19,27 +31,42 @@ const useInfiniteScroll = <T>({ apiUrl }: InfiniteScrollParam<T>) => {
     return res.data;
   };
 
-  const { data, setSize } = useSWRInfinite<T>(
+  const { data, isLoading, setSize } = useSWRInfinite<T[]>(
     (page, previousPageData) => getKey(page, previousPageData),
     fetcher,
     { parallel: true }
   );
-  const renderedData = data ? ([] as T[]).concat(...data) : [];
+  const scrolledData = data ? ([] as T[]).concat(...data) : [];
+  const isNextPage = data ? data && data[data.length - 1].length > 0 : false;
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    let options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
+    const currentTarget = target.current;
+
+    const observer = new IntersectionObserver((entries) => {
+      const lastEntry = entries[0];
+      if (lastEntry && lastEntry.isIntersecting) {
         setSize((prevSize) => prevSize + 1);
       }
-    };
+    }, options);
+    target.current && observer.observe(target.current);
 
-    window.addEventListener("scroll", handleScroll);
+    if (currentTarget) {
+      observer.observe(currentTarget);
+    }
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (currentTarget) {
+        observer.unobserve(currentTarget);
+      }
     };
-  }, [setSize]);
+  }, [setSize, target]);
 
-  return renderedData;
+  return { isLoading, scrolledData, isNextPage };
 };
 
 export default useInfiniteScroll;
