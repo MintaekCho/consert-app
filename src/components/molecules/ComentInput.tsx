@@ -56,7 +56,7 @@ export default function ComentInput({ artistId }: { artistId: string }) {
           type="button"
           onClick={handleSubmit}
           value={"전송"}
-          className="w-[15%] py-3 rounded-r-lg font-bold bg-purple-500 cursor-pointer hover:bg-purple-600"
+          className="w-[15%] py-3 rounded-r-lg font-bold bg-purple-500 cursor-pointer text-white hover:bg-purple-600"
         />
       </form>
       {errorMessage && <ErrorMessage message={errorMessage} />}

@@ -13,7 +13,7 @@ export default function Navbar({ navState, category, handleClick }: Props) {
         {category.map((item, i) => (
           <li
             key={i}
-            className={`cursor-pointer py-2 mx-2 ${
+            className={`cursor-pointer py-2 mx-2 text-white ${
               navState === item ? "border-b-2" : "opacity-70"
             }`}
             onClick={handleClick}
