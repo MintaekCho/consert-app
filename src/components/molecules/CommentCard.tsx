@@ -1,5 +1,6 @@
 "use client";
 import { CommentData } from "@/types/_type";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useState } from "react";
 import CommentDeleteIcon from "../atoms/icons/CommentDeleteIcon";
@@ -9,12 +10,15 @@ import CommentUpdateInput from "./CommentUpdateInput";
 export default function CommentCard({ comment }: { comment: CommentData }) {
   const [isUpdate, setIsUpdate] = useState(false);
   const handleUpdate = () => setIsUpdate(!isUpdate);
+  const { data: session } = useSession();
 
   const { _id, artistId, writer, content, createdAt, updatedAt, isUpdated } =
     comment;
   const createdDate = createdAt?.split("G")[0];
   const updatedDate = updatedAt?.split("G")[0];
   console.log(createdAt);
+
+  const userCheck = session?.user.email === writer?.email;
   return (
     <article className="w-full h-20 px-8 py-2 bg-slate-700 rounded-xl flex items-center">
       <div className="w-full flex items-center justify-between">
@@ -53,12 +57,12 @@ export default function CommentCard({ comment }: { comment: CommentData }) {
             </div>
           )}
         </div>
-        {isUpdate ? null : (
+        {isUpdate ? null : userCheck ? (
           <div className="flex gap-2">
             <CommentUpdateIcon handleUpdate={handleUpdate} />
             <CommentDeleteIcon commentId={_id} artistId={artistId} />
           </div>
-        )}
+        ) : null}
       </div>
     </article>
   );
