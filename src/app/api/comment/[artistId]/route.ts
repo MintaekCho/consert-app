@@ -1,6 +1,7 @@
 import dbConnect from "@/db/dbConnect";
 import Artist from "@/db/schema/artist";
 import Comment from "@/db/schema/comment";
+import { CommentData } from "@/types/_type";
 import { getKorDate, getStringDate } from "@/utils/date";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -42,9 +43,13 @@ export async function GET(
   try {
     dbConnect();
 
-    const findComment = await Comment.find({ artistId });
-    console.log(findComment);
-    return NextResponse.json(findComment);
+    const findComment: CommentData[] = await Comment.find({ artistId });
+    console.log(Number(new Date(findComment[0].createdAt)))
+    const response = findComment.sort(
+      (a, b) => a.createdAt - b.createdAt
+    );
+    console.log(response[0].createdAt);
+    return NextResponse.json(response);
   } catch (error) {
     console.error(error);
     NextResponse.json({ message: "Internal server error" });
@@ -73,7 +78,7 @@ export async function PATCH(request: Request) {
 }
 
 export async function DELETE(request: NextRequest) {
-  const commentId = request.nextUrl.searchParams.get("commentId")
+  const commentId = request.nextUrl.searchParams.get("commentId");
   try {
     dbConnect();
     await Comment.deleteOne({ _id: commentId });
