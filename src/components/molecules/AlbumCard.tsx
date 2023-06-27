@@ -27,8 +27,8 @@ export default function AlbumCard({ album }: { album: AlbumData }) {
         height={280}
       />
       <div className="w-full flex flex-col items-center justify-center">
-        <p className="w-full truncate text-lg font-bold mt-2">{title}</p>
-        <p className="w-full truncate text-sm opacity-80">
+        <p className="w-full truncate text-lg font-bold mt-2 text-white">{title}</p>
+        <p className="w-full truncate text-sm opacity-80 text-white">
           <span className="text-gray-400">Title : </span>
           {titleSong}
         </p>

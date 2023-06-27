@@ -40,16 +40,16 @@ export default function CommentUpdateInput({
       />
       <input
         onClick={handleSubmit}
-        className="p-2 w-[10%] bg-purple-500 rounded-lg cursor-pointer"
+        className="p-2 w-[10%] bg-purple-500 rounded-lg cursor-pointer text-white"
         type="button"
         value={"수정"}
       />
-      {/* <button
+      <div
         onClick={handleUpdate}
-        className="p-2 w-[10%] bg-purple-500 rounded-lg"
+        className="p-2 w-[10%] bg-purple-500 rounded-lg flex justify-center items-center"
       >
-        취소
-      </button> */}
+        <p className="text-white">취소</p>
+      </div>
     </form>
   );
 }

@@ -27,7 +27,7 @@ export default function CommentCard({ comment }: { comment: CommentData }) {
               width={40}
               height={40}
             />
-            <span className="text-xs">{writer?.name}</span>
+            <span className="text-xs text-white">{writer?.name}</span>
           </div>
           {isUpdate ? (
             <CommentUpdateInput
@@ -37,7 +37,7 @@ export default function CommentCard({ comment }: { comment: CommentData }) {
             />
           ) : (
             <div className="w-full flex flex-col gap-2 items-start">
-              <p>{content}</p>
+              <p className="text-white">{content}</p>
               {
                 <div className="flex gap-4">
                   {isUpdated ? (
