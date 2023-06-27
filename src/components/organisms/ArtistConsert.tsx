@@ -25,7 +25,6 @@ export default function ArtistConsert({ artist }: Props) {
   );
 
   const proceedingConserts: ProceedingConsertData[] = data && data.data;
-  console.log(proceedingConserts);
 
   return (
     <section className="w-full h-[500px] overflow-auto flex gap-10 px-4 py-8 rounded-xl bg-gray-950">

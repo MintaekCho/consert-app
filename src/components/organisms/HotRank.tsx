@@ -14,7 +14,6 @@ export default function HotRank() {
 
   const ranks: Rank[] = data && data.data;
 
-  console.log(ranks);
 
   return (
     <section className="flex flex-col mt-8">

@@ -6,7 +6,6 @@ import HeaderButton from "../atoms/HeaderButton";
 
 export default function Header() {
   const { data: session } = useSession();
-  console.log(session);
   return (
     <header className="w-full sticky top-0 flex items-center justify-between p-4 z-10">
       <Link href={"/"}>

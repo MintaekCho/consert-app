@@ -18,7 +18,6 @@ export default function ArtistComments() {
   );
 
   const comments: CommentData[] = data?.data;
-  console.log(comments);
   return (
     <div
       className={`w-full h-[500px] flex flex-col items-center ${

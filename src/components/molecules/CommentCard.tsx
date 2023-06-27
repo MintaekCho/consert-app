@@ -14,7 +14,6 @@ export default function CommentCard({ comment }: { comment: CommentData }) {
 
   const { _id, artistId, writer, content, createdAt, updatedAt, isUpdated } =
     comment;
-  console.log(createdAt);
 
   const userCheck = session?.user.email === writer?.email;
   return (
