@@ -1,11 +1,49 @@
 "use client";
-import React, { useState } from "react";
+import CommentService from "@/service/comment/Comment";
+import { validateWhiteSpace } from "@/utils/validation";
+import { useSession } from "next-auth/react";
+import React, { FormEvent, useState } from "react";
+import { mutate } from "swr";
+import ErrorMessage from "../atoms/ErrorMessage";
 
-export default function ComentInput() {
+export default function ComentInput({ artistId }: { artistId: string }) {
   const [comment, setComment] = useState("");
-  const handleSubmit = () => {};
+  const commentApi = new CommentService();
+  const { data: session } = useSession();
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    // TODO: 나중에 로그인 에러 모달로 변경
+    if(!session) {
+        setErrorMessage("팬명록을 남기려면 로그인이 필요합니다.");
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 3000);
+        setComment('')
+        return;
+    }
+    const isWhiteSpace = validateWhiteSpace(comment)
+    if (!comment || isWhiteSpace) {
+      setErrorMessage("응원글을 한 글자 이상 입력해주세요.");
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 3000);
+      setComment('')
+    } else {
+      await commentApi.postComment(
+        {
+          content: comment,
+          writer: session?.user,
+        },
+        artistId
+      );
+      mutate(`/api/comment/${artistId}`);
+      setComment("");
+    }
+  };
   return (
-    <section className="w-full">
+    <section className="w-full h-[10%] absolute left-0 bottom-0">
       <form onSubmit={handleSubmit} className="w-full">
         <input
           className="w-[85%] p-3 outline-none text-black rounded-l-lg"
@@ -16,10 +54,12 @@ export default function ComentInput() {
         />
         <input
           type="button"
+          onClick={handleSubmit}
           value={"전송"}
           className="w-[15%] py-3 rounded-r-lg font-bold bg-purple-500 cursor-pointer hover:bg-purple-600"
         />
       </form>
+      {errorMessage && <ErrorMessage message={errorMessage} />}
     </section>
   );
 }
