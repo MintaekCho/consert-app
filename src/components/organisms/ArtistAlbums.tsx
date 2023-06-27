@@ -33,7 +33,7 @@ export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
       <ul className="w-full flex gap-10">
         {albums &&
           (albums.length === 0 ? (
-            <p>🥹준비중입니다.</p>
+            <p className="text-white">🥹준비중입니다.</p>
           ) : (
             albums.map((album) => (
               <li key={album.title}>

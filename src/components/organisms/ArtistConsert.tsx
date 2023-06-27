@@ -48,7 +48,7 @@ export default function ArtistConsert({ artist }: Props) {
         {consertType === "current" ? (
           proceedingConserts &&
           (proceedingConserts.length === 0 ? (
-            <p className="w-full text-2xl font-bold text-center ml-10">
+            <p className="w-full text-2xl font-bold text-center ml-10 text-white">
               🥹현재 진행중인 공연이 없습니다.
             </p>
           ) : (
