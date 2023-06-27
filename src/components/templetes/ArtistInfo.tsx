@@ -4,12 +4,12 @@ import Image from "next/image";
 import React, { MouseEvent, useState } from "react";
 import useSWR from "swr";
 import ArtistAlbums from "../organisms/ArtistAlbums";
-import { ArtistData } from "../organisms/ArtistList";
 import Navbar from "../molecules/Navbar";
 import Title from "../atoms/Title";
 import YoutubeView from "../organisms/YoutubeView";
 import ArtistConsert from "../organisms/ArtistConsert";
 import ArtistComments from "../organisms/ArtistComments";
+import { ArtistData } from "@/types/_type";
 
 export default function ArtistInfo({ artistId }: { artistId: string }) {
   const artistApi = new Artist();

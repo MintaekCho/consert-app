@@ -1,8 +1,9 @@
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import ArtistCard from "./molecules/ArtistCard";
-import { ArtistData } from "./organisms/ArtistList";
+import { ArtistData } from "@/types/_type";
+import ArtistWrap from "./ArtistWrap";
 import { useRef } from "react";
 import Loading from "./common/Loading";
+import ArtistCard from "./molecules/ArtistCard";
 
 const ArtistInfiniteScroll = () => {
   const target = useRef<HTMLDivElement>(null);

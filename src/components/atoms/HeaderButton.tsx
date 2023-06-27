@@ -7,7 +7,7 @@ type Props = {
 
 export default function HeaderButton({name, onclick}: Props) {
     return (
-        <button className='p-2 bg-purple-700 rounded-lg' onClick={onclick}>
+        <button className='p-2 text-lg bg-purple-700 rounded-lg' onClick={onclick}>
             {name}
         </button>
     );

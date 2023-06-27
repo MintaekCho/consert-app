@@ -1,18 +1,9 @@
 "use client";
 import Artist from "@/service/artist/Artist";
-import { RecentConsertData } from "@/types/_type";
+import { ArtistData } from "@/types/_type";
 import React, { useState } from "react";
 import useSWR from "swr";
-import ArtistCard from "../molecules/ArtistCard";
-
-
-export type ArtistData = {
-  _id: string;
-  profile: string;
-  recentConserts: RecentConsertData[];
-  korName: string;
-  enName: string;
-};
+import ArtistWrap from "../ArtistWrap";
 
 export interface ArtistListProps {
   keyword: string | null;
@@ -44,14 +35,7 @@ export default function ArtistList({ keyword }: ArtistListProps) {
     <section className=" mt-8">
       {isLoading && <p>loading...</p>}
       {error && <p>error!!!</p>}
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {artists &&
-          artists.map((artist) => (
-            <li key={artist._id}>
-              <ArtistCard artist={artist} />
-            </li>
-          ))}
-      </ul>
+      <ArtistWrap artists={artists} />
       {artists && artists.length === 0 && <p className="text-xl text-gray-400 font-bold text-center">찾고계신 가수가 없네요🥹</p> }
     </section>
   );

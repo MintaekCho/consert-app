@@ -17,7 +17,7 @@ export default function HotRank() {
 
   return (
     <section className="mt-8">
-      <h2 className="text-2xl font-bold">TOP 10</h2>
+      <h2 className="text-2xl font-bold">🏆 TOP 10</h2>
       {ranks && (
         <CarouselView type={"auto"}>
           {ranks.map((rank) => (

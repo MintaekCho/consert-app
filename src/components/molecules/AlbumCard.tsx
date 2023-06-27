@@ -1,7 +1,6 @@
 import { AlbumData } from "@/types/_type";
 import Image from "next/image";
 import React from "react";
-import Title from "../atoms/Title";
 
 export default function AlbumCard({ album }: { album: AlbumData }) {
   const {

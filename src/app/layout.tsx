@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={sans.className} suppressHydrationWarning={true}>
-      <body className="w-full  max-w-screen-2xl mx-auto overflow-auto p-4">
+      <body className="w-full min-w-[320px] max-w-screen-2xl mx-auto overflow-auto p-4">
         <AuthContext>
           <YoutubeApiProvider>
             <ConsertApiProvider>

@@ -1,9 +1,8 @@
 import React from "react";
-import { ArtistData } from "./ArtistList";
 import useSWR from "swr";
 import Artist from "@/service/artist/Artist";
 import AlbumCard from "../molecules/AlbumCard";
-import { AlbumData } from "@/types/_type";
+import { AlbumData, ArtistData } from "@/types/_type";
 import Title from "../atoms/Title";
 
 export default function ArtistAlbums({ artist }: { artist: ArtistData }) {

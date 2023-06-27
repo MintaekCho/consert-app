@@ -1,3 +1,4 @@
+
 export type ConsertData = {
   _id: string;
   title: string;
@@ -8,6 +9,19 @@ export type ConsertData = {
   grade: string;
   link: string;
 };
+
+export interface UserData {
+  email: string;
+  name: string;
+  profile: string;
+  bookMarks: Array<ArtistData>;
+}
+
+export type SessionUser = {
+  email: string;
+  name: string;
+  image: string;
+} | undefined;
 
 export type RecentConsertData = {
   title: string;
@@ -24,31 +38,31 @@ export type Rank = {
 };
 
 export type ProceedingConsertData = {
-    _id: string;
-    title: string;
-    date: string;
-    place: string;
-    cast: Array<string>;
-    image: string;
-    grade: string;
-    link: string;
-}
+  _id: string;
+  title: string;
+  date: string;
+  place: string;
+  cast: Array<string>;
+  image: string;
+  grade: string;
+  link: string;
+};
 
 export type ArtistAlbumData = {
-    _id: string
-    artistName: string;
-    albums: Array<AlbumData>
-}
+  _id: string;
+  artistName: string;
+  albums: Array<AlbumData>;
+};
 
 export type AlbumData = {
-    title: string;
-    titleSong: string;
-    vdoName: string;
-    releaseDate: string;
-    songCount: string;
-    albumImage: string;
-    likeCount: string;
-}
+  title: string;
+  titleSong: string;
+  vdoName: string;
+  releaseDate: string;
+  songCount: string;
+  albumImage: string;
+  likeCount: string;
+};
 
 export type ArtistData = {
   _id: string;
@@ -56,6 +70,7 @@ export type ArtistData = {
   recentConserts: RecentConsertData[];
   korName: string;
   enName: string;
+  bookmark: string[];
 };
 
 export type Thumbnails = {
@@ -79,4 +94,14 @@ export type YoutubeData = {
     };
     title: string;
   };
+};
+
+export type CommentData = {
+  _id: string;
+  artistId: string;
+  writer: SessionUser | undefined;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  isUpdated: boolean;
 };
