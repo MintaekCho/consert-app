@@ -3,6 +3,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 import HeaderButton from "../atoms/HeaderButton";
+import Gnb from "../molecules/Gnb";
 
 export default function Header() {
   const { data: session } = useSession();
@@ -13,7 +14,7 @@ export default function Header() {
         <h1 className="text-5xl font-bold">Consert</h1>
       </Link>
       <div className="flex gap-4 items-center text-sm  font-bold">
-        <Link className="p-2 text-lg " href={"/artist"}>artist</Link>
+        <Gnb />
         {session ? (
           <HeaderButton name={"Logout"} onclick={signOut} />
         ) : (
