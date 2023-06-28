@@ -3,6 +3,7 @@ import { YoutubeData } from "@/types/_type";
 import React from "react";
 import useSWR from "swr";
 import Title from "../atoms/Title";
+import Loading from "../common/Loading";
 import YoutubeCard from "../molecules/YoutubeCard";
 import CarouselView from "./CarouselView";
 
@@ -25,7 +26,7 @@ export default function YoutubeView({ artistName }: { artistName: string }) {
 
   return (
     <section className="mt-12">
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loading />}
       {error && <p>error</p>}
       <Title>🔥HotTube</Title>
       {videos && (

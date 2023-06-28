@@ -10,6 +10,7 @@ import YoutubeView from "../organisms/YoutubeView";
 import ArtistConsert from "../organisms/ArtistConsert";
 import ArtistComments from "../organisms/ArtistComments";
 import { ArtistData } from "@/types/_type";
+import Loading from "../common/Loading";
 
 export default function ArtistInfo({ artistId }: { artistId: string }) {
   const artistApi = new Artist();
@@ -27,7 +28,7 @@ export default function ArtistInfo({ artistId }: { artistId: string }) {
   const artist: ArtistData = data && data.data;
   return (
     <section>
-      {isLoading && <p>Loading..</p>}
+      {isLoading && <Loading />}
       {error && <p>Error!!</p>}
       {artist && (
         <>

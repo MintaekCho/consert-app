@@ -8,11 +8,19 @@ export default class Consert {
     });
   }
 
+  async getConsertDetails(consertId: string) {
+    return this.httpClient.get("details", {
+      params: {
+        consertId,
+      },
+    });
+  }
+
   async rank() {
     return this.httpClient.get("rank");
   }
 
-  async procConsert(name) {
+  async procConsert(name: string) {
     return this.httpClient.get("proceeding", {
       params: { name },
     });

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import useSWR, { mutate } from "swr";
 import ArtistWrap from "../ArtistWrap";
 import Pagination from "../atoms/Pagination";
+import Loading from "../common/Loading";
 
 export default function ArtistList({ keyword }: SearchProps) {
   const [page, setPage] = useState(1);
@@ -31,20 +32,21 @@ export default function ArtistList({ keyword }: SearchProps) {
     }
   );
 
-  const artists: ArtistData[] = data && data.data;
+  const artists = data?.data;
+  console.log(artists);
   const lastPage = null; //총 페이지 수 혹은 총 데이터 수
 
   return (
     <section className=" mt-8">
-      {isLoading && <p>loading...</p>}
+      {isLoading && <Loading />}
       {error && <p>error!!!</p>}
-      <ArtistWrap artists={artists} />
-      {artists && artists.length === 0 && (
+      <ArtistWrap artists={artists?.findArtist} />
+      {artists?.findArtist && artists?.findArtist.length === 0 && (
         <p className="text-xl text-gray-400 font-bold text-center">
           찾고계신 가수가 없네요🥹
         </p>
       )}
-      <Pagination setPage={setPage} page={page} lastPage={lastPage} />
+      <Pagination setPage={setPage} page={page} lastPage={artists?.pageCount} />
     </section>
   );
 }
