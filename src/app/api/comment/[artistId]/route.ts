@@ -25,8 +25,8 @@ export async function POST(
       artistId: artistId,
     };
     console.log(addPost);
-    await Comment.create(addPost);
-    return NextResponse.json("팬명록이 등록되었습니다.");
+    const res = await Comment.create(addPost)
+    return NextResponse.json(res);
   } catch (error) {
     console.error(error);
     NextResponse.json({ message: "Internal server error" });
@@ -65,13 +65,13 @@ export async function PATCH(request: Request) {
     dbConnect();
     console.log("");
     const updatedAt = getStringDate();
-    await Comment.updateOne({ _id: commentId }, [
+    const res = await Comment.updateOne({ _id: commentId }, [
       {
         $set: { content: content, updatedAt: updatedAt, isUpdated: true },
       },
     ]);
 
-    return NextResponse.json("팬명록을 업데이트 하였습니다.");
+    return NextResponse.json(res);
   } catch (error) {
     console.error(error);
     NextResponse.json({ message: "Internal server error" });
