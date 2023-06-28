@@ -1,8 +1,7 @@
-
-export type ConsertData = {
+export type ConcertData = {
   _id: string;
   title: string;
-  data: string;
+  date: string;
   place: string;
   cast: Array<string>;
   image: string;
@@ -17,11 +16,13 @@ export interface UserData {
   bookMarks: Array<ArtistData>;
 }
 
-export type SessionUser = {
-  email: string;
-  name: string;
-  image: string;
-} | undefined;
+export type SessionUser =
+  | {
+      email: string;
+      name: string;
+      image: string;
+    }
+  | undefined;
 
 export type RecentConsertData = {
   title: string;
@@ -105,3 +106,7 @@ export type CommentData = {
   updatedAt: string;
   isUpdated: boolean;
 };
+
+export interface SearchProps {
+  keyword: string | null;
+}
