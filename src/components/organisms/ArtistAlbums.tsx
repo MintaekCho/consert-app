@@ -4,6 +4,7 @@ import Artist from "@/service/artist/Artist";
 import AlbumCard from "../molecules/AlbumCard";
 import { AlbumData, ArtistData } from "@/types/_type";
 import Title from "../atoms/Title";
+import Loading from "../common/Loading";
 
 export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
   const artistApi = new Artist();
@@ -28,7 +29,7 @@ export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
         모든 앨범 보기
       </button>{" "}
       {/* TODO: 모든앨범보기 모달 */}
-      {isLoading && <p>loading...</p>}
+      {isLoading && <Loading />}
       {error && <p>error</p>}
       <ul className="w-full flex gap-10">
         {albums &&

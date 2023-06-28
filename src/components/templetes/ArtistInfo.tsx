@@ -25,7 +25,6 @@ export default function ArtistInfo({ artistId }: { artistId: string }) {
     setNavState(e.currentTarget.innerText);
 
   const artist: ArtistData = data && data.data;
-  console.log(artist);
   return (
     <section>
       {isLoading && <p>Loading..</p>}

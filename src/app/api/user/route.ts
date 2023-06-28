@@ -15,12 +15,15 @@ export async function POST(request: Request) {
     dbConnect();
     const query = User.where({ email });
     const findUser = await query.findOne();
-    if (findUser) return;
-    else {
+
+    if (findUser) {
+      console.log(`${email}님 로그인을 환영합니다`);
+      return NextResponse.json(`${email}님 로그인을 환영합니다`);
+    } else {
       User.create(addUser);
       console.log(`회원가입이 완료되었습니다 : ${email}`);
+      return NextResponse.json("회원가입이 완료되었습니다.");
     }
-    return NextResponse.json("회원가입이 완료되었습니다.");
   } catch (error) {
     console.error(error);
     NextResponse.json({ message: "Internal server error" });
