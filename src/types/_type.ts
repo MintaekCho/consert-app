@@ -106,3 +106,9 @@ export type CommentData = {
   updatedAt: string;
   isUpdated: boolean;
 };
+
+export type BookmarkData = {
+  _id: string;
+  artist: ArtistData;
+  userId: string;
+}
