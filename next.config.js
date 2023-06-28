@@ -6,6 +6,7 @@ const nextConfig = {
       "ticketimage.interpark.com",
       "cdnimg.melon.co.kr",
       "lh3.googleusercontent.com",
+      "i.ytimg.com"
     ],
   },
 };

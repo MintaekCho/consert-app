@@ -33,7 +33,7 @@
     "src/service/youtube/YoutubeClient.js",
     "src/context/YoutubeApiContext.jsx",
     "src/context/ConsertApiContext.jsx",
-    "src/service/consert/Consert.js"
+    "src/service/consert/Consert.ts"
   ],
   "exclude": ["node_modules"]
 }

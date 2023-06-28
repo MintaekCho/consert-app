@@ -13,7 +13,7 @@ export default class CommentService {
     comment: { content: string | undefined; writer: SessionUser },
     artistId: string
   ) {
-    this.httpClient.post(artistId, {
+    return this.httpClient.post(artistId, {
       body: comment,
     });
   }

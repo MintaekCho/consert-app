@@ -4,7 +4,7 @@ import { ArtistData, BookmarkData } from "@/types/_type";
 import { useSession } from "next-auth/react";
 import React from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import useSWR, { mutate } from "swr";
+import useSWR from "swr";
 
 export default function BookmarkIcon({
   artist,
@@ -16,7 +16,7 @@ export default function BookmarkIcon({
   const { data: session } = useSession();
   const artistApi = new Artist();
 
-  const { data: userBookmark } = useSWR(
+  const { data: userBookmark, mutate } = useSWR(
     `/api/artist/bookmark/${session?.user.id}`,
     () => artistApi.getUserBookmark(session?.user.id as string)
   );
@@ -25,19 +25,18 @@ export default function BookmarkIcon({
     if (!session) {
       modalVisible();
     } else {
-      console.log(userBookmark);
       const data = await artistApi.getBookmark(
         session?.user.id as string,
         artist._id
       );
-      console.log(data);
       if (data.data) {
-        console.log("delete");
+        mutate();
         await artistApi.deleteBookmark(session?.user.id as string, artist._id);
+        mutate();
       } else {
-        console.log("post");
+        mutate();
         await artistApi.postBookmark(session?.user.id as string, artist);
-        mutate(`/api/artist/bookmark/${session?.user.id}`);
+        mutate();
       }
     }
   };
