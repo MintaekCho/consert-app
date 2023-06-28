@@ -14,9 +14,6 @@ export default function CommentCard({ comment }: { comment: CommentData }) {
 
   const { _id, artistId, writer, content, createdAt, updatedAt, isUpdated } =
     comment;
-  const createdDate = createdAt?.split("G")[0];
-  const updatedDate = updatedAt?.split("G")[0];
-  console.log(createdAt);
 
   const userCheck = session?.user.email === writer?.email;
   return (
@@ -46,11 +43,11 @@ export default function CommentCard({ comment }: { comment: CommentData }) {
                 <div className="flex gap-4">
                   {isUpdated ? (
                     <>
-                      <span className="text-gray-400 text-sm">{`${createdDate}`}</span>
-                      <span className="text-gray-400 text-sm">{`(수정됨) - ${updatedDate}`}</span>
+                      <span className="text-gray-400 text-sm">{`${createdAt}`}</span>
+                      <span className="text-gray-400 text-sm">{`(수정됨) - ${updatedAt}`}</span>
                     </>
                   ) : (
-                    <span className="text-gray-400 text-sm">{`${createdDate}`}</span>
+                    <span className="text-gray-400 text-sm">{`${createdAt}`}</span>
                   )}
                 </div>
               }

@@ -1,3 +1,4 @@
+import { ArtistData } from "@/types/_type";
 import axios from "axios";
 
 export default class Artist {
@@ -41,8 +42,40 @@ export default class Artist {
   }
 
   async getArtistAlbums(name: string) {
-    return this.httpClient.get('album', {
-        params: {name}
-    })
+    return this.httpClient.get("album", {
+      params: { name },
+    });
+  }
+
+  async postBookmark(userId: string, artist: ArtistData) {
+    const body = {
+      userId,
+      artist,
+    };
+    this.httpClient.post("bookmark", {
+      body
+    });
+  }
+
+  async getBookmark(userId: string, artistId: string) {
+    return this.httpClient.get("bookmark", {
+      params: {
+        userId,
+        artistId
+      },
+    });
+  }
+
+  async getUserBookmark(userId: string) {
+    return this.httpClient.get(`bookmark/${userId}`);
+  }
+
+  async deleteBookmark(userId: string, artistId: string) {
+    this.httpClient.delete("bookmark", {
+      params: {
+        userId,
+        artistId,
+      },
+    });
   }
 }

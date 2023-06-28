@@ -19,7 +19,6 @@ export default class CommentService {
   }
 
   async getComments(artistId: string) {
-    console.log(artistId);
     return this.httpClient.get(artistId, {});
   }
 
