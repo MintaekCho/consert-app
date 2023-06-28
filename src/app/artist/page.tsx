@@ -12,14 +12,17 @@ export default function Page() {
   return (
     <div>
       <SearchBox setKeyword={setKeyword} />
-      {keyword && (
+      {keyword ? (
         <>
           <Title>{keyword} 검색 결과</Title>
           <ArtistList keyword={keyword} />
         </>
+      ) : (
+        <>
+          <Title>All Artists</Title>
+          <ArtistInfiniteScroll />
+        </>
       )}
-      <Title>All Artists</Title>
-      <ArtistInfiniteScroll />
     </div>
   );
 }
