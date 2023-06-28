@@ -1,13 +1,14 @@
 "use client";
 import { BookmarkData } from "@/types/_type";
 import { useSession } from "next-auth/react";
-import React, { useRef } from "react";
+import React from "react";
 import ArtistCard from "../molecules/ArtistCard";
 import useSWR from "swr";
 import Artist from "@/service/artist/Artist";
+import Link from "next/link";
+import Loading from "../common/Loading";
 
 export default function MyChoice() {
-  const target = useRef<HTMLDivElement>(null);
   const { data: session } = useSession();
   const artistApi = new Artist();
 
@@ -18,15 +19,38 @@ export default function MyChoice() {
 
   const bookmarks: BookmarkData[] = data?.data;
   return (
-    <section className="my-8">
-      <h2 className="text-2xl font-bold mb-4">My-Choice</h2>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {bookmarks?.map((bookmark) => (
-          <li key={bookmark._id}>
-            <ArtistCard artist={bookmark.artist} />
-          </li>
-        ))}
-      </ul>
+    <section className="w-full my-8">
+      <h2 className="text-2xl font-bold mb-4">📕My-Choice</h2>
+      {isLoading && <Loading />}
+      {
+        session ? (
+          bookmarks?.length === 0 ? (
+            <div className="flex flex-col gap-2 justify-center items-center p-8 mt-20">
+              <p className="text-2xl font-bold">북마크를 추가해보세요😆</p>
+              <Link
+                className="text-xl font-bold px-4 py-2 rounded-xl bg-purple-600"
+                href={"/artist"}
+              >
+                Go
+              </Link>
+            </div>
+          ) : (
+            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              {bookmarks?.map((bookmark) => (
+                <li key={bookmark._id}>
+                  <ArtistCard artist={bookmark.artist} />
+                </li>
+              ))}
+            </ul>
+          )
+        )
+        :
+        <div className="flex flex-col gap-2 justify-center items-center p-8 mt-20">
+          <p className="text-2xl font-bold">로그인하고 북마크를 추가해보세요😆</p>
+        </div>
+
+      }
+      
     </section>
   );
 }
