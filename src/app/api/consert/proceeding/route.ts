@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
       (consert) => new Date(consert.date.split(" ~ ")[1]) >= date
     );
     console.log(allConserts, "1");
-    return NextResponse.json(response);
+    return NextResponse.json(allConserts);
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "Internal server error" });
