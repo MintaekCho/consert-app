@@ -1,4 +1,4 @@
-import YoutubeView from "@/components/YoutubeView";
+import ArtistInfo from "@/components/templetes/ArtistInfo";
 import React from "react";
 
 type Props = {
@@ -6,11 +6,10 @@ type Props = {
 };
 
 export default function ArtistDetailsPage({ params }: { params: Props }) {
-  const artistName = params.slug;
+  const artistId = params.slug;
   return (
-    <div>
-        <p>{artistName}</p>
-      {/* <YoutubeView artistName={artistName}/> */}
+    <div className="mt-8">
+      <ArtistInfo artistId={artistId} />
     </div>
   );
 }

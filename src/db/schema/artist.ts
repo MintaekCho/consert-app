@@ -15,7 +15,13 @@ export const artistSchema = new Schema({
   },
   recentConserts: {
     type: Array,
-  }
+  },
+  album: {
+    type: String,
+  },
+  bookmark: {
+    type: Array,
+  },
 });
 
 const Artist = models?.artist || mongoose.model("artist", artistSchema);

@@ -1,6 +1,6 @@
 'use client'
 import { createContext, useContext } from "react";
-import Consert from "@/api/consert/Consert";
+import Consert from "@/service/consert/Consert";
 import React from "react";
 
 const ConsertContext = createContext();

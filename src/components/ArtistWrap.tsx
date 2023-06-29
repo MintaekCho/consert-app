@@ -1,44 +1,32 @@
 "use client";
-import Artist from "@/api/artist/Artist";
+import { ArtistData, UserData } from "@/types/_type";
 import React from "react";
+import ArtistCard from "./molecules/ArtistCard";
 import useSWR from "swr";
-import ArtistCard from "./ArtistCard";
+import UserService from "@/service/user/User";
+import { useSession } from "next-auth/react";
 
-export type RecentConsert = {
-  title: string;
-  consertLink: string;
-};
+export default function ArtistWrap({ artists }: { artists: ArtistData[] }) {
+  const { data: session } = useSession();
+  const userApi = new UserService();
 
-export type ArtistData = {
-  _id: string;
-  profile: string;
-  recentConserts: RecentConsert[];
-  korName: string;
-  enName: string;
-};
-
-export default function ArtistWrap() {
-  const artistApi = new Artist();
-
-  const { data, error, isLoading } = useSWR("artists", () =>
-    artistApi.getArtist()
+  const { data } = useSWR(
+    `/api/user/${session?.user.email}`,
+    () => session && userApi.getUser(session?.user.email)
   );
-  console.log(data);
 
-  const artists: ArtistData[] = data && data.data;
+  const user: UserData = data?.data;
+  console.log(user);
 
   return (
-    <section className=" mt-8">
-      {isLoading && <p>loading...</p>}
-      {error && <p>error!!!</p>}
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {artists &&
-          artists.map((artist) => (
-            <li key={artist._id}>
-              <ArtistCard artist={artist} />
-            </li>
-          ))}
-      </ul>
-    </section>
+    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      {artists?.map((artist, i) => {
+        return (
+          <li key={artist._id}>
+            <ArtistCard artist={artist} />
+          </li>
+        );
+      })}
+    </ul>
   );
 }
