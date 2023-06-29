@@ -6,7 +6,7 @@ export default class CommentService {
   httpClient;
   constructor() {
     this.httpClient = axios.create({
-      baseURL: "http://localhost:3000/api/comment",
+      baseURL: "/api/comment",
     });
   }
   async postComment(

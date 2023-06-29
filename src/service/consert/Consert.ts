@@ -4,7 +4,7 @@ export default class Consert {
   httpClient;
   constructor() {
     this.httpClient = axios.create({
-      baseURL: "http://localhost:3000/api/consert",
+      baseURL: "/api/consert",
     });
   }
 
