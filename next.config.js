@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/:path*",
+        destination: "/:path*",
+      },
+    ];
+  },
   images: {
     domains: [
       "search.pstatic.net",
@@ -7,7 +15,7 @@ const nextConfig = {
       "cdnimg.melon.co.kr",
       "lh3.googleusercontent.com",
       "i.ytimg.com",
-      "cdnticket.melon.co.kr"
+      "cdnticket.melon.co.kr",
     ],
   },
 };
