@@ -6,7 +6,7 @@ export default class UserService {
   httpClient;
   constructor() {
     this.httpClient = axios.create({
-      baseURL: "/api/user",
+      baseURL: "http://localhost:3000/api/user",
     });
   }
   async postUser(user: UserData) {
