@@ -4,7 +4,7 @@ import MyChoice from "@/components/organisms/MyChoice";
 
 export default function Home() {
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col p-6">
       <MainBanner />
       <HotRank />
       <MyChoice />
