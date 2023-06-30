@@ -30,12 +30,12 @@ export default function BookmarkIcon({
         artist._id
       );
       if (data.data) {
-        mutate();
         await artistApi.deleteBookmark(session?.user.id as string, artist._id);
         mutate();
-      } else {
         mutate();
+      } else {
         await artistApi.postBookmark(session?.user.id as string, artist);
+        mutate();
         mutate();
       }
     }

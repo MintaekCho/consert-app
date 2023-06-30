@@ -30,11 +30,23 @@ export default function YoutubeView({ artistName }: { artistName: string }) {
       {error && <p>error</p>}
       <Title>🔥HotTube</Title>
       {videos && (
-        <CarouselView type={"menual"}>
-          {videos.map((video) => (
-            <YoutubeCard key={video.id} video={video} />
-          ))}
-        </CarouselView>
+        <>
+          <div className="hidden sm:block">
+            <CarouselView type={"menual"}>
+              {videos.map((video) => (
+                <YoutubeCard key={video.id} video={video} />
+              ))}
+            </CarouselView>
+          </div>
+
+          <ul className="flex flex-col gap-2 sm:hidden">
+            {videos.map((video) => (
+              <li key={video.id}>
+                <YoutubeCard video={video} />
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </section>
   );
