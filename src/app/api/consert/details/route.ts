@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
   const consertId = request.nextUrl.searchParams.get("consertId");
+  console.log(consertId)
   try {
     dbConnect();
     const conserts = Consert;
