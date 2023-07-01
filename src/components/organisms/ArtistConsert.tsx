@@ -31,8 +31,8 @@ export default function ArtistConsert({ artist }: Props) {
   const proceedingConserts: ProceedingConsertData[] = data && data.data;
 
   return (
-    <section className="w-full h-[500px] overflow-auto flex flex-col lg:flex-row gap-10 px-4 py-8 rounded-xl bg-gray-950">
-      <ul className="w-auto flex lg:flex-col items-center justify-center gap-4">
+    <section className="w-full h-[600px] lg:h-[500px] overflow-auto flex flex-col lg:flex-row gap-10 px-4 py-8 rounded-xl bg-gray-950">
+      <ul className="flex lg:flex-col items-center justify-center gap-4">
         {category.map((item, index) => (
           <li
             key={index}
@@ -55,7 +55,7 @@ export default function ArtistConsert({ artist }: Props) {
               🥹현재 진행중인 공연이 없습니다.
             </p>
           ) : (
-            <ul className="flex gap-10">
+            <ul className="w-full flex gap-10">
               {proceedingConserts.map((item: ProceedingConsertData, index) => (
                 <li
                   className="w-full min-w-[250px] flex items-center"
@@ -70,7 +70,7 @@ export default function ArtistConsert({ artist }: Props) {
           <ul className="w-full flex gap-10">
             {artist.recentConserts.map((item: RecentConsertData, index) => (
               <li className="w-full flex items-center" key={item.consertLink}>
-                <ConsertCard consert={item} />
+                <ConcertCard consert={item} />
               </li>
             ))}
           </ul>
