@@ -34,7 +34,7 @@ export default function ArtistComments() {
           ))}
         </ul>
       ) : (
-        <p className="text-2xl font-bold text-white">
+        <p className="text-md lg:text-xl xl:text-2xl p-4 font-bold text-white">
           가장 먼저 응원하는 글을 남겨주세요😍
         </p>
       )}
