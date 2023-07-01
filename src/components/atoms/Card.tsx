@@ -9,7 +9,7 @@ interface CardProps<T> {
   data: T;
 }
 
-const Card = ({ type, canBook, data }: CardProps<CardType>) => {
+const Card = ({ type, canBook = false, data }: CardProps<CardType>) => {
   const cardData = (data: CardType) => {
     if (type === "artist") {
       const { _id: id, profile: img, korName, enName } = data as ArtistData;
@@ -26,7 +26,7 @@ const Card = ({ type, canBook, data }: CardProps<CardType>) => {
   const { id, img, title, date, place } = cardData(data) || {};
   return (
     <article className="max-w-[300px] relative group rounded-xl flex flex-col items-center overflow-hidden bg-white p-2 m-2 hover:scale-105 duration-300 ease-in-out">
-      <Link href={`/${type}/${id}`}>
+      <Link href={`/${type === "concert" ? "consert" : type}/${id}`}>
         <div
           className="relative w-300 h-300 bg-cover bg-center"
           style={{
