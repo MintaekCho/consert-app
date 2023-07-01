@@ -22,7 +22,7 @@ export default function ArtistComments() {
     <div
       className={`w-full h-[500px] flex flex-col items-center ${
         comments?.length === 0 || isLoading? "justify-center" : ""
-      } gap-2 p-4 rounded-xl bg-gray-950 relative`}
+      } gap-2 sm:p-4 rounded-xl bg-gray-950 relative`}
     >
       {isLoading && <Loading />}
       {comments?.length !== 0 ? (

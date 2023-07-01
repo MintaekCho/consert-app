@@ -20,15 +20,15 @@ export default function MyChoice() {
   const bookmarks: BookmarkData[] = data?.data;
   return (
     <section className="w-full my-8">
-      <h2 className="text-2xl font-bold mb-4">📕My-Choice</h2>
+      <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">📕My-Choice</h2>
       {isLoading && <Loading />}
       {
         session ? (
           bookmarks?.length === 0 ? (
             <div className="flex flex-col gap-2 justify-center items-center p-8 mt-20">
-              <p className="text-2xl font-bold">북마크를 추가해보세요😆</p>
+              <p className="text-md md:text-lg lg:text-xl xl:text-2xl font-bold">북마크를 추가해보세요😆</p>
               <Link
-                className="text-xl font-bold px-4 py-2 rounded-xl bg-purple-600"
+                className="text-xs md:text-sm lg:text-md xl:text-xl font-bold px-4 py-2 rounded-xl bg-purple-600 hover:opacity-95"
                 href={"/artist"}
               >
                 Go

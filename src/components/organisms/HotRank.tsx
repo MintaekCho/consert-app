@@ -17,7 +17,7 @@ export default function HotRank() {
 
   return (
     <section className="flex flex-col mt-8">
-      <h2 className="text-2xl font-bold mb-8">🏆 TOP 10</h2>
+      <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-8">🏆 TOP 10</h2>
       {isLoading && <Loading />}
       {ranks && (
         <CarouselView type={"auto"}>
