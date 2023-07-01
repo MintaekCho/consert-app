@@ -1,16 +1,13 @@
 "use client";
 import Artist from "@/service/artist/Artist";
-import { ArtistData } from "@/types/_type";
+import { ArtistData, SearchProps } from "@/types/_type";
 import React, { useEffect, useState } from "react";
 import useSWR, { mutate } from "swr";
 import ArtistWrap from "../ArtistWrap";
 import Pagination from "../atoms/Pagination";
 import Loading from "../common/Loading";
 
-export interface ArtistListProps {
-  keyword: string | null;
-}
-export default function ArtistList({ keyword }: ArtistListProps) {
+export default function ArtistList({ keyword }: SearchProps) {
   const [page, setPage] = useState(1);
 
   const artistApi = new Artist();
