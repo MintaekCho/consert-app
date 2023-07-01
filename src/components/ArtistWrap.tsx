@@ -1,10 +1,10 @@
 "use client";
 import { ArtistData, UserData } from "@/types/_type";
 import React from "react";
-import ArtistCard from "./molecules/ArtistCard";
 import useSWR from "swr";
 import UserService from "@/service/user/User";
 import { useSession } from "next-auth/react";
+import Card from "./atoms/Card";
 
 export default function ArtistWrap({ artists }: { artists: ArtistData[] }) {
   const { data: session } = useSession();
@@ -23,7 +23,7 @@ export default function ArtistWrap({ artists }: { artists: ArtistData[] }) {
       {artists?.map((artist, i) => {
         return (
           <li key={artist._id}>
-            <ArtistCard artist={artist} />
+            <Card type="artist" data={artist} canBook={true} />
           </li>
         );
       })}

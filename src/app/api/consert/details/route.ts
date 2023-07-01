@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
     dbConnect();
     const conserts = Consert;
 
-    const resConsert = await conserts.findOne({consertId: consertId})
+    const resConsert = await conserts.findOne({ _id: consertId });
     console.log(resConsert);
     return NextResponse.json(resConsert);
   } catch (error) {

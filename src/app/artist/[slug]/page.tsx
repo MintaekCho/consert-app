@@ -1,11 +1,12 @@
 import ArtistInfo from "@/components/templetes/ArtistInfo";
+import { DetailDataProps } from "@/types/props";
 import React from "react";
 
-type Props = {
-  slug: string;
-};
-
-export default function ArtistDetailsPage({ params }: { params: Props }) {
+export default function ArtistDetailsPage({
+  params,
+}: {
+  params: DetailDataProps;
+}) {
   const artistId = params.slug;
   return (
     <div className="mt-8">

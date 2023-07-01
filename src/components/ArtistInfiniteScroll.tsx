@@ -1,9 +1,8 @@
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { ArtistData } from "@/types/_type";
-import ArtistWrap from "./ArtistWrap";
 import { useRef } from "react";
 import Loading from "./common/Loading";
-import ArtistCard from "./molecules/ArtistCard";
+import Card from "./atoms/Card";
 
 const ArtistInfiniteScroll = () => {
   const target = useRef<HTMLDivElement>(null);
@@ -19,7 +18,7 @@ const ArtistInfiniteScroll = () => {
     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
       {scrolledData?.map((artist) => (
         <li key={artist._id}>
-          <ArtistCard artist={artist} />
+          <Card type="artist" data={artist} canBook={true} />
         </li>
       ))}
       {(isLoading || isNextPage) && <Loading ref={target} />}
