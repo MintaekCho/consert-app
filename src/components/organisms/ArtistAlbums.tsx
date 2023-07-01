@@ -34,7 +34,7 @@ export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
       <ul className="w-full mt-6 flex gap-10 overflow-auto">
         {albums &&
           (albums.length === 0 ? (
-            <p className="text-white">🥹준비중입니다.</p>
+            <p className="text-white text-md lg:text-xl xl:text-2xl">🥹준비중입니다.</p>
           ) : (
             albums.map((album) => (
               <li key={album.title}>

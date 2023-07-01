@@ -28,7 +28,7 @@ export default function CommentCard({ comment }: { comment: CommentData }) {
               width={40}
               height={40}
             />
-            <span className="text-xs text-white">{writer?.name}</span>
+            <span className="w-full text-center text-[8px] sm:text-xs text-white">{writer?.name}</span>
           </div>
           {isUpdate ? (
             <CommentUpdateInput
