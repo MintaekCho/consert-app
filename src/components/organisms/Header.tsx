@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className="w-full sticky top-0 flex items-center justify-between p-4 z-10">
       <Link href={"/"}>
-        <h1 className="text-5xl font-bold">Consert</h1>
+        <h1 className="text-5xl font-bold">Concert</h1>
       </Link>
       <div className="flex gap-4 items-center text-sm  font-bold">
         <Gnb />

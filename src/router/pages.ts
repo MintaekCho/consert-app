@@ -13,8 +13,8 @@ export const pageList: pageInfo[] = [
     withAuth: false,
   },
   {
-    id: "consert",
-    label: "Consert",
+    id: "concert",
+    label: "Concert",
     href: "/consert",
     withAuth: false,
   },
