@@ -28,8 +28,10 @@ export default function YoutubeCard({ video }: { video: YoutubeData }) {
         />
       )}
 
-      <div className="flex flex-col gap-1 items-center p-4">
-        <h3 className="text-lg font-bold truncate">{title}</h3>
+      <div className="w-full flex flex-col gap-1 items-center p-4">
+        <h3 className="w-full text-lg font-bold truncate text-center">
+          {title}
+        </h3>
         <p className="w-full truncate text-center">{channelTitle}</p>
       </div>
     </article>

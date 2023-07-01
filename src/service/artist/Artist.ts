@@ -5,7 +5,7 @@ export default class Artist {
   httpClient;
   constructor() {
     this.httpClient = axios.create({
-      baseURL: "http://localhost:3000/api/artist",
+      baseURL: "/api/artist",
     });
   }
 

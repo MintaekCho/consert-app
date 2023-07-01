@@ -16,8 +16,8 @@ export default function ConsertCard({
           width={250}
           height={450}
         />
-      <p className="w-full font text-2xl font-bold text-center truncate">{consert.title}</p>
-      <p className="w-full truncate font-bold opacity-70 text-center">{consert.place}</p>
+      <p className="w-full font text-md md:text-lg lg:text-xl xl:text-2xl font-bold text-center truncate">{consert.title}</p>
+      <p className="w-full truncate text-xs md:text-sm xl:text-md font-bold opacity-70 text-center">{consert.place}</p>
     </article>
   );
 }

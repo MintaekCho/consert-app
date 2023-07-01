@@ -27,18 +27,16 @@ export default function ArtistInfo({ artistId }: { artistId: string }) {
 
   const artist: ArtistData = data && data.data;
   return (
-    <section>
+    <section className="p-8">
       {isLoading && <Loading />}
       {error && <p>Error!!</p>}
       {artist && (
         <>
-          <div className="flex justify-around">
-            <article>
-              <div className="flex items-center gap-2">
-                <Title>{artist.korName}</Title>
-                {artist.enName && <p>{artist.enName}</p>}
-              </div>
-            </article>
+          <div className="sm:flex sm:justify-around">
+            <div className="flex items-center gap-2">
+              <Title>{artist.korName}</Title>
+              {artist.enName && <p>{artist.enName}</p>}
+            </div>
             <Image
               className="rounded-md"
               src={artist.profile}
