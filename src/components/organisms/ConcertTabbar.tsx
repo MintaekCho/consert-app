@@ -1,7 +1,6 @@
 import { ConcertData } from "@/types/_type";
-import ConcertCard from "../molecules/ConcertCard";
+import ConcertDetailCard from "../molecules/ConcertDetailCard";
 import Tabbar from "../molecules/Tabbar";
-import Title from "../atoms/Title";
 import { useTab } from "@/hooks/useTab";
 import ArtistComments from "./ArtistComments";
 
@@ -16,7 +15,7 @@ const ConcertTabbar = ({ concertData }: { concertData: ConcertData }) => {
         <>
           <div>
             <h2 className="text-xl font-bold p-4">About</h2>
-            <ConcertCard concertData={concertData} />
+            <ConcertDetailCard concertData={concertData} />
           </div>
         </>
       )}
