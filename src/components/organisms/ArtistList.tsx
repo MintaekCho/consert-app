@@ -33,8 +33,6 @@ export default function ArtistList({ keyword }: SearchProps) {
   );
 
   const artists = data?.data;
-  console.log(artists);
-  const lastPage = null; //총 페이지 수 혹은 총 데이터 수
 
   return (
     <section className=" mt-8">
