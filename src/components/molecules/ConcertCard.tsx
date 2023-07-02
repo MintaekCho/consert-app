@@ -1,38 +1,27 @@
-import { ConcertData } from "@/types/_type";
-import ArtistRowItem from "./ArtistRowItem";
+import { ConcertData, Rank, RecentConsertData } from "@/types/_type";
+import Image from "next/image";
+import React from "react";
 
-const ConcertCard = ({ concertData }: { concertData: ConcertData }) => {
-  const { _id, title, date, place, cast } = concertData;
-
+export default function ConcertCard({
+  consert,
+}: {
+  consert: Rank | ConcertData | RecentConsertData;
+}) {
   return (
-    <div className="m-4">
-      <div className="flex flex-col border-b p-4">
-        <h3 className="text-2xl text-left font-extrabold">{title}</h3>
-        <span className="text-gray-400 font-bold">{date}</span>
-      </div>
-      <div className="border-b p-4">
-        <h2 className="text-xl font-bold mb-4">Location</h2>
-        <span className="text-gray-400">{place}</span>
-      </div>
-      {cast && cast.length !== 0 && (
-        <div className="p-4">
-          <h2 className="text-xl font-bold mb-4">Line up</h2>
-          <ul className="grid grid-cols-2 gap-4">
-            {cast.map((artist, i) => {
-              return (
-                <ArtistRowItem key={`${artist} ${_id}`} artistName={artist} />
-              );
-            })}
-          </ul>
-        </div>
-      )}
-      <div className="flex justify-center m-4">
-        <button className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded">
-          예매하기
-        </button>
-      </div>
-    </div>
+    <article className="w-full max-w-[250px] flex flex-col gap-2 items-center justify-center hover:scale-105 duration-300 ease-in-out">
+      <Image
+        // className="min-w-[230px] max-h-[280px]"
+        src={consert.image}
+        alt={consert.title}
+        width={250}
+        height={450}
+      />
+      <p className="w-full font text-2xl font-bold text-center truncate">
+        {consert.title}
+      </p>
+      <p className="w-full truncate font-bold opacity-70 text-center">
+        {consert.place}
+      </p>
+    </article>
   );
-};
-
-export default ConcertCard;
+}
