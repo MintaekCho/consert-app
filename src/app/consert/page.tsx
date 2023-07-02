@@ -1,7 +1,7 @@
 "use client";
 import ConcertInfiniteScroll from "@/components/ConcertInfiniteScroll";
 import Title from "@/components/atoms/Title";
-// import ConcertList from "@/components/organisms/ConcertList";
+import ConcertList from "@/components/organisms/ConcertList";
 import SearchBox from "@/components/organisms/SearchBox";
 import { useState } from "react";
 
@@ -13,7 +13,7 @@ const Page = () => {
       {keyword ? (
         <>
           <Title>{keyword} Concert</Title>
-          {/* <ConcertList keyword={keyword} /> */}
+          <ConcertList keyword={keyword} />
         </>
       ) : (
         <>
