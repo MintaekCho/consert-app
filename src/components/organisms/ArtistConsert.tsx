@@ -1,9 +1,13 @@
 "use client";
-import { ArtistData, ProceedingConsertData, RecentConsertData } from "@/types/_type";
+import {
+  ArtistData,
+  ProceedingConsertData,
+  RecentConsertData,
+} from "@/types/_type";
 import React, { useState } from "react";
 import useSWR from "swr";
 import Consert from "@/service/consert/Consert";
-import ConsertCard from "../molecules/ConsertCard";
+import ConcertCard from "../molecules/ConcertCard";
 
 type ConsertStateType = "current" | "recent";
 type Props = {
@@ -53,8 +57,11 @@ export default function ArtistConsert({ artist }: Props) {
           ) : (
             <ul className="flex gap-10">
               {proceedingConserts.map((item: ProceedingConsertData, index) => (
-                <li className="w-full min-w-[250px] flex items-center" key={item.title}>
-                  <ConsertCard consert={item} />
+                <li
+                  className="w-full min-w-[250px] flex items-center"
+                  key={item.title}
+                >
+                  <ConcertCard consert={item} />
                 </li>
               ))}
             </ul>
