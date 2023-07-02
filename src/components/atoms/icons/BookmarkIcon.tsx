@@ -2,9 +2,9 @@
 import Artist from "@/service/artist/Artist";
 import { ArtistData, BookmarkData } from "@/types/_type";
 import { useSession } from "next-auth/react";
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 
 export default function BookmarkIcon({
   artist,
@@ -15,11 +15,7 @@ export default function BookmarkIcon({
 }) {
   const { data: session } = useSession();
   const artistApi = new Artist();
-
-  const { data: userBookmark, mutate } = useSWR(
-    `/api/artist/bookmark/${session?.user.id}`,
-    () => artistApi.getUserBookmark(session?.user.id as string)
-  );
+  const [bookmarks, setBookmarks] = useState(artist?.bookmark);
 
   const handleClick = async () => {
     if (!session) {
@@ -29,24 +25,31 @@ export default function BookmarkIcon({
         session?.user.id as string,
         artist._id
       );
+
+      const fetcher = artistApi.getUserBookmark(session.user.id as string)
+
       if (data.data) {
+        setBookmarks(
+          bookmarks.filter((bookmark) => bookmark !== session.user.id)
+        );
         await artistApi.deleteBookmark(session?.user.id as string, artist._id);
-        mutate();
-        mutate();
+        mutate(`/api/artist/bookmark/${session?.user.id}`, '', {
+          optimisticData: ({data}: {data: ArtistData[]} ) => (data.filter(cur => cur._id !== artist._id))
+        })
       } else {
-        await artistApi.postBookmark(session?.user.id as string, artist);
-        mutate();
-        mutate();
+        setBookmarks([...bookmarks, session.user.id]);
+        await artistApi.postBookmark(session?.user.id as string, artist._id);
+        mutate(`/api/artist/bookmark/${session?.user.id}`, fetcher)
       }
     }
   };
 
+  const isBookmark = bookmarks?.includes(session?.user.id as string);
+
   return (
     <>
       <div className="absolute top-4 right-[6%] p-2 z-10 text-white">
-        {userBookmark?.data.filter(
-          (b: BookmarkData) => b?.artist._id === artist._id
-        ).length === 0 ? (
+        {!isBookmark ? (
           <AiOutlineHeart
             onClick={handleClick}
             className="text-3xl hover:text-red-400 duration-300 ease-in-out"

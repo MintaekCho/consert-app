@@ -47,12 +47,12 @@ export default class Artist {
     });
   }
 
-  async postBookmark(userId: string, artist: ArtistData) {
+  async postBookmark(userId: string, artistId: string) {
     const body = {
       userId,
-      artist,
+      artistId,
     };
-    this.httpClient.post(`bookmark/${userId}/${artist._id}`, {
+    this.httpClient.post(`bookmark/${userId}/${artistId}`, {
       body,
     });
   }
