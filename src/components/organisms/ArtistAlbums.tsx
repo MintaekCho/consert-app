@@ -23,18 +23,18 @@ export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
   const albums: AlbumData[] = data && data.data;
 
   return (
-    <div className="w-full h-[500px] overflow-auto flex-col items-center justify-center flex p-4 rounded-xl bg-gray-950 relative">
+    <div className="w-full h-[500px] flex-col items-center justify-center flex p-4 rounded-xl bg-gray-950 relative">
       <Title>📗 Album</Title>
-      <button className="absolute top-16 right-16 font-bold text-[#c4c4c4] hover:text-white">
+      <button className="md:absolute md:top-16 md:right-16 font-bold text-[#c4c4c4] hover:text-white">
         모든 앨범 보기
       </button>{" "}
       {/* TODO: 모든앨범보기 모달 */}
       {isLoading && <Loading />}
       {error && <p>error</p>}
-      <ul className="w-full flex gap-10">
+      <ul className="w-full mt-6 flex gap-10 overflow-auto">
         {albums &&
           (albums.length === 0 ? (
-            <p className="text-white">🥹준비중입니다.</p>
+            <p className="text-white text-md lg:text-xl xl:text-2xl">🥹준비중입니다.</p>
           ) : (
             albums.map((album) => (
               <li key={album.title}>

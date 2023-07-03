@@ -5,7 +5,7 @@ export default class Artist {
   httpClient;
   constructor() {
     this.httpClient = axios.create({
-      baseURL: "http://localhost:3000/api/artist",
+      baseURL: "/api/artist",
     });
   }
 
@@ -47,21 +47,21 @@ export default class Artist {
     });
   }
 
-  async postBookmark(userId: string, artist: ArtistData) {
+  async postBookmark(userId: string, artistId: string) {
     const body = {
       userId,
-      artist,
+      artistId,
     };
-    this.httpClient.post("bookmark", {
-      body
+    this.httpClient.post(`bookmark/${userId}/${artistId}`, {
+      body,
     });
   }
 
   async getBookmark(userId: string, artistId: string) {
-    return this.httpClient.get("bookmark", {
+    return this.httpClient.get(`bookmark/${userId}/${artistId}`, {
       params: {
         userId,
-        artistId
+        artistId,
       },
     });
   }
@@ -71,7 +71,7 @@ export default class Artist {
   }
 
   async deleteBookmark(userId: string, artistId: string) {
-    this.httpClient.delete("bookmark", {
+    this.httpClient.delete(`bookmark/${userId}/${artistId}`, {
       params: {
         userId,
         artistId,

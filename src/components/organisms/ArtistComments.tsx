@@ -22,7 +22,7 @@ export default function ArtistComments() {
     <div
       className={`w-full h-[500px] flex flex-col items-center ${
         comments?.length === 0 || isLoading? "justify-center" : ""
-      } gap-2 p-4 rounded-xl bg-gray-950 relative`}
+      } gap-2 sm:p-4 rounded-xl bg-gray-950 relative`}
     >
       {isLoading && <Loading />}
       {comments?.length !== 0 ? (
@@ -34,7 +34,7 @@ export default function ArtistComments() {
           ))}
         </ul>
       ) : (
-        <p className="text-2xl font-bold text-white">
+        <p className="text-md lg:text-xl xl:text-2xl p-4 font-bold text-white">
           가장 먼저 응원하는 글을 남겨주세요😍
         </p>
       )}
