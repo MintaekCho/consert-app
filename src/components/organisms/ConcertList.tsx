@@ -1,7 +1,8 @@
 import { ConcertData, SearchProps } from "@/types/_type";
 import { useEffect } from "react";
 import useSWR, { mutate } from "swr";
-import ConcertCard from "../molecules/ConcertCard";
+// import ConcertCard from "../molecules/ConcertCard";
+import Card from "../atoms/Card";
 import Consert from "@/service/consert/Consert";
 
 const ConcertList = ({ keyword }: SearchProps) => {
@@ -36,7 +37,7 @@ const ConcertList = ({ keyword }: SearchProps) => {
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {concerts.map((concert) => (
             <li key={concert._id}>
-              <ConcertCard consert={concert} />
+              <Card type="concert" data={concert} />
             </li>
           ))}
         </ul>
