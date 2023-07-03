@@ -16,7 +16,8 @@ export default function ConcertCard({
           src={consert.image}
           alt={consert.title}
           width={250}
-          height={450}
+          height={350}
+          style={{ height: 350 }}
         />
         <p className="w-full text-md md:text-lg lg:text-xl xl:text-2xl font-bold truncate">
           {consert.title}
