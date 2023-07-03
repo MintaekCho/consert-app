@@ -16,10 +16,18 @@ const ConcertInfo = ({ concertId }: { concertId: string }) => {
     fetcher
   );
 
+  if (error) {
+    console.error(error);
+
+    return <p>알 수 없는 에러가 발생했습니다. 다시 시도해주세요.</p>;
+  }
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <section>
-      {error && <p>Error</p>}
-      {isLoading && <Loading />}
       {data ? (
         <>
           <article className="m-8">
