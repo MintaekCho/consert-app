@@ -1,4 +1,5 @@
 "use client";
+import { postApi } from "@/service/api/api";
 import Artist from "@/service/artist/Artist";
 import { ArtistData, BookmarkData } from "@/types/_type";
 import { useSession } from "next-auth/react";
@@ -26,7 +27,7 @@ export default function BookmarkIcon({
         artist._id
       );
 
-      const fetcher = artistApi.getUserBookmark(session.user.id as string)
+      const fetcher = artistApi.getUserBookmark(session.user.id as string);
 
       if (data.data) {
         setBookmarks(
@@ -34,12 +35,25 @@ export default function BookmarkIcon({
         );
         await artistApi.deleteBookmark(session?.user.id as string, artist._id);
         mutate(`/api/artist/bookmark/${session?.user.id}`, '', {
-          optimisticData: ({data}: {data: ArtistData[]} ) => (data.filter(cur => cur._id !== artist._id))
-        })
+          optimisticData: ({ data }: { data: ArtistData[] }) => {
+            if (data) {
+              return data.filter((cur) => cur._id !== artist._id);
+            } else {
+              return;
+            }
+          },
+        });
+        mutate('/api/artist')
       } else {
         setBookmarks([...bookmarks, session.user.id]);
-        await artistApi.postBookmark(session?.user.id as string, artist._id);
-        mutate(`/api/artist/bookmark/${session?.user.id}`, fetcher)
+        const res = await postApi(
+          `/artist/bookmark/${session.user.id}/${artist._id}`,
+          {
+            body: { userId: session?.user.id as string, artistId: artist._id },
+          }
+        );
+        mutate(`/api/artist/bookmark/${session?.user.id}`, fetcher);
+        console.log(res);
       }
     }
   };
