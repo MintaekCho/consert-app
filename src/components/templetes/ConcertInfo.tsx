@@ -11,14 +11,23 @@ const ConcertInfo = ({ concertId }: { concertId: string }) => {
     const res = await concertApi.getConsertDetails(concertId);
     return res.data;
   };
-  const { data, error } = useSWR(
+  const { data, isLoading, error } = useSWR(
     `/api/consert/details?consertId=${concertId}`,
     fetcher
   );
 
+  if (error) {
+    console.error(error);
+
+    return <p>알 수 없는 에러가 발생했습니다. 다시 시도해주세요.</p>;
+  }
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <section>
-      {error && <p>Error</p>}
       {data ? (
         <>
           <article className="m-8">
@@ -39,7 +48,11 @@ const ConcertInfo = ({ concertId }: { concertId: string }) => {
           </article>
         </>
       ) : (
-        <Loading />
+        <div>
+          <p className="text-md lg:text-xl xl:text-2xl p-4 font-bold text-white">
+            해당 콘서트에 대한 데이터가 없어요.
+          </p>
+        </div>
       )}
     </section>
   );

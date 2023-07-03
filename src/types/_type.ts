@@ -26,6 +26,7 @@ export type SessionUser =
   | undefined;
 
 export type RecentConsertData = {
+  _id: string;
   title: string;
   consertLink: string;
   image: string;
