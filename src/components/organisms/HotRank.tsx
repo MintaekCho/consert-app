@@ -4,7 +4,7 @@ import { Rank } from "@/types/_type";
 import React from "react";
 import useSWR from "swr";
 import Loading from "../common/Loading";
-import ConsertCard from "../molecules/ConsertCard";
+import ConcertCard from "../molecules/ConcertCard";
 import CarouselView from "./CarouselView";
 
 export default function HotRank() {
@@ -14,7 +14,6 @@ export default function HotRank() {
 
   const ranks: Rank[] = data && data.data;
 
-
   return (
     <section className="flex flex-col mt-8">
       <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-8">🏆 TOP 10</h2>
@@ -22,7 +21,7 @@ export default function HotRank() {
       {ranks && (
         <CarouselView type={"auto"}>
           {ranks.map((rank) => (
-            <ConsertCard key={rank._id} consert={rank} />
+            <ConcertCard key={rank._id} consert={rank} />
           ))}
         </CarouselView>
       )}

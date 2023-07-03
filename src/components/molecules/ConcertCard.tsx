@@ -2,14 +2,14 @@ import { ConcertData, Rank, RecentConsertData } from "@/types/_type";
 import Image from "next/image";
 import React from "react";
 
-export default function ConsertCard({
+export default function ConcertCard({
   consert,
 }: {
   consert: Rank | ConcertData | RecentConsertData;
 }) {
   return (
     <article className="w-full max-w-[250px] flex flex-col gap-2 items-center justify-center hover:scale-105 duration-300 ease-in-out">
-        <Image
+      <Image
         // className="min-w-[230px] max-h-[280px]"
           src={consert.image}
           alt={consert.title}

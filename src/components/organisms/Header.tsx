@@ -3,6 +3,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 import HeaderButton from "../atoms/HeaderButton";
+import Gnb from "../molecules/Gnb";
 import {AiOutlineSearch} from 'react-icons/ai'
 
 export default function Header() {
@@ -18,6 +19,7 @@ export default function Header() {
             <AiOutlineSearch />
           </div>
         </Link>
+        <Gnb />
         {session ? (
           <HeaderButton name={"Logout"} onclick={signOut} />
         ) : (

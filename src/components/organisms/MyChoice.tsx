@@ -1,5 +1,5 @@
 "use client";
-import { BookmarkData } from "@/types/_type";
+import { ArtistData, BookmarkData } from "@/types/_type";
 import { useSession } from "next-auth/react";
 import React from "react";
 import ArtistCard from "../molecules/ArtistCard";
@@ -12,12 +12,12 @@ export default function MyChoice() {
   const { data: session } = useSession();
   const artistApi = new Artist();
 
-  const { isLoading, error, data } = useSWR(
+  const { isLoading, error, data} = useSWR(
     `/api/artist/bookmark/${session?.user.id}`,
     () => artistApi.getUserBookmark(session?.user.id as string)
   );
 
-  const bookmarks: BookmarkData[] = data?.data;
+  const bookmarks: ArtistData[] = data?.data;
   return (
     <section className="w-full my-8">
       <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">📕My-Choice</h2>
@@ -38,7 +38,7 @@ export default function MyChoice() {
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {bookmarks?.map((bookmark) => (
                 <li key={bookmark._id}>
-                  <ArtistCard artist={bookmark.artist} />
+                  <ArtistCard artist={bookmark} />
                 </li>
               ))}
             </ul>
