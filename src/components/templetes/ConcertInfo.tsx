@@ -11,7 +11,7 @@ const ConcertInfo = ({ concertId }: { concertId: string }) => {
     const res = await concertApi.getConsertDetails(concertId);
     return res.data;
   };
-  const { data, error } = useSWR(
+  const { data, isLoading, error } = useSWR(
     `/api/consert/details?consertId=${concertId}`,
     fetcher
   );
@@ -19,6 +19,7 @@ const ConcertInfo = ({ concertId }: { concertId: string }) => {
   return (
     <section>
       {error && <p>Error</p>}
+      {isLoading && <Loading />}
       {data ? (
         <>
           <article className="m-8">
@@ -39,7 +40,11 @@ const ConcertInfo = ({ concertId }: { concertId: string }) => {
           </article>
         </>
       ) : (
-        <Loading />
+        <div>
+          <p className="text-md lg:text-xl xl:text-2xl p-4 font-bold text-white">
+            해당 콘서트에 대한 데이터가 없어요.
+          </p>
+        </div>
       )}
     </section>
   );
