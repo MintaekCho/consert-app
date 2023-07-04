@@ -11,9 +11,6 @@ type Props = {
 export async function GET(request: NextRequest, { params: { userId } }: Props) {
   try {
     dbConnect();
-    // const bookmark = await Bookmark.find({
-    //   userId: userId,
-    // });
     const bookmarks = await Artist.find({
       bookmark: userId
     })

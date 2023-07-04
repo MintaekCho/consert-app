@@ -2,11 +2,11 @@
 import { ArtistData, BookmarkData } from "@/types/_type";
 import { useSession } from "next-auth/react";
 import React from "react";
-import ArtistCard from "../molecules/ArtistCard";
 import useSWR from "swr";
 import Artist from "@/service/artist/Artist";
 import Link from "next/link";
 import Loading from "../common/Loading";
+import Card from "../atoms/Card";
 
 export default function MyChoice() {
   const { data: session } = useSession();
@@ -38,7 +38,7 @@ export default function MyChoice() {
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {bookmarks?.map((bookmark) => (
                 <li key={bookmark._id}>
-                  <ArtistCard artist={bookmark} />
+                  <Card type={'artist'} canBook={true} data={bookmark} />
                 </li>
               ))}
             </ul>
