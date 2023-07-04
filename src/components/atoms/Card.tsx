@@ -1,10 +1,13 @@
 "use client";
 import Link from "next/link";
-import BookmarkIcon from "./icons/BookmarkIcon";
 import { ArtistData, ConcertData } from "@/types/_type";
 import { useState } from "react";
 import Modal from "../common/Modal";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import Toggle from "./Toggle";
+import HeartFillIcon from "./icons/HeartFillIcon";
+import HeartIcon from "./icons/HeartIcon";
+import useBookmark from "@/hooks/useBookmark";
 
 type CardType = ArtistData | ConcertData;
 interface CardProps<T> {
@@ -16,12 +19,18 @@ interface CardProps<T> {
 const Card = ({ type, canBook = false, data }: CardProps<CardType>) => {
   const [modalVisible, setModalVisible] = useState(false);
   const handleVisible = () => setModalVisible(!modalVisible);
-
+  const { data: session } = useSession();
   const cardData = (data: CardType) => {
     if (type === "artist") {
-      const { _id: id, profile: img, korName, enName } = data as ArtistData;
+      const {
+        _id: id,
+        profile: img,
+        korName,
+        enName,
+        bookmark,
+      } = data as ArtistData;
       const title = korName || enName;
-      return { id, img, title };
+      return { id, img, title, bookmark };
     }
     if (type === "concert") {
       const { _id: id, image: img, title, date, place } = data as ConcertData;
@@ -30,7 +39,20 @@ const Card = ({ type, canBook = false, data }: CardProps<CardType>) => {
     return null;
   };
 
-  const { id, img, title, date, place } = cardData(data) || {};
+  const { id, img, title, date, place, bookmark } = cardData(data) || {};
+  const [isBookmark, setIsBookmark] = useState(
+    bookmark?.includes(session?.user.id as string)
+  );
+  const { setBookmark } = useBookmark();
+  const handleLike = (toggled: boolean) => {
+    setBookmark(
+      session?.user.id as string,
+      data as ArtistData,
+      isBookmark as boolean
+    );
+    setIsBookmark(!isBookmark)
+  };
+
   return (
     <>
       {modalVisible && (
@@ -65,10 +87,14 @@ const Card = ({ type, canBook = false, data }: CardProps<CardType>) => {
         </Link>
         {/* @todo 추후 확장성을 위해 bookmarkIcon이 받는 타입을 추상화하는 게 좋을 것 같습니다. */}
         {canBook && (
-          <BookmarkIcon
-            artist={data as ArtistData}
-            modalVisible={handleVisible}
-          />
+          <div className="absolute top-4 right-[6%] p-2 z-10 text-white">
+            <Toggle
+              toggled={isBookmark as boolean}
+              onToggle={handleLike}
+              onIcon={<HeartFillIcon />}
+              offIcon={<HeartIcon />}
+            />
+          </div>
         )}
       </article>
     </>
