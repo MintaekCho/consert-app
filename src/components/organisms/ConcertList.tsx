@@ -1,7 +1,8 @@
 import { ConcertData, SearchProps } from "@/types/_type";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useSWR, { mutate } from "swr";
-import ConcertCard from "../molecules/ConcertCard";
+// import ConcertCard from "../molecules/ConcertCard";
+import Card from "../atoms/Card";
 import Consert from "@/service/consert/Consert";
 
 const ConcertList = ({ keyword }: SearchProps) => {
@@ -32,19 +33,21 @@ const ConcertList = ({ keyword }: SearchProps) => {
 
   return (
     <section className=" mt-8">
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {keyword && concerts ? (
-          concerts.map((concert) => (
+      {keyword && concerts && concerts.length ? (
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {concerts.map((concert) => (
             <li key={concert._id}>
-              <ConcertCard consert={concert} />
+              <Card type="concert" data={concert} />
             </li>
-          ))
-        ) : (
-          <div>
-            <p>찾으시는 콘서트가 없어요.</p>
-          </div>
-        )}
-      </ul>
+          ))}
+        </ul>
+      ) : (
+        <div>
+          <p className="text-md lg:text-xl xl:text-2xl p-4 font-bold text-white">
+            찾으시는 콘서트 정보가 없어요.
+          </p>
+        </div>
+      )}
     </section>
   );
 };

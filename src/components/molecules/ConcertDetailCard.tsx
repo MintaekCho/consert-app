@@ -2,7 +2,7 @@ import { ConcertData } from "@/types/_type";
 import ArtistRowItem from "./ArtistRowItem";
 
 const ConcertDetailCard = ({ concertData }: { concertData: ConcertData }) => {
-  const { _id, title, date, place, cast } = concertData;
+  const { _id, title, date, place, cast, link } = concertData;
 
   return (
     <div className="m-4">
@@ -26,11 +26,16 @@ const ConcertDetailCard = ({ concertData }: { concertData: ConcertData }) => {
           </ul>
         </div>
       )}
-      <div className="flex justify-center m-4">
-        <button className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded">
-          예매하기
-        </button>
-      </div>
+      {link && (
+        <div className="flex justify-center m-4">
+          <a
+            href={link}
+            className="w-full bg-purple-600 hover:bg-purple-500 text-center text-white font-bold py-2 px-4 rounded"
+          >
+            예매하기
+          </a>
+        </div>
+      )}
     </div>
   );
 };

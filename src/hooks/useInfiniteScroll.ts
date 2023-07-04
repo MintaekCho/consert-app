@@ -22,8 +22,8 @@ const useInfiniteScroll = <T>({
       return null;
     }
 
-    if (page === 0) return `${apiUrl}?page=1&size=10`;
-    return `${apiUrl}?page=${page + 1}&size=10`;
+    if (page === 0) return `${apiUrl}?page=1&size=12`;
+    return `${apiUrl}?page=${page + 1}&size=12`;
   };
 
   const fetcher = async (url: string) => {
@@ -31,10 +31,10 @@ const useInfiniteScroll = <T>({
     return res.data;
   };
 
-  const { data, isLoading, setSize } = useSWRInfinite<T[]>(
+  const { data, isLoading, setSize, mutate } = useSWRInfinite<T[]>(
     (page, previousPageData) => getKey(page, previousPageData),
     fetcher,
-    { parallel: true }
+    { parallel: true}
   );
   const scrolledData = data ? ([] as T[]).concat(...data) : [];
   const isNextPage = data ? data && data[data.length - 1].length > 0 : false;
