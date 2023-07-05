@@ -8,7 +8,7 @@ const ConcertTabbar = ({ concertData }: { concertData: ConcertData }) => {
   const { curIndex, curItem, changeItem } = useTab({ init: 0, tabList });
 
   return (
-    <div className="w-2/4 mr-8">
+    <div className="sm:w-2/4 sm:mr-8 bg-black w-full z-10 rounded-lg">
       <Tabbar tabItems={tabList} curIndex={curIndex} changeItem={changeItem} />
       {curItem === "공연" && (
         <>
