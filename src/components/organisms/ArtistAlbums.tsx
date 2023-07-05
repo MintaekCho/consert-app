@@ -30,7 +30,7 @@ export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
       </button>{" "}
       {/* TODO: 모든앨범보기 모달 */}
       {isLoading && <Loading />}
-      {error && <p>error</p>}
+      {error && <p className="text-white text-md lg:text-xl xl:text-2xl">🥹준비중입니다.</p>}
       <ul className="w-full mt-6 flex gap-10 overflow-auto">
         {albums &&
           (albums.length === 0 ? (

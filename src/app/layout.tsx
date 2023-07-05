@@ -4,6 +4,7 @@ import Header from "@/components/organisms/Header";
 import AuthContext from "../context/AuthContext";
 import { YoutubeApiProvider } from "@/context/YoutubeApiContext";
 import ConsertApiProvider from "@/context/ConsertApiContext";
+import Footer from "@/components/organisms/Footer";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
             <ConsertApiProvider>
               <Header />
               <main>{children}</main>
+              <Footer />
             </ConsertApiProvider>
           </YoutubeApiProvider>
         </AuthContext>

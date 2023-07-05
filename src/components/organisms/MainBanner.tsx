@@ -33,7 +33,7 @@ export default function MainBanner() {
       ))}
       <div className="font-bold flex flex-col gap-4 items-center absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2">
         <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-6xl text-white">
-          Consert-App
+          CONCON
         </p>
         <p className="w-full text-xs md:text-md lg:text-lg xl:text-2xl text-white">
           내가 좋아하는 가수의 콘서트 스케줄을 한눈에!!
