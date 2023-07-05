@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { ArtistData, ConcertData } from "@/types/_type";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../common/Modal";
 import { signIn, useSession } from "next-auth/react";
 import Toggle from "./Toggle";
@@ -50,8 +50,12 @@ const Card = ({ type, canBook = false, data }: CardProps<CardType>) => {
       data as ArtistData,
       isBookmark as boolean
     );
-    setIsBookmark(!isBookmark)
+    setIsBookmark(!isBookmark);
   };
+
+  useEffect(() => {
+    setIsBookmark(bookmark?.includes(session?.user.id as string));
+  }, [bookmark]);
 
   return (
     <>
