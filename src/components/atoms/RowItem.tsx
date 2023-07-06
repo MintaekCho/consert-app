@@ -7,14 +7,18 @@ interface ItemProps {
 const RowItem = ({ label, img }: ItemProps) => {
   return (
     <li className="flex items-center justify-between overflow-hidden">
-      {label && img ? (
+      {label && (
         <>
           <Image
             sizes="210px"
             width={50}
             height={50}
             alt={label}
-            src={img}
+            src={
+              img
+                ? img
+                : "https://cdnimg.melon.co.kr/resource/image/web/default/noArtist_300_160727.jpg/melon/resize/208"
+            }
             className="object-cover rounded"
             style={{
               height: "50px",
@@ -22,8 +26,6 @@ const RowItem = ({ label, img }: ItemProps) => {
           />
           <span className="m1-2">{label}</span>
         </>
-      ) : (
-        <span className="m1-2 w-full text-right">{label}</span>
       )}
     </li>
   );
