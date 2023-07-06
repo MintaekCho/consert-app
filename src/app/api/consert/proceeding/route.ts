@@ -15,12 +15,7 @@ export async function GET(request: NextRequest) {
     const allConserts = await conserts
       .find()
       .or([{ cast: { $regex: name } }, { title: { $regex: name } }])
-      .and([{ date: { $regex: year } }])
       if(allConserts.length === 0) return NextResponse.json(allConserts)
-    const response = allConserts.filter(
-      (consert) => new Date(consert.date.split(" ~ ")[1]) >= date
-    );
-    console.log(allConserts, "1");
     return NextResponse.json(allConserts);
   } catch (error) {
     console.error(error);

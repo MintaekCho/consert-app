@@ -4,6 +4,7 @@ import useSWR from "swr";
 import Title from "../atoms/Title";
 import Image from "next/image";
 import ConcertTabbar from "../organisms/ConcertTabbar";
+import ConsertMap from "../molecules/ConsertMap";
 
 const ConcertInfo = ({ concertId }: { concertId: string }) => {
   const concertApi = new Concert();
@@ -38,7 +39,7 @@ const ConcertInfo = ({ concertId }: { concertId: string }) => {
                 <figure
                   className="relative w-full h-screen sm:max-w-md"
                   style={{
-                    height: `calc(100vh - 150px)`,
+                    height: `calc(70vh - 150px)`,
                   }}
                 >
                   <Image
@@ -50,6 +51,7 @@ const ConcertInfo = ({ concertId }: { concertId: string }) => {
                 </figure>
               </div>
             </div>
+            <ConsertMap place={data?.place} />
           </article>
         </>
       ) : (

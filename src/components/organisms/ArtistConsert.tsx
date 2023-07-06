@@ -1,13 +1,14 @@
 "use client";
 import {
   ArtistData,
-  ProceedingConsertData,
+  ConcertData,
   RecentConsertData,
 } from "@/types/_type";
 import React, { useState } from "react";
 import useSWR from "swr";
 import Consert from "@/service/consert/Consert";
 import ConcertCard from "../molecules/ConcertCard";
+import Card from "../atoms/Card";
 
 type ConsertStateType = "current" | "recent";
 type Props = {
@@ -28,7 +29,7 @@ export default function ArtistConsert({ artist }: Props) {
     () => consertApi.procConsert(artist.korName)
   );
 
-  const proceedingConserts: ProceedingConsertData[] = data && data.data;
+  const proceedingConserts: ConcertData[] = data && data.data;
 
   return (
     <section className="w-full h-[600px] lg:h-[500px] overflow-auto flex flex-col lg:flex-row gap-10 px-4 py-8 rounded-xl bg-gray-950">
@@ -56,12 +57,12 @@ export default function ArtistConsert({ artist }: Props) {
             </p>
           ) : (
             <ul className="w-full flex gap-10">
-              {proceedingConserts.map((item: ProceedingConsertData, index) => (
+              {proceedingConserts.map((item: ConcertData, index) => (
                 <li
                   className="w-full min-w-[250px] flex items-center"
                   key={item.title}
                 >
-                  <ConcertCard consert={item} />
+                  <Card type="concert" data={item} />
                 </li>
               ))}
             </ul>
@@ -70,7 +71,9 @@ export default function ArtistConsert({ artist }: Props) {
           <ul className="w-full flex gap-10">
             {artist.recentConserts.map((item: RecentConsertData, index) => (
               <li className="w-full flex items-center" key={item.consertLink}>
-                <ConcertCard consert={item} />
+                <a href={item.consertLink} target="_blank">
+                  <ConcertCard consert={item} />
+                </a>
               </li>
             ))}
           </ul>
