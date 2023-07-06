@@ -1,12 +1,14 @@
 export type ConcertData = {
   _id: string;
   title: string;
-  date: string;
+  startDate: string;
+  endDate: string;
   place: string;
   cast: Array<string>;
   image: string;
   grade: string;
   link: string;
+  like: string;
 };
 
 export interface UserData {
