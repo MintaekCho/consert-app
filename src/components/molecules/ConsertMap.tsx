@@ -1,5 +1,5 @@
 "use client";
-import { usePlaceSearch } from "@/hooks/usePlaceSearch";
+import { placeSearch } from "@/hooks/usePlaceSearch";
 import React, { useEffect, useState } from "react";
 import KakaoMap from "../common/KakaoMap";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -15,10 +15,10 @@ type PlaceData = {
 export default function ConsertMap({ place }: { place: string }) {
   const [placeData, setPlaceData] = useState<PlaceData>();
   useEffect(() => {
-    usePlaceSearch(place).then((res) => {
+    placeSearch(place).then((res) => {
       setPlaceData(res.result.documents[0]);
     });
-  }, []);
+  }, [place]);
 
   return (
     <div className="mt-8">
@@ -28,14 +28,14 @@ export default function ConsertMap({ place }: { place: string }) {
           <a
             href={`https://map.kakao.com/link/to/${placeData?.id}`}
             target={"_blank"}
-            className={'hover:underline'}
+            className={"hover:underline"}
           >
             길찾기
           </a>
           <a
             href={`https://map.kakao.com/link/roadview/${placeData?.id}`}
             target={"_blank"}
-            className={'hover:underline'}
+            className={"hover:underline"}
           >
             로드뷰
           </a>

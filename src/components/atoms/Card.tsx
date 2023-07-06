@@ -55,7 +55,7 @@ const Card = ({ type, canBook = false, data }: CardProps<CardType>) => {
 
   useEffect(() => {
     setIsBookmark(bookmark?.includes(session?.user.id as string));
-  }, [bookmark]);
+  }, [bookmark, session?.user.id]);
 
   return (
     <>
