@@ -5,8 +5,12 @@ import AuthContext from "../context/AuthContext";
 import { YoutubeApiProvider } from "@/context/YoutubeApiContext";
 import ConsertApiProvider from "@/context/ConsertApiContext";
 import Footer from "@/components/organisms/Footer";
+import Script from "next/script";
 
 const sans = Open_Sans({ subsets: ["latin"] });
+
+const API_KEY = process.env.NEXT_PUBLIC_KAKAO_API_KEY;
+const KAKAO_SDK_URL = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${API_KEY}&autoload=false`;
 
 export const metadata = {
   title: "Consert-App",
@@ -20,6 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={sans.className} suppressHydrationWarning={true}>
+      <Script src={KAKAO_SDK_URL} />
       <body className="w-full min-w-[320px] max-w-screen-2xl mx-auto overflow-auto p-4">
         <AuthContext>
           <YoutubeApiProvider>
