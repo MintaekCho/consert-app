@@ -1,6 +1,5 @@
 import { ConcertData, Rank, RecentConsertData } from "@/types/_type";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 export default function ConcertCard({
@@ -10,7 +9,6 @@ export default function ConcertCard({
 }) {
   return (
     <article className="w-full max-w-[250px] flex flex-col gap-2 justify-center text-center hover:scale-105 duration-300 ease-in-out">
-      <Link href={`/consert/${consert._id}`}>
         <Image
           // className="min-w-[230px] max-h-[280px]"
           src={consert.image}
@@ -25,7 +23,6 @@ export default function ConcertCard({
         <p className="w-full text-xs md:text-sm xl:text-md font-bold opacity-70 truncate">
           {consert.place}
         </p>
-      </Link>
     </article>
   );
 }
