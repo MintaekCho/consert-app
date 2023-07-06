@@ -15,7 +15,7 @@ export default function YoutubeView({ artistName }: { artistName: string }) {
     isLoading,
   }: { data: YoutubeData[]; error: any; isLoading: any } = useSWR(
     `https://www.googleapis.com/youtube/v3/search/${artistName}`,
-    () => youtube.search(artistName),
+    () => youtube.search(`가수 ${artistName} 라이브`),
     {
       refreshInterval: 1000 * 60 * 30,
       revalidateIfStale: false,

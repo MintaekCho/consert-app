@@ -6,7 +6,7 @@ import { DetailDataProps } from "@/types/props";
 const ConcertDetailsPage = ({ params }: { params: DetailDataProps }) => {
   const concertId = params.slug;
   return (
-    <div className="mt-8">
+    <div>
       <ConcertInfo concertId={concertId} />
     </div>
   );

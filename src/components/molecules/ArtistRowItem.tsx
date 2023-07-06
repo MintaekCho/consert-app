@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import Artist from "@/service/artist/Artist";
 import RowItem from "../atoms/RowItem";
+import Link from "next/link";
 
 const ArtistRowItem = ({ artistName }: { artistName: string }) => {
   const artistApi = new Artist();
@@ -17,7 +18,11 @@ const ArtistRowItem = ({ artistName }: { artistName: string }) => {
 
   const artistProfile = data?.data.findArtist[0];
 
-  return <RowItem label={artistName} img={artistProfile?.profile} />;
+  return (
+    <Link href={`/artist/${artistProfile ? artistProfile._id : ''}`}>
+      <RowItem label={artistName} img={artistProfile?.profile} />
+    </Link>
+  );
 };
 
 export default ArtistRowItem;

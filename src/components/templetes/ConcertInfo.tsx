@@ -4,6 +4,7 @@ import useSWR from "swr";
 import Title from "../atoms/Title";
 import Image from "next/image";
 import ConcertTabbar from "../organisms/ConcertTabbar";
+import ConsertMap from "../molecules/ConsertMap";
 
 const ConcertInfo = ({ concertId }: { concertId: string }) => {
   const concertApi = new Concert();
@@ -30,21 +31,27 @@ const ConcertInfo = ({ concertId }: { concertId: string }) => {
     <section>
       {data ? (
         <>
-          <article className="m-8">
+          <article className="p-8">
             <Title>{data?.title}</Title>
-            <div className="flex w-full justify-around">
+            <div className="flex w-full flex-col-reverse sm:flex-row">
               <ConcertTabbar concertData={data} />
-              <div className="w-2/4">
-                <figure className="relative w-full h-screen max-w-md">
+              <div className="sm:w-2/4 w-full sticky top-0">
+                <figure
+                  className="relative w-full h-screen sm:max-w-md"
+                  style={{
+                    height: `calc(70vh - 150px)`,
+                  }}
+                >
                   <Image
                     src={data?.image}
                     alt={data?.title}
                     fill={true}
-                    className="sticky top-0 object-contain object-top"
+                    className="object-contain object-top"
                   />
                 </figure>
               </div>
             </div>
+            <ConsertMap place={data?.place} />
           </article>
         </>
       ) : (
