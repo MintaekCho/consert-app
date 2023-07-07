@@ -1,14 +1,11 @@
 "use client";
-import {
-  ArtistData,
-  ConcertData,
-  RecentConsertData,
-} from "@/types/_type";
+import { ArtistData, ConcertData, RecentConsertData } from "@/types/_type";
 import React, { useState } from "react";
 import useSWR from "swr";
 import Consert from "@/service/consert/Consert";
 import ConcertCard from "../molecules/ConcertCard";
 import Card from "../atoms/Card";
+import GuideTxt from "../atoms/guideTxt";
 
 type ConsertStateType = "current" | "recent";
 type Props = {
@@ -32,12 +29,12 @@ export default function ArtistConsert({ artist }: Props) {
   const proceedingConserts: ConcertData[] = data && data.data;
 
   return (
-    <section className="w-full h-[600px] lg:h-[500px] overflow-auto flex flex-col lg:flex-row gap-10 px-4 py-8 rounded-xl bg-gray-950">
+    <section className="w-full h-[600px] lg:h-[500px] overflow-auto flex flex-col px-4 py-8 pb-0 rounded-xl mb-4 lg:flex-row lg:gap-10 lg:p-0 ">
       <ul className="flex lg:flex-col items-center justify-center gap-4">
         {category.map((item, index) => (
           <li
             key={index}
-            className={`cursor-pointer text-xs lg:text-sm 2xl:text-lg font-bold p-2  ${
+            className={`cursor-pointer lg:text-sm 2xl:text-lg font-bold p-2  ${
               consertType === item.state
                 ? "bg-purple-600 rounded-lg"
                 : "hover:text-[#c4c4c4]"
@@ -52,9 +49,7 @@ export default function ArtistConsert({ artist }: Props) {
         {consertType === "current" ? (
           proceedingConserts &&
           (proceedingConserts.length === 0 ? (
-            <p className="w-full text-md lg:text-xl xl:text-2xl font-bold text-center ml-10 text-white">
-              🥹현재 진행중인 공연이 없습니다.
-            </p>
+            <GuideTxt>현재 진행중인 공연이 없습니다.</GuideTxt>
           ) : (
             <ul className="w-full flex gap-10">
               {proceedingConserts.map((item: ConcertData, index) => (

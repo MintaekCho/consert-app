@@ -4,7 +4,7 @@ import useSWR from "swr";
 import Title from "../atoms/Title";
 import Image from "next/image";
 import ConcertTabbar from "../organisms/ConcertTabbar";
-import ConsertMap from "../molecules/ConsertMap";
+import GuideTxt from "../atoms/guideTxt";
 
 const ConcertInfo = ({ concertId }: { concertId: string }) => {
   const concertApi = new Concert();
@@ -20,7 +20,9 @@ const ConcertInfo = ({ concertId }: { concertId: string }) => {
   if (error) {
     console.error(error);
 
-    return <p>알 수 없는 에러가 발생했습니다. 다시 시도해주세요.</p>;
+    return (
+      <GuideTxt>알 수 없는 에러가 발생했습니다. 다시 시도해주세요.</GuideTxt>
+    );
   }
 
   if (isLoading) {
@@ -51,14 +53,11 @@ const ConcertInfo = ({ concertId }: { concertId: string }) => {
                 </figure>
               </div>
             </div>
-            <ConsertMap place={data?.place} />
           </article>
         </>
       ) : (
         <div>
-          <p className="text-md lg:text-xl xl:text-2xl p-4 font-bold text-white">
-            해당 콘서트에 대한 데이터가 없어요.
-          </p>
+          <GuideTxt>해당 콘서트에 대한 데이터가 없어요.</GuideTxt>
         </div>
       )}
     </section>

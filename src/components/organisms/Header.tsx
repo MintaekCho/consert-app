@@ -14,9 +14,7 @@ export default function Header() {
     <header className="w-full sticky top-0 flex items-center justify-between p-4 z-[9999] backdrop-blur-sm">
       <Link href={"/"} className="">
         <Image src={logo} alt="consert connect" width={100} />
-        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold hidden">
-          CONCON
-        </h1>
+        <h1 className="hidden">CONCON</h1>
       </Link>
       <div className="flex gap-4 items-center text-sm  font-bold">
         <Link className="p-2 text-lg " href={"/artist"}>

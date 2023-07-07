@@ -6,6 +6,8 @@ import useSWR from "swr";
 import Card from "../atoms/Card";
 import Loading from "../common/Loading";
 import CarouselView from "./CarouselView";
+import { FaTrophy } from "react-icons/fa";
+import Title from "../atoms/Title";
 
 export default function HotRank() {
   const consert = useConsertApi();
@@ -16,9 +18,7 @@ export default function HotRank() {
 
   return (
     <section className="flex flex-col mt-8">
-      <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-8">
-        🏆 TOP 10
-      </h2>
+      <Title icon={<FaTrophy />}>TOP 10</Title>
       {isLoading && <Loading />}
       {ranks && (
         <CarouselView type={"auto"}>

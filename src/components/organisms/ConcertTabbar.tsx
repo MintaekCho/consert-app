@@ -2,9 +2,10 @@ import { ConcertData } from "@/types/_type";
 import ConcertDetailCard from "../molecules/ConcertDetailCard";
 import Tabbar from "../molecules/Tabbar";
 import { useTab } from "@/hooks/useTab";
+import ConsertMap from "../molecules/ConsertMap";
 
 const ConcertTabbar = ({ concertData }: { concertData: ConcertData }) => {
-  const tabList = ["공연"];
+  const tabList = ["공연", "장소"];
   const { curIndex, curItem, changeItem } = useTab({ init: 0, tabList });
 
   return (
@@ -12,10 +13,12 @@ const ConcertTabbar = ({ concertData }: { concertData: ConcertData }) => {
       <Tabbar tabItems={tabList} curIndex={curIndex} changeItem={changeItem} />
       {curItem === "공연" && (
         <>
-          <div>
-            <h2 className="text-xl font-bold p-4">About</h2>
-            <ConcertDetailCard concertData={concertData} />
-          </div>
+          <ConcertDetailCard concertData={concertData} />
+        </>
+      )}
+      {curItem === "장소" && (
+        <>
+          <ConsertMap place={concertData.place} />
         </>
       )}
     </div>
