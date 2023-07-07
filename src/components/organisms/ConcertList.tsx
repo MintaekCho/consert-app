@@ -4,7 +4,7 @@ import useSWR, { mutate } from "swr";
 // import ConcertCard from "../molecules/ConcertCard";
 import Card from "../atoms/Card";
 import Consert from "@/service/consert/Consert";
-import GuideTxt from "../atoms/guideTxt";
+import GuideTxt from "../atoms/GuideTxt";
 
 const ConcertList = ({ keyword }: SearchProps) => {
   const consertApi = new Consert();

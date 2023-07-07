@@ -4,7 +4,7 @@ import useSWR from "swr";
 import Title from "../atoms/Title";
 import Image from "next/image";
 import ConcertTabbar from "../organisms/ConcertTabbar";
-import GuideTxt from "../atoms/guideTxt";
+import GuideTxt from "../atoms/GuideTxt";
 
 const ConcertInfo = ({ concertId }: { concertId: string }) => {
   const concertApi = new Concert();
