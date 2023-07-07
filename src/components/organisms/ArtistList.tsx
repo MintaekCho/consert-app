@@ -6,7 +6,7 @@ import useSWR, { mutate } from "swr";
 import ArtistWrap from "../templetes/ArtistWrap";
 import Pagination from "../atoms/Pagination";
 import Loading from "../common/Loading";
-import GuideTxt from "../atoms/guideTxt";
+import GuideTxt from "../atoms/GuideTxt";
 
 export default function ArtistList({ keyword }: SearchProps) {
   const [page, setPage] = useState(1);

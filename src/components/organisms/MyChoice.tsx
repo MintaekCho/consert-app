@@ -1,5 +1,5 @@
 "use client";
-import { ArtistData, BookmarkData } from "@/types/_type";
+import { ArtistData } from "@/types/_type";
 import { useSession } from "next-auth/react";
 import React from "react";
 import useSWR from "swr";
@@ -9,7 +9,7 @@ import Loading from "../common/Loading";
 import Card from "../atoms/Card";
 import Title from "../atoms/Title";
 import { BsBookmarkHeartFill } from "react-icons/bs";
-import GuideTxt from "../atoms/guideTxt";
+import GuideTxt from "../atoms/GuideTxt";
 
 export default function MyChoice() {
   const { data: session } = useSession();

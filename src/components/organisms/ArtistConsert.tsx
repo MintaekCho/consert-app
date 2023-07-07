@@ -5,7 +5,7 @@ import useSWR from "swr";
 import Consert from "@/service/consert/Consert";
 import ConcertCard from "../molecules/ConcertCard";
 import Card from "../atoms/Card";
-import GuideTxt from "../atoms/guideTxt";
+import GuideTxt from "../atoms/GuideTxt";
 
 type ConsertStateType = "current" | "recent";
 type Props = {

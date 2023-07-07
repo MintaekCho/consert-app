@@ -6,7 +6,7 @@ import useSWR from "swr";
 import Loading from "../common/Loading";
 import ComentInput from "../molecules/ComentInput";
 import CommentCard from "../molecules/CommentCard";
-import GuideTxt from "../atoms/guideTxt";
+import GuideTxt from "../atoms/GuideTxt";
 
 export default function ArtistComments() {
   const pathName = usePathname();

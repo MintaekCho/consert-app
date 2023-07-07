@@ -5,7 +5,7 @@ import AlbumCard from "../molecules/AlbumCard";
 import { AlbumData, ArtistData } from "@/types/_type";
 import Title from "../atoms/Title";
 import Loading from "../common/Loading";
-import GuideTxt from "../atoms/guideTxt";
+import GuideTxt from "../atoms/GuideTxt";
 
 export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
   const artistApi = new Artist();

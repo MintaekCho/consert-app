@@ -62,7 +62,7 @@ export default function ComentInput({ artistId }: { artistId: string }) {
           setVisible={handleVisible}
         />
       )}
-      <section className="w-full h-[10%] left-0 bottom-0">
+      <section className="w-full h-[10%] absolute left-0 bottom-0">
         <form onSubmit={handleSubmit} className="w-full">
           <input
             className="w-[85%] p-3 outline-none text-black rounded-l-lg"
