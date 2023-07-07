@@ -4,6 +4,7 @@ import useSWR, { mutate } from "swr";
 // import ConcertCard from "../molecules/ConcertCard";
 import Card from "../atoms/Card";
 import Consert from "@/service/consert/Consert";
+import GuideTxt from "../atoms/GuideTxt";
 
 const ConcertList = ({ keyword }: SearchProps) => {
   const consertApi = new Consert();
@@ -43,9 +44,7 @@ const ConcertList = ({ keyword }: SearchProps) => {
         </ul>
       ) : (
         <div>
-          <p className="text-md lg:text-xl xl:text-2xl p-4 font-bold text-white">
-            찾으시는 콘서트 정보가 없어요.
-          </p>
+          <GuideTxt>찾으시는 콘서트 정보가 없어요.</GuideTxt>
         </div>
       )}
     </section>

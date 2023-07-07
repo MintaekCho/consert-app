@@ -4,7 +4,7 @@ import React from "react";
 import useSWR from "swr";
 import UserService from "@/service/user/User";
 import { useSession } from "next-auth/react";
-import Card from "./atoms/Card";
+import Card from "../atoms/Card";
 
 export default function ArtistWrap({ artists }: { artists: ArtistData[] }) {
   const { data: session } = useSession();

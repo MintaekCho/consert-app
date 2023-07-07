@@ -120,3 +120,7 @@ export type BookmarkData = {
   artist: ArtistData;
   userId: string;
 };
+
+export interface WrapperProps {
+  children: React.ReactNode;
+}

@@ -5,6 +5,7 @@ import AlbumCard from "../molecules/AlbumCard";
 import { AlbumData, ArtistData } from "@/types/_type";
 import Title from "../atoms/Title";
 import Loading from "../common/Loading";
+import GuideTxt from "../atoms/GuideTxt";
 
 export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
   const artistApi = new Artist();
@@ -23,28 +24,23 @@ export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
   const albums: AlbumData[] = data && data.data;
 
   return (
-    <div className="w-full h-[500px] flex-col items-center justify-center flex p-4 rounded-xl bg-gray-950 relative">
-      <Title>📗 Album</Title>
+    <div className="w-full h-[500px] flex-col items-center justify-center flex p-4 rounded-xl relative">
+      <Title>Album</Title>
       <a
         href={`https://www.melon.com/search/album/index.htm?q=${artist.korName}&section=&searchGnbYn=Y&kkoSpl=N&kkoDpType=`}
         target="_blank"
-        className="md:absolute md:top-16 md:right-16 font-bold text-[#c4c4c4] hover:text-white"
+        className="text-sm md:absolute md:top-16 md:right-16 text-[#c4c4c4] hover:text-white"
       >
-        모든 앨범 보기
-      </a>{" "}
+        All Albums
+      </a>
       {/* TODO: 모든앨범보기 모달 */}
       {isLoading && <Loading />}
-      {error && (
-        <p className="text-white text-md lg:text-xl xl:text-2xl">
-          🥹준비중입니다.
-        </p>
-      )}
-      <ul className="w-full mt-6 flex gap-10 overflow-auto">
+      {error && <GuideTxt>준비중입니다.</GuideTxt>}
+      {/* 스크롤 스타일링 */}
+      <ul className="w-full mt-6 flex gap-10 overflow-x-auto overflow-y-hidden scroll-smooth">
         {albums &&
           (albums.length === 0 ? (
-            <p className="text-white text-md lg:text-xl xl:text-2xl">
-              🥹준비중입니다.
-            </p>
+            <GuideTxt>준비중입니다.</GuideTxt>
           ) : (
             albums.map((album) => (
               <li key={album.title}>
