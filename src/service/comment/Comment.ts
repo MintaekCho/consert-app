@@ -1,5 +1,4 @@
 import { SessionUser } from "./../../types/_type";
-import { CommentData } from "@/types/_type";
 import axios from "axios";
 
 export default class CommentService {

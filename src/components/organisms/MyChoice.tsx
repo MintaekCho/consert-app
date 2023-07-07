@@ -35,7 +35,7 @@ export default function MyChoice() {
               </Link>
             </div>
           ) : (
-            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <ul className="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {bookmarks?.map((bookmark) => (
                 <li key={bookmark._id}>
                   <Card type={'artist'} canBook={true} data={bookmark} />

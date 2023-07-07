@@ -1,4 +1,3 @@
-import { SetStateAction } from "react";
 import SearchBar from "../molecules/SearchBar";
 
 const SearchBox = ({

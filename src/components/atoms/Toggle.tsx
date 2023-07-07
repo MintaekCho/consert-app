@@ -8,5 +8,5 @@ type Props = {
 };
 
 export default function Toggle({ toggled, onToggle, onIcon, offIcon }: Props) {
-  return <button onClick={() => onToggle(toggled)}>{toggled ? onIcon : offIcon}</button>;
+  return <button aria-label="토글 버튼" onClick={() => onToggle(toggled)}>{toggled ? onIcon : offIcon}</button>;
 }
