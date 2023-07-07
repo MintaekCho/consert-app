@@ -1,4 +1,3 @@
-import { ArtistData } from "@/types/_type";
 import axios from "axios";
 
 export default class Artist {

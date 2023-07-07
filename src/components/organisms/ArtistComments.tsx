@@ -1,6 +1,5 @@
 import CommentService from "@/service/comment/Comment";
 import { CommentData } from "@/types/_type";
-import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import React from "react";
 import useSWR from "swr";

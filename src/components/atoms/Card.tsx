@@ -33,13 +33,21 @@ const Card = ({ type, canBook = false, data }: CardProps<CardType>) => {
       return { id, img, title, bookmark };
     }
     if (type === "concert") {
-      const { _id: id, image: img, title, startDate, endDate, place } = data as ConcertData;
+      const {
+        _id: id,
+        image: img,
+        title,
+        startDate,
+        endDate,
+        place,
+      } = data as ConcertData;
       return { id, img, title, startDate, endDate, place };
     }
     return null;
   };
 
-  const { id, img, title, startDate, endDate, place, bookmark } = cardData(data) || {};
+  const { id, img, title, startDate, endDate, place, bookmark } =
+    cardData(data) || {};
   const [isBookmark, setIsBookmark] = useState(
     bookmark?.includes(session?.user.id as string)
   );
@@ -68,7 +76,10 @@ const Card = ({ type, canBook = false, data }: CardProps<CardType>) => {
         />
       )}
       <article className="w-full max-w-[300px] relative group rounded-xl flex flex-col items-center overflow-hidden bg-white p-2 m-2 hover:scale-105 duration-300 ease-in-out">
-        <Link href={`/${type === "concert" ? "consert" : type}/${id}`} className='w-full flex flex-col items-center'>
+        <Link
+          href={`/${type === "concert" ? "consert" : type}/${id}`}
+          className="w-full flex flex-col items-center"
+        >
           <div
             className="relative w-300 h-300 bg-cover bg-center"
             style={{
@@ -80,11 +91,11 @@ const Card = ({ type, canBook = false, data }: CardProps<CardType>) => {
           <p className="w-full truncate text-lg font-bold text-center text-black mt-2 group-hover:tracking-widest group-hover:text-red-400 duration-300 ease-in-out">
             {title}
           </p>
-          <div className="text-sm flex flex-col items-center text-gray-400 hover:text-gray-300 duration-300 ease-in-out">
+          <div className="w-full text-sm flex flex-col items-center text-gray-400 hover:text-gray-300 duration-300 ease-in-out">
             {type === "concert" && (
               <>
-                <p>{`${startDate} ~ ${endDate}`}</p>
-                <p>{place}</p>
+                <p className="w-full truncate text-center">{`${startDate} ~ ${endDate}`}</p>
+                <p className="w-full truncate text-center">{place}</p>
               </>
             )}
           </div>
