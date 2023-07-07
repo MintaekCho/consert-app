@@ -65,11 +65,9 @@
 
 <br>
 
-
 <!-- Stack Icon Refernces -->
 
-
 [next]: https://github.com/MintaekCho/consert-app/assets/105726931/fcd8c7a7-2281-41d2-aae0-39fa085279e6
-[ts]: /images/stack/typescript.svg
-[react]: /images/stack/react.svg
-[node]: /images/stack/node.svg
+[js]: https://github.com/MintaekCho/consert-app/assets/105726931/bd0f178b-fed1-4588-9ed3-14c1b1a8f93f
+[ts]: https://github.com/MintaekCho/consert-app/assets/105726931/90341ec6-e155-419e-b9ca-6c3e0ca12469
+[tailwind]: https://github.com/MintaekCho/consert-app/assets/105726931/92219ec8-3387-4da0-a055-b61aa891ee66
