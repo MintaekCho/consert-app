@@ -24,10 +24,13 @@ const Gnb = () => {
           <ul className="flex flex-col gap-3 text-lg rounded-md absolute left-3 bg-white px-4 py-6">
             {pageList.map(({ id, href, label }, index) => {
               return (
-                <li className={`w-full text-black border-b-4 border-gray-500 ${href === path ? 'text-purple-600' : ''} hover:text-purple-600`}>
-                  <Link href={href} key={id}>
-                    {label}
-                  </Link>
+                <li
+                  key={id}
+                  className={`w-full text-black border-b-4 border-gray-500 ${
+                    href === path ? "text-purple-600" : ""
+                  } hover:text-purple-600`}
+                >
+                  <Link href={href}>{label}</Link>
                 </li>
               );
             })}
