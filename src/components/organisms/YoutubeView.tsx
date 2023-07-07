@@ -6,6 +6,7 @@ import Title from "../atoms/Title";
 import Loading from "../common/Loading";
 import YoutubeCard from "../molecules/YoutubeCard";
 import CarouselView from "./CarouselView";
+import { BsFire } from "react-icons/bs";
 
 export default function YoutubeView({ artistName }: { artistName: string }) {
   const { youtube } = useYoutubeApi();
@@ -28,7 +29,7 @@ export default function YoutubeView({ artistName }: { artistName: string }) {
     <section className="mt-12">
       {isLoading && <Loading />}
       {error && <p>error</p>}
-      <Title>🔥HotTube</Title>
+      <Title icon={<BsFire />}>HotTube</Title>
       {videos && (
         <>
           <div className="hidden sm:block">

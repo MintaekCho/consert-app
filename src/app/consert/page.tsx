@@ -1,5 +1,5 @@
 "use client";
-import ConcertInfiniteScroll from "@/components/ConcertInfiniteScroll";
+import ConcertInfiniteScroll from "@/components/templetes/ConcertInfiniteScroll";
 import Title from "@/components/atoms/Title";
 import ConcertList from "@/components/organisms/ConcertList";
 import SearchBox from "@/components/organisms/SearchBox";

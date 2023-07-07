@@ -12,29 +12,32 @@ const Gnb = () => {
 
   return (
     <>
-      <div className="relative sm:hidden">
+      <div className={`relative rounded-md sm:hidden`}>
         <Hamburger
-          size={30}
+          size={20}
           onToggle={(toggled) => {
             if (toggled) setVisible(true);
             else setVisible(false);
           }}
         />
         {visible && (
-          <ul className="flex flex-col gap-3 text-lg rounded-md absolute left-3 bg-white px-4 py-6">
-            {pageList.map(({ id, href, label }, index) => {
-              return (
-                <li
-                  key={id}
-                  className={`w-full text-black border-b-4 border-gray-500 ${
-                    href === path ? "text-purple-600" : ""
-                  } hover:text-purple-600`}
-                >
-                  <Link href={href}>{label}</Link>
-                </li>
-              );
-            })}
-          </ul>
+          <div className="relative">
+            <div className="absolute top-2 left-4 border-solid border-b-white border-b-8 border-x-transparent border-x-8 border-t-0"></div>
+            <ul className="absolute top-4 left-0 flex flex-col gap-3 text-lg rounded-md bg-white px-4 py-6">
+              {pageList.map(({ id, href, label }, index) => {
+                return (
+                  <li
+                    key={id}
+                    className={`w-full text-black ${
+                      href === path ? "text-purple-600" : ""
+                    } hover:text-purple-600`}
+                  >
+                    <Link href={href}>{label}</Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         )}
       </div>
       <ul className="hidden sm:flex">

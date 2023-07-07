@@ -3,9 +3,10 @@ import Artist from "@/service/artist/Artist";
 import { SearchProps } from "@/types/_type";
 import React, { useEffect, useState } from "react";
 import useSWR, { mutate } from "swr";
-import ArtistWrap from "../ArtistWrap";
+import ArtistWrap from "../templetes/ArtistWrap";
 import Pagination from "../atoms/Pagination";
 import Loading from "../common/Loading";
+import GuideTxt from "../atoms/guideTxt";
 
 export default function ArtistList({ keyword }: SearchProps) {
   const [page, setPage] = useState(1);
@@ -40,9 +41,7 @@ export default function ArtistList({ keyword }: SearchProps) {
       {error && <p>error!!!</p>}
       <ArtistWrap artists={artists?.findArtist} />
       {artists?.findArtist && artists?.findArtist.length === 0 && (
-        <p className="text-xl text-gray-400 font-bold text-center">
-          찾고계신 가수가 없네요🥹
-        </p>
+        <GuideTxt>찾고계신 가수가 없네요.</GuideTxt>
       )}
       <Pagination setPage={setPage} page={page} lastPage={artists?.pageCount} />
     </section>

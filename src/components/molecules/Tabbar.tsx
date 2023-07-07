@@ -8,7 +8,7 @@ interface TabProps {
 const Tabbar = ({ tabItems, curIndex, changeItem }: TabProps) => {
   return (
     <div className="font-medium text-center border-b border-gray-200">
-      <ul className="flex gap-6 text-lg font-bold">
+      <ul className="flex gap-6 text-base font-bold sm:text-lg">
         {tabItems.map((tabItem, i) => {
           return (
             <li
