@@ -1,10 +1,9 @@
 "use client";
 import Artist from "@/service/artist/Artist";
 import Image from "next/image";
-import React, { MouseEvent, useState } from "react";
+import React from "react";
 import useSWR from "swr";
 import ArtistAlbums from "../organisms/ArtistAlbums";
-import Navbar from "../molecules/Navbar";
 import Title from "../atoms/Title";
 import YoutubeView from "../organisms/YoutubeView";
 import ArtistConsert from "../organisms/ArtistConsert";
@@ -43,7 +42,9 @@ export default function ArtistInfo({ artistId }: { artistId: string }) {
               src={artist.profile}
               alt={artist.korName}
               width={400}
-              height={550}
+              height={400}
+              style={{ height: "400px", objectFit: "cover" }}
+              priority
             />
           </div>
           <section className="border-b">
