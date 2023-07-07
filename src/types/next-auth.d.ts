@@ -1,4 +1,4 @@
-import { ArtistData } from "@/components/ArtistWrap";
+import { ArtistData } from "@/components/templetes/ArtistWrap";
 import NextAuth from "next-auth";
 
 declare module "next-auth" {

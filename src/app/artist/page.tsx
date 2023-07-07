@@ -1,7 +1,7 @@
 "use client";
 
 import ArtistList from "@/components/organisms/ArtistList";
-import ArtistInfiniteScroll from "@/components/ArtistInfiniteScroll";
+import ArtistInfiniteScroll from "@/components/templetes/ArtistInfiniteScroll";
 import SearchBox from "@/components/organisms/SearchBox";
 import Title from "@/components/atoms/Title";
 import React, { useState } from "react";

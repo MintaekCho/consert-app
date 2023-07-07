@@ -1,7 +1,7 @@
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { ConcertData } from "@/types/_type";
 import { useRef } from "react";
-import Loading from "./common/Loading";
+import Loading from "../common/Loading";
 import Card from "@/components/atoms/Card";
 
 const ConcertInfiniteScroll = () => {
