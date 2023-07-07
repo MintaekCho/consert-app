@@ -6,7 +6,7 @@ interface LinkProps {
 }
 const LinkItem = ({ href, children }: LinkProps) => {
   return (
-    <li className="mr-8 text-base">
+    <li className="mr-8 text-base hover:opacity-90">
       <Link href={href}>{children}</Link>
     </li>
   );

@@ -8,7 +8,6 @@ import {
 
 export default function KakaoMap({ x, y }: { x: string; y: string }) {
 
-  console.log(x);
   return (x && y) ? (
       <Map
         center={{ lng: Number(x), lat: Number(y) }}

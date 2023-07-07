@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useSWR from "swr";
 import Artist from "@/service/artist/Artist";
 import AlbumCard from "../molecules/AlbumCard";
@@ -25,16 +25,26 @@ export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
   return (
     <div className="w-full h-[500px] flex-col items-center justify-center flex p-4 rounded-xl bg-gray-950 relative">
       <Title>📗 Album</Title>
-      <button className="md:absolute md:top-16 md:right-16 font-bold text-[#c4c4c4] hover:text-white">
+      <a
+        href={`https://www.melon.com/search/album/index.htm?q=${artist.korName}&section=&searchGnbYn=Y&kkoSpl=N&kkoDpType=`}
+        target="_blank"
+        className="md:absolute md:top-16 md:right-16 font-bold text-[#c4c4c4] hover:text-white"
+      >
         모든 앨범 보기
-      </button>{" "}
+      </a>{" "}
       {/* TODO: 모든앨범보기 모달 */}
       {isLoading && <Loading />}
-      {error && <p className="text-white text-md lg:text-xl xl:text-2xl">🥹준비중입니다.</p>}
+      {error && (
+        <p className="text-white text-md lg:text-xl xl:text-2xl">
+          🥹준비중입니다.
+        </p>
+      )}
       <ul className="w-full mt-6 flex gap-10 overflow-auto">
         {albums &&
           (albums.length === 0 ? (
-            <p className="text-white text-md lg:text-xl xl:text-2xl">🥹준비중입니다.</p>
+            <p className="text-white text-md lg:text-xl xl:text-2xl">
+              🥹준비중입니다.
+            </p>
           ) : (
             albums.map((album) => (
               <li key={album.title}>

@@ -1,7 +1,7 @@
 import { deleteApi, getApi, postApi } from "@/service/api/api";
 import { ArtistData } from "@/types/_type";
 import { useSession } from "next-auth/react";
-import useSWR, { mutate as mut } from "swr";
+import useSWR from "swr";
 
 async function getUserBookmark(userId: string) {
   return await getApi(`/artist/bookmark/${userId}`);
