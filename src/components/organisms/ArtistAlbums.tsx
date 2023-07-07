@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useSWR from "swr";
 import Artist from "@/service/artist/Artist";
 import AlbumCard from "../molecules/AlbumCard";
@@ -26,9 +26,13 @@ export default function ArtistAlbums({ artist }: { artist: ArtistData }) {
   return (
     <div className="w-full h-[500px] flex-col items-center justify-center flex p-4 rounded-xl relative">
       <Title>Album</Title>
-      <button className="text-sm md:absolute md:top-16 md:right-16 text-[#c4c4c4] hover:text-white">
+      <a
+        href={`https://www.melon.com/search/album/index.htm?q=${artist.korName}&section=&searchGnbYn=Y&kkoSpl=N&kkoDpType=`}
+        target="_blank"
+        className="text-sm md:absolute md:top-16 md:right-16 text-[#c4c4c4] hover:text-white"
+      >
         All Albums
-      </button>{" "}
+      </a>
       {/* TODO: 모든앨범보기 모달 */}
       {isLoading && <Loading />}
       {error && <GuideTxt>준비중입니다.</GuideTxt>}

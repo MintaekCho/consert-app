@@ -1,6 +1,6 @@
 "use client";
 import Artist from "@/service/artist/Artist";
-import { ArtistData, SearchProps } from "@/types/_type";
+import { SearchProps } from "@/types/_type";
 import React, { useEffect, useState } from "react";
 import useSWR, { mutate } from "swr";
 import ArtistWrap from "../templetes/ArtistWrap";
