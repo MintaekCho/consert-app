@@ -5,8 +5,8 @@ import "react-multi-carousel/lib/styles.css";
 
 const responsive = {
   superLargeDesktop: {
-    breakpoint: { max: 4000, min: 1920 },
-    items: 6,
+    breakpoint: { max: 4000, min: 1924 },
+    items: 5,
     slidesToSlide: 2,
   },
   desktop: {
@@ -35,10 +35,10 @@ export default function CarouselView({ children, type }: Props) {
       infinite
       draggable={true}
       partialVisible={true}
-      additionalTransfrom={-30}
+      additionalTransfrom={-25}
       autoPlay
       responsive={responsive}
-      itemClass="m-1 p-2"
+      itemClass="m-1"
       ssr={true}
       swipeable={true}
       removeArrowOnDeviceType={"mobile"}
@@ -50,8 +50,7 @@ export default function CarouselView({ children, type }: Props) {
       infinite
       draggable={true}
       responsive={responsive}
-      itemClass="m-2 p-2"
-      ssr={true}
+      itemClass="m-2"
       swipeable={true}
       removeArrowOnDeviceType={"mobile"}
     >
