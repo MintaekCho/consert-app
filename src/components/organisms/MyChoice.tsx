@@ -1,6 +1,6 @@
 "use client";
 import { ArtistData } from "@/types/_type";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import React from "react";
 import useSWR from "swr";
 import Artist from "@/service/artist/Artist";
@@ -10,6 +10,7 @@ import Card from "../atoms/Card";
 import Title from "../atoms/Title";
 import { BsBookmarkHeartFill } from "react-icons/bs";
 import GuideTxt from "../atoms/GuideTxt";
+import HeaderButton from "../atoms/HeaderButton";
 
 export default function MyChoice() {
   const { data: session } = useSession();
@@ -48,6 +49,9 @@ export default function MyChoice() {
       ) : (
         <div className="flex flex-col gap-2 justify-center items-center p-8 mt-20">
           <GuideTxt>로그인하고 북마크를 추가해보세요.</GuideTxt>
+          <div className="font-bold">
+            <HeaderButton name={"Login"} onclick={signIn} />
+          </div>
         </div>
       )}
     </section>
