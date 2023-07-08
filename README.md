@@ -21,7 +21,8 @@
 |    조민택    |    고은서   |
 | :--------: | :--------: |
 | <img width="220" height="220" alt="스크린샷 2023-07-08 오전 5 52 12" src="https://github.com/MintaekCho/consert-app/assets/105726931/867bb3d7-cdb1-4bc4-a387-c2fb658f1ed6">    |<img width="220" height="220" alt="스크린샷 2023-07-08 오전 5 52 37" src="https://github.com/MintaekCho/consert-app/assets/105726931/aec33733-99ec-4eca-8a8b-91ab6ab8d444">       |
-| <a href="https://github.com/MintaekCho">깃허브</a>  | <a href="https://github.com/MintaekCho">깃허브</a>   |
+|<a href="https://github.com/MintaekCho">깃허브</a> | <a href="https://github.com/MintaekCho">깃허브</a>   |
+|<a href="https://portfolio-mintaekcho.vercel.app/">포트폴리오</a> | <a href="https://eunseo-portfolio.vercel.app/#Education">포트폴리오</a> |
 <br>
 
 
