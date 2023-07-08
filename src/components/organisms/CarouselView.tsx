@@ -35,10 +35,10 @@ export default function CarouselView({ children, type }: Props) {
       infinite
       draggable={true}
       partialVisible={true}
-      additionalTransfrom={-25}
+      // additionalTransfrom={-25}
       autoPlay
       responsive={responsive}
-      itemClass="m-1"
+      itemClass="p-2"
       ssr={true}
       swipeable={true}
       removeArrowOnDeviceType={"mobile"}
@@ -49,8 +49,10 @@ export default function CarouselView({ children, type }: Props) {
     <Carousel
       infinite
       draggable={true}
+      partialVisible={true}
       responsive={responsive}
-      itemClass="m-2"
+      itemClass="p-2"
+      ssr={true}
       swipeable={true}
       removeArrowOnDeviceType={"mobile"}
     >
