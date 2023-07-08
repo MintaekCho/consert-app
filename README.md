@@ -36,35 +36,50 @@
 
 ## 주요 기능
 
-### 로그인
+|                                                              |                                                              |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+|     **로그인**    |    **아티스트 조회** |
+| ![로그인](https://github.com/MintaekCho/consert-app/assets/105726931/96f55020-8e17-4485-bc71-ee31cc433105) | ![아티스트페이지](https://github.com/MintaekCho/consert-app/assets/105726931/829bde1a-2228-420f-a7e7-a5663675b02f) |
+|     **팬명록**     |   **관련 유튜브 영상** |
+| ![팬명록](https://github.com/MintaekCho/consert-app/assets/105726931/5b8e8df7-fd66-43d8-ad05-0f839c13af8c) | ![관련유튜브](https://github.com/MintaekCho/consert-app/assets/105726931/8c6f7caa-4265-48ee-b352-492f1f54e84c) |
+|  **콘서트 조회** | **검색-(아티스트,콘서트)** |
+| ![콘서트페이지](https://github.com/MintaekCho/consert-app/assets/105726931/9ec22180-7569-45d0-86de-d11bb26fcac5) | ![검색](https://github.com/MintaekCho/consert-app/assets/105726931/4dba4d70-1620-4984-b915-e2cf6a4b02d2) |
+| **북마크** | **카카오지도** |
+| ![북마크](https://github.com/MintaekCho/consert-app/assets/105726931/fd0fd393-d9f2-4b33-ab61-86001b818f8c) | ![카카오지도](https://github.com/MintaekCho/consert-app/assets/105726931/ee5b88d8-5276-4ad5-9e74-a2af9ca5bf6d)  |
 
-### 아티스트 조회
-
-### 팬명록
-
-### 관련 유튜브 영상
-
-### 콘서트 조회
-
-### 검색 (아티스트 | 콘서트)
-
-### 북마크
-
-### 카카오 지도
 
 <br>
 
 ## 배운 점 & 아쉬운 점
 
 ### 조민택
+- 내용
 
 ### 고은서
+- 내용
 
 <p align="justify">
 
 </p>
 
 <br>
+
+
+### ✉️ Commit  Message  
+
+|  Message   | 설명                                                  |
+| :--------: | :---------------------------------------------------- |
+|   [Feat]   | 새로운 기능을 추가할 경우 ex) [feat] 로그인 기능 추가 |
+|   [Fix]    | 버그 수정에 대한 커밋 |
+|   [init]   | 프로젝트 초기 생성 |
+| [Refactor] | 효율을 위한 코드 리팩토링에 대한 커밋 |
+| [Comment] | Comment |
+|  [Design]  | CSS 등 사용자 UI 디자인 변경 |
+|  [Style]  | 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우 |
+|  [Chore]  | 위에 걸리지 않는 기타 변경사항(빌드 스크립트 수정, assets image, 패키지 매니저 등) |
+|  [test]    | test 관련한 코드의 추가, 수정 |
+|  [Rename] | 파일 혹은 폴더명 수정하거나 옮기는 경우 |
+|  [Remove]  | 파일을 삭제하는 작업만 수행하는 경우 |
 
 <!-- Stack Icon Refernces -->
 
