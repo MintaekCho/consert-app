@@ -27,9 +27,9 @@
 
 ## 기술 스택
 
-| JavaScript | TypeScript |  NextJS  |  SWR    |  Tailwind |  Python |  Selenium |  mongoDB |
-| :--------: | :--------: | :------: | :-----: | :-----:   | :-----: | :-----:   | :-----:  |
-|   ![js]    |   ![ts]    | ![next]  | ![swr]| ![tailwind]  | ![python]| ![selenium]  | ![mongodb] |
+| TypeScript |  NextJS  |  SWR    |  Tailwind |  Python |  Selenium |  mongoDB |
+| :--------: | :------: | :-----: | :-----:   | :-----: | :-----:   | :-----:  |
+|   ![ts]    | ![next]  | ![swr]  | ![tailwind]  | ![python] | ![selenium]  | ![mongodb] |
 
 <br>
 
@@ -68,6 +68,9 @@
 <!-- Stack Icon Refernces -->
 
 [next]: https://github.com/MintaekCho/consert-app/assets/105726931/fcd8c7a7-2281-41d2-aae0-39fa085279e6
-[js]: https://github.com/MintaekCho/consert-app/assets/105726931/bd0f178b-fed1-4588-9ed3-14c1b1a8f93f
 [ts]: https://github.com/MintaekCho/consert-app/assets/105726931/90341ec6-e155-419e-b9ca-6c3e0ca12469
 [tailwind]: https://github.com/MintaekCho/consert-app/assets/105726931/92219ec8-3387-4da0-a055-b61aa891ee66
+[swr]: https://github.com/MintaekCho/consert-app/assets/105726931/9c146140-f90f-4423-8d0c-a3cb3e7b93d7
+[python]: https://github.com/MintaekCho/consert-app/assets/105726931/570427b4-06d4-4d1a-8ce3-89849a22bb89
+[selenium]: https://github.com/MintaekCho/consert-app/assets/105726931/8bcfd05f-daa2-4da7-ae17-b9a4cc79126b
+[mongodb]: https://github.com/MintaekCho/consert-app/assets/105726931/187b94ae-521d-4e06-9c9c-4054d4536501
