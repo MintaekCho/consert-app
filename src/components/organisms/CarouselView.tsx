@@ -50,8 +50,7 @@ export default function CarouselView({ children, type }: Props) {
       infinite
       draggable={true}
       responsive={responsive}
-      itemClass="m-2"
-      itemClass="m-2 p-4"
+      itemClass="m-2 p-2"
       ssr={true}
       swipeable={true}
       removeArrowOnDeviceType={"mobile"}
