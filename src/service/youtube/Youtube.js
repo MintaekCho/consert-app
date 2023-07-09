@@ -13,7 +13,7 @@ export default class Youtube {
         params: {
           key: this.key1,
           part: "snippet",
-          maxResults: 5,
+          maxResults: 10,
           type: "video",
           q: q,
         },
