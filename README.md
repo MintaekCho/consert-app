@@ -67,8 +67,18 @@
 - AWS Lambda, CloudWatch 이용한 크롤링 자동화 구현
 - 백엔드 API 구현 (콘서트, 아티스트, 앨범, 팬명록, 북마크, 랭킹 등)
 
-### 고은서
-- 내용
+### 고은서 Frontend dev
+- `검색` 기능 : FormData와 useSWR를 이용해 검색 기능 구현
+  - [블로그 링크](https://velog.io/@koyk0408/react-%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84-%EA%B2%80%EC%83%89%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84)
+- `무한스크롤` 기능 : useSWRInfinite와 IntersectionObserver 사용해 무한스크롤 Hook 구현
+  - [블로그 링크](https://velog.io/@koyk0408/react-%EB%AC%B4%ED%95%9C%EC%8A%A4%ED%81%AC%EB%A1%A4-2with-IntersectionObserver)
+  - [관련PR 링크](https://github.com/MintaekCho/consert-app/pull/30)
+- `페이지네이션` 기능 : useState, mutate 사용해 페이지네이션 기능 구현
+  - [관련 PR 링크](https://github.com/MintaekCho/consert-app/pull/37)
+- `tab` : 탭 Hook, UI 컴포넌트 구현
+  - [관련 PR 링크](https://github.com/MintaekCho/consert-app/pull/46)
+- 반응형 대응
+- [디자인](https://www.figma.com/file/dQ5Aj0hLclSCgWdi3suSxL/Concert-service?type=design&node-id=0%3A1&mode=design&t=7rvlt3K7RydIeeI6-1)
 
 <p align="justify">
 
