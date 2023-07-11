@@ -29,7 +29,7 @@ export default function ConcertSchedule() {
   const concerts: ConcertData[] = data?.result;
 
   return (
-    <div>
+    <div className="w-full flex flex-col items-center">
       <Calendar selectDate={selectDate} setSeleteDate={handleSelectDate} />
       <Title>{`${selectDate.getFullYear()}년 ${
         selectDate.getMonth() + 1

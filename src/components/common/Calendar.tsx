@@ -62,7 +62,7 @@ export default function Calendar({ selectDate, setSeleteDate }: Props) {
   };
 
   return (
-    <section className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[900px]">
+    <section className="w-[85%] h-[300px] sm:h-[400px] md:h-[500px] lg:h-[700px]">
       <div className="flex items-center justify-center gap-8 p-4">
         <button className="text-3xl" onClick={goToPreviousMonth}>
           <AiFillCaretLeft />
@@ -98,7 +98,7 @@ export default function Calendar({ selectDate, setSeleteDate }: Props) {
                 if (day.state === "prev" || day.state === "next") return;
                 else setSeleteDate(date, day.day);
               }}
-              className={`flex justify-center items-center group  text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl border border-gray-600 ${
+              className={`flex justify-center items-center group  text-[10px] sm:text-md md:text-lg lg:text-xl xl:text-2xl border border-gray-600 ${
                 i % 7 === 0 && day.state !== "prev" && day.state !== "next"
                   ? "text-red-500"
                   : ""
@@ -132,7 +132,7 @@ export default function Calendar({ selectDate, setSeleteDate }: Props) {
                 } ${
                   new Date().getMonth() === date.getMonth() &&
                   date.getDate() === day.day
-                    ? "bg-red-400 text-2xl font-bold"
+                    ? "bg-red-400 sm:text-md md:text-lg lg:text-xl xl:text-2xl font-bold"
                     : ""
                 }`}
               >
