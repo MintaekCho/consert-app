@@ -1,15 +1,18 @@
-"use client";
 import { getDaysInMonth, getFirstDayOfMonth, getWeekday } from "@/utils/date";
 import React, { useState } from "react";
-import Title from "../atoms/Title";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
+
+type Props = {
+  selectDate: Date;
+  setSeleteDate: (date: Date, day: number) => void;
+};
 
 type DayType = {
   day: number;
   state: "prev" | "cur" | "next";
 };
 
-export default function Calendar() {
+export default function Calendar({ selectDate, setSeleteDate }: Props) {
   const weeks = ["일", "월", "화", "수", "목", "금", "토"];
   const [date, setDate] = useState(new Date()); // 현재 날짜 상태
 
@@ -59,26 +62,26 @@ export default function Calendar() {
   };
 
   return (
-    <section className="w-full h-screen">
+    <section className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[900px]">
       <div className="flex items-center justify-center gap-8 p-4">
         <button className="text-3xl" onClick={goToPreviousMonth}>
           <AiFillCaretLeft />
         </button>
-        <h1 className="text-3xl font-bold">{`${date.getFullYear()}년 ${
+        <h1 className="text-xl md:text-2xl lg:text-3xl font-bold">{`${date.getFullYear()}년 ${
           date.getMonth() + 1
         }월`}</h1>
         <button className="text-3xl" onClick={goToNextMonth}>
           <AiFillCaretRight />
         </button>
       </div>
-      <div className="w-full h-3/5 border rounded-2xl overflow-hidden">
-        <ul className="w-full h-[5%] grid grid-cols-7">
+      <div className="w-full h-[80%] border rounded-2xl overflow-hidden">
+        <ul className="w-full h-[10%] grid grid-cols-7">
           {weeks.map((w, i) => (
             <li
-              className={`flex items-center justify-center border ${
+              className={`flex items-center justify-center border text-sm sm:text-md md:text-lg lg:text-xl ${
                 w === getWeekday(date.getDay()) &&
                 date.getMonth() === new Date().getMonth()
-                  ? "text-yellow-400 font-bold"
+                  ? "text-green-500 font-bold"
                   : ""
               }`}
               key={i}
@@ -87,24 +90,54 @@ export default function Calendar() {
             </li>
           ))}
         </ul>
-        <ul className="w-full h-[95%] grid grid-cols-7">
+        <ul className="w-full h-[90%] grid grid-cols-7">
           {renderCalendar().map((day, i) => (
             <li
               key={i}
-              className={`flex justify-center items-center cursor-pointer text-xl hover:text-yellow-500 hover:font-bold border border-gray-600 ${
-                new Date().getMonth() === date.getMonth() &&
-                date.getDate() === day.day
-                  ? "bg-red-400 text-2xl font-bold"
+              onClick={() => {
+                if (day.state === "prev" || day.state === "next") return;
+                else setSeleteDate(date, day.day);
+              }}
+              className={`flex justify-center items-center group  text-sm sm:text-md md:text-lg lg:text-xl xl:text-2xl border border-gray-600 ${
+                i % 7 === 0 && day.state !== "prev" && day.state !== "next"
+                  ? "text-red-500"
                   : ""
-              } ${i === 6 || i % 7 === 6 ? "text-blue-500" : ""} ${
-                i === 0 || i % 7 === 0 ? "text-red-500" : ""
+              } ${
+                i === 6 ||
+                (i % 7 === 6 && day.state !== "prev" && day.state !== "next")
+                  ? "text-blue-500"
+                  : ""
+              } ${
+                date.getMonth() === selectDate.getMonth() &&
+                day.day === selectDate.getDate() &&
+                day.state !== "prev" &&
+                day.state !== "next"
+                  ? "text-yellow-300 font-bold"
+                  : ""
               } ${
                 day.state === "prev" || day.state === "next"
-                  ? "text-gray-600"
+                  ? "text-gray-600 !important disabled "
+                  : ""
+              } ${
+                day.state !== "prev" && day.state !== "next"
+                  ? "hover:text-green-500 hover:font-bold cursor-pointer"
                   : ""
               }`}
             >
-              {day.day}
+              <span
+                className={`px-2 py-1 rounded-md ${
+                  day.state !== "prev" && day.state !== "next"
+                    ? "group-hover:scale-110 duration-300"
+                    : ""
+                } ${
+                  new Date().getMonth() === date.getMonth() &&
+                  date.getDate() === day.day
+                    ? "bg-red-400 text-2xl font-bold"
+                    : ""
+                }`}
+              >
+                {day.day}일
+              </span>
             </li>
           ))}
         </ul>
