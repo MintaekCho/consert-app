@@ -1,3 +1,5 @@
+import {BiCalendarHeart} from "react-icons/bi"
+
 export interface pageInfo {
   id: string;
   label: string;
@@ -16,6 +18,12 @@ export const pageList: pageInfo[] = [
     id: "concert",
     label: "Concert",
     href: "/consert",
+    withAuth: false,
+  },
+  {
+    id: "schedule",
+    label: "Schedule",
+    href: "/schedule",
     withAuth: false,
   },
 ];

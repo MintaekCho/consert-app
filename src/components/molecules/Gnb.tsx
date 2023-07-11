@@ -1,10 +1,10 @@
 "use client";
-import { pageList } from "@/router/pages";
 import { useState } from "react";
 import LinkItem from "../atoms/LinkItem";
 import Hamburger from "hamburger-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { pageList } from "@/router/pages";
 
 const Gnb = () => {
   const [visible, setVisible] = useState(false);
@@ -40,7 +40,7 @@ const Gnb = () => {
           </div>
         )}
       </div>
-      <ul className="hidden sm:flex">
+      <ul className="hidden sm:flex items-center">
         {pageList.map(({ id, href, label }, index) => {
           return (
             <LinkItem href={href} key={id}>
