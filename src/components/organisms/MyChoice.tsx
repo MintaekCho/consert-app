@@ -23,7 +23,7 @@ export default function MyChoice() {
 
   const bookmarks: ArtistData[] = data?.data;
   return (
-    <section className="w-full my-8">
+    <section className="w-full mt-20">
       <Title icon={<BsBookmarkHeartFill />}>My-Choice</Title>
       {isLoading && <Loading />}
       {session ? (
