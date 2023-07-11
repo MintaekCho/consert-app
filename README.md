@@ -54,8 +54,9 @@
 
 ### 조민택
 #### [Frontend]
-- 북마크 기능 구현 (Optimistic UI를 통한 사용자 UX 개선)
+- 북마크 기능 구현 (Optimistic UI를 통한 사용자 UX 개선) - useSWR, Mutate
 - 팬명록 CRUD 구현
+- 캘린더 UI 구현 - 캘린더 날짜 클릭 시 해당 날짜에 진행하는 콘서트 일정 제공
 - NextAuth 라이브러리를 사용하여 구글 Oauth 로그인 구현
 - Atomic Design Pattern 적용하여 컴포넌트 재사용성, 유지보수성 향상
 - 카카오지도 API 사용하여 콘서트 장소 지도뷰 구현
