@@ -59,18 +59,21 @@
 ### 조민택
 #### [Frontend]
 - 북마크 기능 구현 (Optimistic UI를 통한 사용자 UX 개선) - useSWR, Mutate
+  - [블로그 링크](https://alsxor5.tistory.com/116)
 - 팬명록 CRUD 구현
 - 캘린더 UI 구현 - 캘린더 날짜 클릭 시 해당 날짜에 진행하는 콘서트 일정 제공
 - NextAuth 라이브러리를 사용하여 구글 Oauth 로그인 구현
 - Atomic Design Pattern 적용하여 컴포넌트 재사용성, 유지보수성 향상
 - 카카오지도 API 사용하여 콘서트 장소 지도뷰 구현
+  - 발생 이슈관련 [블로그 링크](https://alsxor5.tistory.com/117) 
 - 유튜브 API 사용하여 아티스트 관련 유튜브 영상 구현
 
   
 #### [Backend]
 - 파이썬 셀레니움 이용한 데이터 크롤링(콘서트, 앨범, 아티스트)
 - AWS Lambda, CloudWatch 이용한 크롤링 자동화 구현
-- 백엔드 API 구현 (콘서트, 아티스트, 앨범, 팬명록, 북마크, 랭킹 등)
+  - [블로그 링크](https://alsxor5.tistory.com/118)
+- 백엔드 API 구현 (콘서트, 아티스트, 앨범, 팬명록, 북마크, 랭킹 등) 
 
 ### 고은서 Frontend dev
 - `검색` 기능 : FormData와 useSWR를 이용해 검색 기능 구현
