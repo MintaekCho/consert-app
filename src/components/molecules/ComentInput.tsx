@@ -58,6 +58,7 @@ export default function ComentInput({ artistId }: { artistId: string }) {
         <Modal
           description="로그인이 후 이용 가능합니다."
           buttonText="로그인"
+          isCancelBtn={true}
           onClick={signIn}
           setVisible={handleVisible}
         />
