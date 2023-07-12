@@ -8,7 +8,8 @@ import Image from "next/image";
 import logo from "@/app/logo_text.png";
 
 export default function Header() {
-  const { data: session } = useSession();
+  const { data: session }: any = useSession();
+
   return (
     <header className="w-full sticky top-0 flex items-center justify-between p-4 z-[9999] backdrop-blur-sm">
       <Link href={"/"}>

@@ -24,6 +24,7 @@ export type SessionUser =
       email: string;
       name: string;
       image: string;
+      displayName: string | null;
     }
   | undefined;
 
@@ -104,7 +105,7 @@ export type YoutubeData = {
 export type CommentData = {
   _id: string;
   artistId: string;
-  writer: SessionUser | undefined;
+  writer: any;
   content: string;
   createdAt: string;
   updatedAt: string;
