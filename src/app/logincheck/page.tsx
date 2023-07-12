@@ -8,7 +8,7 @@ export default function page() {
   const { data: session }: any = useSession();
   const router = useRouter();
   useEffect(() => {
-    if (session && !session?.user.displayName) {
+    if (session && (session?.user.displayName === null || !session?.user.displayName)) {
       router.replace("/signup");
     } else {
       router.replace("/");
