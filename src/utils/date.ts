@@ -1,7 +1,7 @@
 export function getKorDate() {
   const curr = new Date();
 
-  const korDate = curr.getTime() + curr.getTimezoneOffset() * 60 * 1000;
+  const korDate = curr.getTime()
 
   return new Date(korDate);
 }
