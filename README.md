@@ -13,8 +13,10 @@
 
 
 <br />
-<a href="https://consert-app.vercel.app/" target="_blank">CONCON 배포링크</a>
+배포링크 - <a href="https://consert-app.vercel.app/" target="_blank">CONCON</a>
 <br />
+사용자 피드백 반영하여 깃허브로 버전관리 진행 -  
+<a href="https://github.com/MintaekCho/consert-app/releases">릴리즈노트</a>
 
 ## 팀 소개
 
