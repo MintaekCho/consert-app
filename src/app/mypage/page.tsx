@@ -7,6 +7,9 @@ export default function page() {
     return (
         <div className='text-center p-8'>
             <MyPageProfile />
+            <div className='h-[600px] flex flex-col items-center justify-center'>
+                <GuideTxt>준비중입니다.</GuideTxt>
+            </div>
         </div>
     );
 }
