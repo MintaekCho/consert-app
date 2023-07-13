@@ -38,7 +38,7 @@ export async function PATCH(request: Request) {
     const isDisplayName = await User.findOne({ displayName: displayName });
     const query = User.where({ _id: id });
     const findUser = await query.findOne();
-    if (isDisplayName) throw new Error("중복된 닉네임입니다.");
+    if (isDisplayName) return NextResponse.json('중복된 닉네임입니다.')
     if (findUser.displayName) {
       throw new Error("이미 닉네임을 설정하였습니다.");
     } else {
@@ -60,6 +60,7 @@ export async function GET(request: NextRequest) {
     dbConnect();
     const user = User;
     const findUser = await user.findOne({ email });
+    console.log(findUser, 111);
     if (findUser) return NextResponse.json(findUser);
     else {
       throw new Error("존재하지 않는 회원입니다.");

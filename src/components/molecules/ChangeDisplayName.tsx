@@ -1,6 +1,5 @@
 "use client";
 import { patchApi } from "@/service/api/api";
-import { Session } from "next-auth";
 import { useSession } from "next-auth/react";
 import React, { FormEvent, useState } from "react";
 
@@ -27,7 +26,8 @@ export default function ChangeDisplayName() {
         id: session?.user.id,
         displayName,
       },
-    }).then(() => {
+    }).then((res) => {
+        console.log(res)
       update({ displayName });
       setDisplayName("");
     });
@@ -36,7 +36,7 @@ export default function ChangeDisplayName() {
   return (
     <div className="mt-2">
       {isChange ? (
-        <form className="" onSubmit={handleSubmit}>
+        <form className="w-full relative mt-8" onSubmit={handleSubmit}>
           <input
             className="px-2 py-1 rounded-lg text-black outline-none"
             type="text"
@@ -58,6 +58,11 @@ export default function ChangeDisplayName() {
               취소
             </div>
           </div>
+          {errorMessage && (
+            <p className="text-xs text-red-500 font-bold text-left absolute -top-6 left-1/2 -translate-x-1/2">
+              {errorMessage}
+            </p>
+          )}
         </form>
       ) : (
         <button
