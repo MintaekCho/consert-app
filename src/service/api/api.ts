@@ -17,6 +17,19 @@ export async function postApi<T, D>(
   }
 }
 
+export async function patchApi<T, D>(
+  url: string,
+  data?: D,
+  config?: AxiosRequestConfig
+) {
+  try {
+    const response = await API.patch(url, data, { ...config });
+    return { isSuccess: true, result: response.data };
+  } catch (e) {
+    return { isSuccess: false, result: e };
+  }
+}
+
 export async function getApi<T>(
     url: string,
     config?: AxiosRequestConfig

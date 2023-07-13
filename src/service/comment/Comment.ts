@@ -9,7 +9,7 @@ export default class CommentService {
     });
   }
   async postComment(
-    comment: { content: string | undefined; writer: SessionUser },
+    comment: { content: string | undefined; writer: any },
     artistId: string
   ) {
     return this.httpClient.post(artistId, {

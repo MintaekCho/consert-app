@@ -8,7 +8,6 @@ export async function GET() {
     const conserts = Consert;
 
     const allConsertRanks = await conserts.find().sort({'like' : -1}).limit(10);
-    console.log(allConsertRanks)
     return NextResponse.json(allConsertRanks);
   } catch (error) {
     console.error(error);
