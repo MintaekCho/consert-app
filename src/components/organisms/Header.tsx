@@ -6,9 +6,10 @@ import HeaderButton from "../atoms/HeaderButton";
 import Gnb from "../molecules/Gnb";
 import Image from "next/image";
 import logo from "@/app/logo_text.png";
+import Profile from "../molecules/Profile";
 
 export default function Header() {
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
 
   return (
     <header className="w-full sticky top-0 flex items-center justify-between p-4 z-[9999] backdrop-blur-sm">
@@ -19,7 +20,10 @@ export default function Header() {
       <div className="flex gap-4 items-center text-sm  font-bold">
         <Gnb />
         {session ? (
-          <HeaderButton name={"Logout"} onclick={signOut} />
+          <>
+            <Profile w={40} h={40} textSize={'[10px]'} />
+            <HeaderButton name={"Logout"} onclick={signOut} />
+          </>
         ) : (
           <HeaderButton name={"Login"} onclick={signIn} />
         )}

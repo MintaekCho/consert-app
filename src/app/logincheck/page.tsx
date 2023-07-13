@@ -5,10 +5,13 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
 export default function page() {
-  const { data: session }: any = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
   useEffect(() => {
-    if (session && (session?.user.displayName === null || !session?.user.displayName)) {
+    if (
+      session &&
+      (session?.user.displayName === null || !session?.user.displayName)
+    ) {
       router.replace("/signup");
     } else {
       router.replace("/");
