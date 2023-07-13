@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={sans.className} suppressHydrationWarning={true}>
       <Script src={KAKAO_SDK_URL} />
-      <body className="w-full min-w-[320px] max-w-screen-2xl h-screen flex flex-col justify-between mx-auto overflow-auto p-4">
+      <body className="w-full min-w-[320px] max-w-screen-2xl flex flex-col justify-between mx-auto overflow-auto p-4">
         <AuthContext>
           <YoutubeApiProvider>
             <ConsertApiProvider>

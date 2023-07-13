@@ -44,9 +44,9 @@ export default function DisplayNameInput() {
     console.log(displayName);
   };
 
-  //   useEffect(() => {
-  //     if (!session) router.replace("/");
-  //   }, []);
+    useEffect(() => {
+      if (!session || session?.user.displayName) router.replace("/");
+    }, [session]);
 
   return (
     <section className="w-full flex flex-col gap-10 items-center justify-center">

@@ -9,7 +9,7 @@ const LinkItem = ({ href, children }: LinkProps) => {
   const path = usePathname();
 
   return (
-    <li className={`mr-8 text-base hover:opacity-90 ${path === href ? 'text-red-400 text-lg' : ''} `}>
+    <li className={`mr-4 text-base px-2 py-1 hover:opacity-90 ${path === href ? 'text-red-400 text-lg' : ''} `}>
       <Link href={href}>{children}</Link>
     </li>
   );
