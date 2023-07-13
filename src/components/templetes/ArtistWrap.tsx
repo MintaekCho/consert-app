@@ -12,7 +12,7 @@ export default function ArtistWrap({ artists }: { artists: ArtistData[] }) {
 
   const { data } = useSWR(
     `/api/user/${session?.user.email}`,
-    () => session && userApi.getUser(session?.user.email)
+    () => session && userApi.getUser(session?.user.email as string)
   );
 
   const user: UserData = data?.data;

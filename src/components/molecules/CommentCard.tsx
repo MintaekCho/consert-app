@@ -15,7 +15,7 @@ export default function CommentCard({ comment }: { comment: CommentData }) {
   const { _id, artistId, writer, content, createdAt, updatedAt, isUpdated } =
     comment;
 
-  const userCheck = session?.user.email === writer?.email;
+  const userCheck = session?.user.id === writer?.id;
   return (
     <article className="w-full px-4 md:px-8 py-2 bg-slate-700 rounded-xl flex items-center">
       <div className="w-full flex items-center justify-between">
@@ -28,7 +28,9 @@ export default function CommentCard({ comment }: { comment: CommentData }) {
               width={40}
               height={40}
             />
-            <span className="w-full text-center truncate text-[10px] sm:text-xs text-white">{writer?.name}</span>
+            <span className="w-full text-center truncate text-[10px] sm:text-xs text-white">
+              {writer?.displayName}
+            </span>
           </div>
           {isUpdate ? (
             <CommentUpdateInput
@@ -38,7 +40,9 @@ export default function CommentCard({ comment }: { comment: CommentData }) {
             />
           ) : (
             <div className="w-full flex flex-col gap-2 items-start">
-              <p className="text-white text-xs sm:text-sm md:text-md lg:text-lg">{content}</p>
+              <p className="text-white text-xs sm:text-sm md:text-md lg:text-lg">
+                {content}
+              </p>
               {
                 <div className="flex gap-4">
                   {isUpdated ? (

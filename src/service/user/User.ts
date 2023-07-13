@@ -5,7 +5,7 @@ export default class UserService {
   httpClient;
   constructor() {
     this.httpClient = axios.create({
-      baseURL: "https://consert-app-git-feat-footer-mintaekcho.vercel.app/api/user",
+      baseURL: "https://consert-app.vercel.app/api/user",
     });
   }
   async postUser(user: UserData) {
@@ -16,7 +16,7 @@ export default class UserService {
 
   async getUser(email: string) {
     return this.httpClient.get("", {
-      params: {email},
+      params: { email },
     });
   }
 }
