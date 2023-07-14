@@ -53,12 +53,15 @@ const Card = ({ type, canBook = false, data }: CardProps<CardType>) => {
   );
   const { setBookmark } = useBookmark();
   const handleLike = (toggled: boolean) => {
-    setBookmark(
-      session?.user.id as string,
-      data as ArtistData,
-      isBookmark as boolean
-    );
-    setIsBookmark(!isBookmark);
+    if (!session) handleVisible();
+    else {
+      setBookmark(
+        session?.user.id as string,
+        data as ArtistData,
+        isBookmark as boolean
+      );
+      setIsBookmark(!isBookmark);
+    }
   };
 
   useEffect(() => {
