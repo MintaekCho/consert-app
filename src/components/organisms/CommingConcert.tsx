@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { getApi } from "@/service/api/api";
 import { ConcertData } from "@/types/_type";
 import React from "react";
@@ -7,14 +7,17 @@ import Card from "../atoms/Card";
 import Title from "../atoms/Title";
 import Loading from "../common/Loading";
 import CarouselView from "./CarouselView";
-import {BsFillBellFill} from 'react-icons/bs'
+import { BsFillBellFill } from "react-icons/bs";
+import { getStringSelectDate } from "@/utils/date";
 
 export default function CommingConcert() {
-  const { data, error, isLoading } = useSWR("/api/consert/come", () =>
-    getApi("/consert/come")
+  const todayDate = getStringSelectDate(new Date());
+  const { data, error, isLoading } = useSWR(
+    `/api/consert/come/${todayDate}`,
+    () => getApi("/consert/come")
   );
 
-  const commingConcerts: ConcertData[] = data && data.result
+  const commingConcerts: ConcertData[] = data && data.result;
   return (
     <section className="flex flex-col mt-20">
       <Title icon={<BsFillBellFill />}>Comming</Title>
@@ -28,4 +31,14 @@ export default function CommingConcert() {
       )}
     </section>
   );
+}
+
+export async function getStaticProps() {
+  const commings = await getApi("/api/consert/come");
+  return {
+    props: {
+      initialData: commings.result,
+      revalidate: 1000,
+    },
+  };
 }
