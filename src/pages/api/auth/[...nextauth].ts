@@ -1,7 +1,6 @@
 import NextAuth, { Session } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import UserService from "@/service/user/User";
-import { getSession } from "next-auth/react";
 
 const userApi = new UserService();
 
@@ -14,6 +13,10 @@ export const authOptions = {
   ],
   callbacks: {
     async signIn({ user }: { user: any }) {
+      const isUser = await userApi.getUser(user.email)
+      if (isUser.data) {
+        console.log('이미 가입된 회원입니다.')
+        return true;}
       await userApi.postUser(user);
       return true;
     },
