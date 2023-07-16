@@ -1,6 +1,4 @@
-import { ArtistData } from "@/types/_type";
 import mongoose, { Schema, models } from "mongoose";
-
 
 export const userSchema = new Schema({
   email: {
@@ -14,6 +12,10 @@ export const userSchema = new Schema({
   profile: {
     type: String,
     required: false,
+  },
+  displayName: {
+    type: String,
+    readonly: true,
   },
 });
 

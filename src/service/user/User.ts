@@ -6,6 +6,7 @@ export default class UserService {
   constructor() {
     this.httpClient = axios.create({
       baseURL: "https://consert-app.vercel.app/api/user",
+      // baseURL: "http://localhost:3000/api/user"
     });
   }
   async postUser(user: UserData) {
