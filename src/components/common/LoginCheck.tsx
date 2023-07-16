@@ -7,15 +7,20 @@ import Loading from "./Loading";
 export default function LoginCheck() {
   const { data: session } = useSession();
   const router = useRouter();
-  useEffect(() => {
+  const handleLoginCheck = () => {
     if (
       session &&
       (session?.user.displayName === null || !session?.user.displayName)
     ) {
+      console.log(4);
       router.replace("/signup");
     } else {
+      console.log(5);
       router.replace("/");
     }
-  }, [session, router]);
+  };
+  useEffect(() => {
+    handleLoginCheck();
+  }, [session]);
   return <Loading />;
 }

@@ -12,8 +12,9 @@ import { getStringSelectDate } from "@/utils/date";
 
 export default function CommingConcert() {
   const todayDate = getStringSelectDate(new Date());
+  const curHour = new Date().getHours().toString();
   const { data, error, isLoading } = useSWR(
-    `/api/consert/come/${todayDate}`,
+    `/api/consert/come/${todayDate}-${curHour}`,
     () => getApi("/consert/come")
   );
 

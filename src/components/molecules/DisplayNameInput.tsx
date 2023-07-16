@@ -12,7 +12,7 @@ export default function DisplayNameInput() {
   const [displayName, setDisplayName] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { data: session } = useSession();
+  const { data: session, update } = useSession();
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,6 +37,7 @@ export default function DisplayNameInput() {
     }).then((res) => {
       console.log(res);
       if (res.isSuccess === true) {
+        update({ displayName });
         setModalVisible(!modalVisible);
       }
     });
@@ -44,9 +45,9 @@ export default function DisplayNameInput() {
     console.log(displayName);
   };
 
-    useEffect(() => {
-      if (!session || session?.user.displayName) router.replace("/");
-    }, [session, router]);
+  useEffect(() => {
+    if (!session || session?.user.displayName) router.replace("/");
+  }, [session, router]);
 
   return (
     <section className="w-full flex flex-col gap-10 items-center justify-center">
