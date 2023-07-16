@@ -3,7 +3,7 @@ import { patchApi } from "@/service/api/api";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import Title from "../atoms/Title";
 import Modal from "../common/Modal";
 import Logo from "/src/app/logo_whitebg.png";
@@ -11,6 +11,7 @@ import Logo from "/src/app/logo_whitebg.png";
 export default function DisplayNameInput() {
   const [displayName, setDisplayName] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const { data: session, update } = useSession();
   const router = useRouter();
@@ -35,10 +36,10 @@ export default function DisplayNameInput() {
         displayName,
       },
     }).then((res) => {
-      console.log(res);
       if (res.isSuccess === true) {
         update({ displayName });
         setModalVisible(!modalVisible);
+        setModalMessage(res.result);
       }
     });
 
@@ -53,7 +54,7 @@ export default function DisplayNameInput() {
     <section className="w-full flex flex-col gap-10 items-center justify-center">
       {modalVisible && (
         <Modal
-          description="닉네임을 성공적으로 등록하였습니다."
+          description={modalMessage}
           buttonText="확인"
           isCancelBtn={false}
           onClick={() => router.push("/")}
