@@ -5,17 +5,19 @@ import React, { useEffect } from "react";
 import Loading from "./Loading";
 
 export default function LoginCheck() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
   useEffect(() => {
-    if (
-      session &&
+    if (status === "loading") {
+      return;
+    } else if (
+      status === "authenticated" &&
       (session?.user.displayName === null || !session?.user.displayName)
     ) {
       router.replace("/signup");
     } else {
       router.replace("/");
     }
-  }, [session, router]);
+  }, [status, session, router]);
   return <Loading />;
 }

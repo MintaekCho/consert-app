@@ -1,13 +1,18 @@
 "use client";
 import { patchApi } from "@/service/api/api";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
+import Modal from "../common/Modal";
 
 export default function ChangeDisplayName() {
   const { data: session, update } = useSession();
+  const router = useRouter();
 
   const [isChange, setIsChange] = useState(false);
   const [displayName, setDisplayName] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
@@ -27,14 +32,24 @@ export default function ChangeDisplayName() {
         displayName,
       },
     }).then((res) => {
-        console.log(res)
       update({ displayName });
       setDisplayName("");
+      setModalVisible(!modalVisible);
+      setModalMessage(res.result);
     });
   };
 
   return (
     <div className="mt-2">
+      {modalVisible && (
+        <Modal
+          description={modalMessage}
+          buttonText="확인"
+          isCancelBtn={false}
+          onClick={() => setModalVisible(!modalVisible)}
+          setVisible={() => setModalVisible(!modalVisible)}
+        />
+      )}
       {isChange ? (
         <form className="w-full relative mt-8" onSubmit={handleSubmit}>
           <input
