@@ -1,7 +1,7 @@
 "use client";
 import { getApi } from "@/service/api/api";
 import { ConcertData } from "@/types/_type";
-import React, { useState } from "react";
+import React from "react";
 import useSWR from "swr";
 import Card from "../atoms/Card";
 import Title from "../atoms/Title";
@@ -10,11 +10,8 @@ import CarouselView from "./CarouselView";
 import { BsFillBellFill } from "react-icons/bs";
 
 export default function CommingConcert() {
-  const [timeStamp, setTimeStamp] = useState(new Date().getTime().toString());
-
-  const { data, error, isLoading } = useSWR(
-    `/api/consert/come?timeStamp=${timeStamp}`,
-    () => getApi(`/consert/come?timeStamp=${timeStamp}`)
+  const { data, error, isLoading } = useSWR(`/api/consert/come`, () =>
+    getApi(`/consert/come`)
   );
 
   const commingConcerts: ConcertData[] = data && data.result;
@@ -31,14 +28,4 @@ export default function CommingConcert() {
       )}
     </section>
   );
-}
-
-export async function getStaticProps() {
-  const commings = await getApi("/api/consert/come");
-  return {
-    props: {
-      initialData: commings.result,
-      revalidate: 1000,
-    },
-  };
 }
