@@ -7,7 +7,7 @@ export function getKorDate() {
 }
 
 export function getStringDate() {
-  const date = getKorDate();
+  const date = new Date();
   console.log(date);
   let yyyy = date.getFullYear();
   let dd = date.getDate();
