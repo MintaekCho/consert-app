@@ -14,7 +14,7 @@ export default function CommingConcert() {
 
   const { data, error, isLoading } = useSWR(
     `/api/consert/come?timeStamp=${timeStamp}`,
-    () => getApi(`/consert/come`)
+    () => getApi(`/consert/come?timeStamp=${timeStamp}`)
   );
 
   const commingConcerts: ConcertData[] = data && data.result;
