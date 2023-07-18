@@ -14,7 +14,7 @@ export default function HotRank() {
 
   const { data, error, isLoading } = useSWR(
     `/api/consert/rank?timeStamp=${timeStamp}`,
-    () => getApi(`consert/rank`)
+    () => getApi(`consert/rank?timeStamp=${timeStamp}`)
   );
 
   const ranks: ConcertData[] = data && data.result;
