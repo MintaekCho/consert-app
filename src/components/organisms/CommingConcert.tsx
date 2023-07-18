@@ -1,8 +1,8 @@
 "use client";
 import { getApi } from "@/service/api/api";
 import { ConcertData } from "@/types/_type";
-import React from "react";
-import useSWR from "swr";
+import React, { useEffect } from "react";
+import useSWR, { mutate } from "swr";
 import Card from "../atoms/Card";
 import Title from "../atoms/Title";
 import Loading from "../common/Loading";
@@ -11,12 +11,13 @@ import { BsFillBellFill } from "react-icons/bs";
 import { getStringSelectDate } from "@/utils/date";
 
 export default function CommingConcert() {
-  const todayDate = getStringSelectDate(new Date());
-  const curHour = new Date().getHours().toString();
-  const { data, error, isLoading } = useSWR(
-    `/api/consert/come/${todayDate}-${curHour}`,
-    () => getApi("/consert/come")
+  const { data, error, isLoading } = useSWR(`/api/consert/come`, () =>
+    getApi("/consert/come")
   );
+
+  useEffect(() => {
+    mutate("rank");
+  }, []);
 
   const commingConcerts: ConcertData[] = data && data.result;
   return (
