@@ -11,13 +11,11 @@ import { BsFillBellFill } from "react-icons/bs";
 import { getStringSelectDate } from "@/utils/date";
 
 export default function CommingConcert() {
+  const timeStamp = new Date().getTime().toString();
   const { data, error, isLoading } = useSWR(`/api/consert/come`, () =>
-    getApi("/consert/come")
+    getApi(`/consert/come?timeStamp=${timeStamp}`)
   );
 
-  useEffect(() => {
-    mutate("rank");
-  }, []);
 
   const commingConcerts: ConcertData[] = data && data.result;
   return (

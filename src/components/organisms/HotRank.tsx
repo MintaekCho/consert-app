@@ -1,24 +1,22 @@
 "use client";
-import { useConsertApi } from "@/context/ConsertApiContext";
 import { ConcertData } from "@/types/_type";
-import React, { useEffect } from "react";
-import useSWR, { mutate } from "swr";
+import React from "react";
+import useSWR from "swr";
 import Card from "../atoms/Card";
 import Title from "../atoms/Title";
 import Loading from "../common/Loading";
 import CarouselView from "./CarouselView";
 import { FaTrophy } from "react-icons/fa";
+import { getApi } from "@/service/api/api";
 
 export default function HotRank() {
-  const consert = useConsertApi();
+  const timeStamp = new Date().getTime().toString();
 
-  const { data, error, isLoading } = useSWR(`rank`, () => consert.rank());
-  
-  useEffect(() => {
-    mutate("rank");
-  }, []);
+  const { data, error, isLoading } = useSWR(`rank`, () =>
+    getApi(`consert/rank?timeStamp=${timeStamp}`)
+  );
 
-  const ranks: ConcertData[] = data && data.data;
+  const ranks: ConcertData[] = data && data.result;
 
   return (
     <section className="flex flex-col mt-20">
