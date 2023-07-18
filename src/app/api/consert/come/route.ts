@@ -3,9 +3,10 @@ import Consert from "@/db/schema/consert";
 import { getKorDate, getStringSelectDate } from "@/utils/date";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
-  const date = getStringSelectDate(getKorDate())
-
+export async function GET(request: NextRequest) {
+  const date = getStringSelectDate(getKorDate());
+  const timeStamp = request.nextUrl.searchParams.get("timeStamp");
+  console.log(timeStamp);
   try {
     dbConnect();
     const conserts = Consert;

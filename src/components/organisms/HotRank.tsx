@@ -1,6 +1,6 @@
 "use client";
 import { ConcertData } from "@/types/_type";
-import React from "react";
+import React, { useState } from "react";
 import useSWR from "swr";
 import Card from "../atoms/Card";
 import Title from "../atoms/Title";
@@ -10,10 +10,11 @@ import { FaTrophy } from "react-icons/fa";
 import { getApi } from "@/service/api/api";
 
 export default function HotRank() {
+  const [timeStamp, setTimeStamp] = useState(new Date().getTime().toString());
 
   const { data, error, isLoading } = useSWR(
-    `/api/consert/rank`,
-    () => getApi(`consert/rank`)
+    `/api/consert/rank?timeStamp=${timeStamp}`,
+    () => getApi(`consert/rank?timeStamp=${timeStamp}`)
   );
 
   const ranks: ConcertData[] = data && data.result;
