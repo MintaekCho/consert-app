@@ -3,12 +3,29 @@ import HotRank from "@/components/organisms/HotRank";
 import MainBanner from "@/components/organisms/MainBanner";
 import MyChoice from "@/components/organisms/MyChoice";
 
-export default function Home() {
+export default async function Home() {
+  const API_URL = "https://consert-app.vercel.app";
+
+  const rankRes = await fetch(
+    `https://consert-app.vercel.app/api/consert/rank`,
+    {
+      cache: "no-cache",
+      next: { revalidate: 60 },
+    }
+  );
+  const commingRes = await fetch(`${API_URL}/api/consert/come`, {
+    cache: "no-cache",
+    next: { revalidate: 60 },
+  });
+
+  const rank = await rankRes.json();
+  const comming = await commingRes.json();
+
   return (
     <section className="flex flex-col p-6">
       <MainBanner />
-      <HotRank />
-      <CommingConcert />
+      <HotRank data={rank} />
+      <CommingConcert data={comming} />
       <MyChoice />
     </section>
   );
