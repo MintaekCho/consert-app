@@ -11,7 +11,7 @@ export default function Page() {
 
   return (
     <div>
-      <SearchBox setKeyword={setKeyword} />
+      <SearchBox setKeyword={setKeyword} placeholder={'어떤 아티스트의 공연을 찾고 있나요?'} />
       {keyword ? (
         <>
           <Title>{keyword} 검색 결과</Title>
