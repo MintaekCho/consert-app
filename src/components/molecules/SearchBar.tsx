@@ -1,7 +1,9 @@
 const SearchBar = ({
   setKeyword,
+  placeholder,
 }: {
   setKeyword: React.Dispatch<React.SetStateAction<string | null>>;
+  placeholder: string;
 }) => {
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -11,7 +13,10 @@ const SearchBar = ({
   };
 
   return (
-    <form onSubmit={handleSearch} className="flex justify-center w-1/2 min-w-[275px]">
+    <form
+      onSubmit={handleSearch}
+      className="flex justify-center w-1/2 min-w-[275px]"
+    >
       <label
         htmlFor="search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -41,7 +46,7 @@ const SearchBar = ({
           id="search"
           name="search"
           className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="어떤 아티스트의 공연을 찾고 있나요?"
+          placeholder={placeholder}
         />
       </div>
     </form>

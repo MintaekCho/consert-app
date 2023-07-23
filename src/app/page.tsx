@@ -10,12 +10,10 @@ export default async function Home() {
     `https://consert-app.vercel.app/api/consert/rank`,
     {
       cache: "no-cache",
-      next: { revalidate: 60 },
     }
   );
   const commingRes = await fetch(`${API_URL}/api/consert/come`, {
     cache: "no-cache",
-    next: { revalidate: 60 },
   });
 
   const rank = await rankRes.json();

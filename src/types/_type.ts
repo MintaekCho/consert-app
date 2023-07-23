@@ -125,3 +125,24 @@ export type BookmarkData = {
 export interface WrapperProps {
   children: React.ReactNode;
 }
+
+export type WriteData = {
+  _id: string;
+  title: string;
+  content: string;
+  writer: SessionUser;
+  viewCount: number;
+  createdAt: string;
+  updatedAt: string;
+  isUpdated: boolean;
+};
+
+export type WriteCommentData = {
+  _id: string;
+  writeId: string;
+  content: string;
+  writer: SessionUser;
+  createdAt: string;
+  updatedAt: string;
+  isUpdated: boolean;
+};

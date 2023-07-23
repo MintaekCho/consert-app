@@ -7,6 +7,7 @@ import ConsertApiProvider from "@/context/ConsertApiContext";
 import Footer from "@/components/organisms/Footer";
 import Script from "next/script";
 import { Metadata } from "next";
+import RecoilContext from "@/context/RecoilContext";
 
 const sans = Open_Sans({ subsets: ["latin"] });
 
@@ -18,10 +19,11 @@ export const metadata: Metadata = {
     default: "CONCON",
     template: "CONCON | %s",
   },
-  description: "내가 좋아하는 가수의 콘서트 일정, 앨범, 관련 유튜브 영상을 한눈에.",
+  description:
+    "내가 좋아하는 가수의 콘서트 일정, 앨범, 관련 유튜브 영상을 한눈에.",
   icons: {
-    icon: './favicon.ico'
-  }
+    icon: "./favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -34,13 +36,15 @@ export default function RootLayout({
       <Script src={KAKAO_SDK_URL} />
       <body className="w-full min-w-[320px] max-w-screen-2xl flex flex-col justify-between mx-auto overflow-auto p-4">
         <AuthContext>
-          <YoutubeApiProvider>
-            <ConsertApiProvider>
-              <Header />
-              <main>{children}</main>
-              <Footer />
-            </ConsertApiProvider>
-          </YoutubeApiProvider>
+          <RecoilContext>
+            <YoutubeApiProvider>
+              <ConsertApiProvider>
+                <Header />
+                <main>{children}</main>
+                <Footer />
+              </ConsertApiProvider>
+            </YoutubeApiProvider>
+          </RecoilContext>
         </AuthContext>
       </body>
     </html>
