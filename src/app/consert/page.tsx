@@ -9,7 +9,7 @@ const Page = () => {
   const [keyword, setKeyword] = useState<string | null>("");
   return (
     <div>
-      <SearchBox setKeyword={setKeyword} />
+      <SearchBox setKeyword={setKeyword} placeholder={'어떤 아티스트의 공연을 찾고 있나요?'} />
       {keyword ? (
         <>
           <Title>{keyword} Concert</Title>
