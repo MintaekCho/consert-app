@@ -6,7 +6,7 @@ import "react-quill/dist/quill.snow.css";
 import AWS from "aws-sdk";
 
 export default function Editor() {
-  const quillRef = useRef(null);
+  const quillRef = useRef<any>();
   const REGION = process.env.NEXT_PUBLIC_AWS_S3_REGION;
   const ACCESS_KEY = process.env.NEXT_PUBLIC_AWS_S3_ACCESS_KEY;
   const SECRET_KEY = process.env.NEXT_PUBLIC_AWS_S3_SECRET_KEY;
@@ -40,10 +40,11 @@ export default function Editor() {
 
         const url_key = await upload.promise().then((res) => res.Location);
         console.log(url_key);
-        const editor = quillRef.current.getEditor();
-        const range = editor.getSelection();
-
-        editor.insertEmbed(range.index, "image", url_key);
+        if (quillRef.current) {
+          const editor = quillRef.current.getEditor();
+          const range = editor.getSelection();
+          editor.insertEmbed(range.index, "image", url_key);
+        }
       } catch (e) {
         console.log(e);
       }
