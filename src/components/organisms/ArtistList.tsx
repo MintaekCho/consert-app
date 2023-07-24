@@ -16,7 +16,7 @@ export default function ArtistList({ keyword }: SearchProps) {
   const params = {
     name: keyword,
     page,
-    size: 10,
+    size: 12,
   };
 
   useEffect(() => {
