@@ -17,6 +17,10 @@ export const writeSchema = new Schema({
     type: Number,
     require: true,
   },
+  commentCount: {
+    type: Number,
+    require: true
+  },
   createdAt: {
     type: String,
     require: true,

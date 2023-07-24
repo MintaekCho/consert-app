@@ -10,7 +10,6 @@ import WriteComment from "../organisms/WriteComment";
 import WriteCommentList from "../organisms/WriteCommentList";
 
 export default function WriteDetailsInfo({ writeId }: { writeId: string }) {
-  console.log(writeId);
   const DES_STYLE = "text-gray-400 font-bold";
   const { data, isLoading, error } = useSWR(`/api/write/${writeId}`, () =>
     getApi(`/write/${writeId}`)

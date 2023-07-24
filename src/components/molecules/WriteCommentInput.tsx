@@ -44,6 +44,7 @@ export default function WriteCommentInput() {
       }).then(() => {
         setComment("");
         mutate(`/api/writeComment/${writeId}`);
+        mutate(`/api/write`)
       });
     }
   };

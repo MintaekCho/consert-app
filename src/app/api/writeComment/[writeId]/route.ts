@@ -2,6 +2,7 @@ import { getStringDate } from "@/utils/date";
 import dbConnect from "@/db/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
 import WriteComment from "@/db/schema/writeComment";
+import Write from "@/db/schema/write";
 
 export async function POST(
   request: NextRequest,
@@ -23,6 +24,13 @@ export async function POST(
     };
     console.log(addPost);
     const res = await WriteComment.create(addPost);
+    await Write.updateOne(
+      { _id: writeId },
+      {
+        $inc: { commentCount: 1 },
+      }
+    );
+
     return NextResponse.json(res);
   } catch (error) {
     console.error(error);
@@ -49,4 +57,3 @@ export async function GET(
     NextResponse.json({ message: "Internal server error" });
   }
 }
-

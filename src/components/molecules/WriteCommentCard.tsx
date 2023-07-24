@@ -32,7 +32,7 @@ export default function WriteCommentCard({
             <p>{item.content}</p>
           )}
           {user?._id === item.writer?._id && isUpdate.id !== item._id ? (
-            <WriteCommentUDBtnWrap item={item} />
+            <WriteCommentUDBtnWrap item={item} user={user} />
           ) : null}
         </div>
       </div>

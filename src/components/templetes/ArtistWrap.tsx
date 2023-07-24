@@ -15,9 +15,6 @@ export default function ArtistWrap({ artists }: { artists: ArtistData[] }) {
     () => session && userApi.getUser(session?.user.email as string)
   );
 
-  const user: UserData = data?.data;
-  console.log(user);
-
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
       {artists?.map((artist, i) => {
