@@ -31,7 +31,7 @@ export default function WriteCard({ write }: { write: WriteData }) {
         <div className="flex items-center justify-between">
           <div>
             <span className="text-gray-500">{write.writer?.displayName}</span>
-            <span className="text-gray-500">{write.viewCount}</span>
+            {/* <span className="text-gray-500">{write.viewCount}</span> */}
           </div>
         </div>
       </div>
