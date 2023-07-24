@@ -40,7 +40,6 @@ export default function WriteBtnWrap() {
     title: title.trim(),
     content,
     writer: session?.user,
-    viewCount: 0,
   };
 
   const updateBody = {
@@ -97,7 +96,7 @@ export default function WriteBtnWrap() {
             body,
           })
             .then(() => {
-              mutate("/api/write?page=1");
+              mutate(`/api/write?page=1&size=12&keyword=''`);
             })
             .then(() => route.push("/community"));
         }

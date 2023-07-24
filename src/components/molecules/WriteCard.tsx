@@ -2,14 +2,9 @@ import { getApi } from "@/service/api/api";
 import { WriteData } from "@/types/_type";
 import Link from "next/link";
 import React from "react";
-import useSWR from 'swr'
+import useSWR from "swr";
 
 export default function WriteCard({ write }: { write: WriteData }) {
-
-  const { data, isLoading, error } = useSWR(
-    `/api/writeComment/count/${write._id}`,
-    () => getApi(`/writeComment/${write._id}/count`)
-  );
 
   return (
     <Link
@@ -21,12 +16,7 @@ export default function WriteCard({ write }: { write: WriteData }) {
           <p className="group-hover:text-red-400 group-hover:scale-105 duration-200">
             {write.title}
           </p>
-          {
-            data?.result ?
-          <span>[{data?.result}]</span>
-          :
-          null
-          }
+          {write.commentCount ? <span>[{write.commentCount}]</span> : null}
         </div>
         <div className="flex items-center justify-between">
           <div>
