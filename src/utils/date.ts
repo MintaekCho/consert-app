@@ -8,16 +8,18 @@ export function getKorDate() {
 
 export function getStringDate() {
   const date = new Date();
-  console.log(date);
   let yyyy = date.getFullYear();
   let dd = date.getDate();
   let mm = date.getMonth() + 1; //January is 0!
-  let hour = date.getHours();
-  let minute = date.getMinutes();
-  let second = date.getSeconds();
+  let hh = date.getHours();
+  let mi = date.getMinutes();
+  let ss = date.getSeconds();
   let year: string;
   let month: string;
   let day: string;
+  let hour: string;
+  let minute: string;
+  let second: string;
 
   if (dd < 10) {
     day = "0" + dd.toString();
@@ -25,6 +27,15 @@ export function getStringDate() {
   if (mm < 10) {
     month = "0" + mm.toString();
   } else month = mm.toString();
+  if (hh < 10) {
+    hour = "0" + hh.toString();
+  } else hour = hh.toString();
+  if (mi < 10) {
+    minute = "0" + mi.toString();
+  } else minute = mi.toString();
+  if (ss < 10) {
+    second = "0" + ss.toString();
+  } else second = ss.toString();
 
   year = yyyy.toString();
   return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
