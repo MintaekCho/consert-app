@@ -132,6 +132,7 @@ export type WriteData = {
   content: string;
   writer: SessionUser;
   viewCount: number;
+  commentCount: number;
   createdAt: string;
   updatedAt: string;
   isUpdated: boolean;
