@@ -1,20 +1,61 @@
 "use client";
+import ReactQuill from "react-quill";
 import { useForm } from "@/hooks/useForm";
-import dynamic from "next/dynamic";
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import "react-quill/dist/quill.snow.css";
-import Loading from "../common/Loading";
-
-const ReactQuill = dynamic(() => import("react-quill"), {
-  ssr: false,
-  loading: () => <Loading />,
-});
+import AWS from "aws-sdk";
 
 export default function Editor() {
+  const quillRef = useRef(null);
+  const REGION = process.env.NEXT_PUBLIC_AWS_S3_REGION;
+  const ACCESS_KEY = process.env.NEXT_PUBLIC_AWS_S3_ACCESS_KEY;
+  const SECRET_KEY = process.env.NEXT_PUBLIC_AWS_S3_SECRET_KEY;
+  const BUCKET_NAME = process.env.NEXT_PUBLIC_AWS_S3_NAME;
+
+  const imageHaneler = async () => {
+    const input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.setAttribute("accept", "image/*");
+    input.click();
+
+    input.addEventListener("change", async () => {
+      const file = input.files?.[0];
+      console.log(file);
+      try {
+        const name = Date.now();
+
+        AWS.config.update({
+          region: REGION,
+          accessKeyId: ACCESS_KEY,
+          secretAccessKey: SECRET_KEY,
+        });
+        const upload = new AWS.S3.ManagedUpload({
+          params: {
+            ACL: "public-read",
+            Bucket: BUCKET_NAME as string,
+            Key: `upload/${name}`,
+            Body: file,
+          },
+        });
+
+        const url_key = await upload.promise().then((res) => res.Location);
+        console.log(url_key);
+        const editor = quillRef.current.getEditor();
+        const range = editor.getSelection();
+
+        editor.insertEmbed(range.index, "image", url_key);
+      } catch (e) {
+        console.log(e);
+      }
+    });
+  };
   const modules = useMemo(
     () => ({
       toolbar: {
         container: "#toolbar",
+        handlers: {
+          image: imageHaneler,
+        },
       },
     }),
     []
@@ -46,6 +87,7 @@ export default function Editor() {
       <ReactQuill
         className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] 2xl:h-[900px]"
         modules={modules}
+        ref={quillRef}
         theme="snow"
         formats={formats}
         value={content}
