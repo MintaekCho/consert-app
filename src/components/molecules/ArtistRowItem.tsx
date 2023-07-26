@@ -2,21 +2,21 @@ import useSWR from "swr";
 import Artist from "@/service/artist/Artist";
 import RowItem from "../atoms/RowItem";
 import Link from "next/link";
+import { getApi } from "@/service/api/api";
 
 const ArtistRowItem = ({ artistName }: { artistName: string }) => {
-  const artistApi = new Artist();
   const { data, error, isLoading } = useSWR(
-    `api/artist/search/${artistName}`,
+    `api/artist/cast/${artistName}`,
     () => {
-      return artistApi.getSearchArtists({
-        name: artistName,
-        page: 1,
-        size: 1,
-      });
+      return getApi('/artist/cast', {
+        params: {
+          name: artistName
+        }
+      })
     }
   );
 
-  const artistProfile = data?.data.findArtist[0];
+  const artistProfile = data?.result;
 
   return (
     <Link href={`/artist/${artistProfile ? artistProfile._id : ''}`}>
